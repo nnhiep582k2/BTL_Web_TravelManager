@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- File tiếng Anh -->
+    <string name="app_name">TravelManager</string>
+    <string name="home">Home</string>
+    <string name="tour">Tour</string>
+    <string name="schedule">Schedule</string>
+    <string name="user">User</string>
+    <string name="settings">Settings</string>
+</resources>

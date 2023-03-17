@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Danh sách cách phần tử trong thanh điều hướng -->
+    <!-- @author nnhiep 17.03.2023 -->
+    <item
+        android:id="@+id/menuHome"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/menuTour"
+        android:icon="@drawable/ic_baseline_flight_24"
+        android:title="@string/tour" />
+    <item
+        android:id="@+id/menuSchedule"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="@string/schedule" />
+    <item
+        android:id="@+id/menuUser"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/user" />
+    <item
+        android:id="@+id/menuSettings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/settings" />
+
+</menu>
