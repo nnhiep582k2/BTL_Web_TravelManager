@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TravelManager"
         tools:targetApi="31">
         <activity
+            android:name=".views.Search"
+            android:exported="false" />
+        <activity
             android:name=".views.RegisterActivity"
             android:exported="false">
             <meta-data
