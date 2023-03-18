@@ -45,7 +45,7 @@ public class Schedule {
      * Thêm mới schedule
      * @author nnhiep 17.03.2023
      */
-    public long insertARecord(SQLiteDatabase db, String tour_id, String location, String hotel, String weather, int vehicle, String description, String createdBy) {
+    public long insertARecord(SQLiteDatabase db, int tour_id, String location, String hotel, String weather, int vehicle, String description, String createdBy) {
         ContentValues cv = new ContentValues();
         Date now = new Date();
 
@@ -82,7 +82,7 @@ public class Schedule {
      * Hàm cập nhật thông tin lịch trình
      * @author nnhiep 18.03.2023
      */
-    public long updateData(SQLiteDatabase db, String tour_id, String row_id, String location, String hotel, String weather, int vehicle, String description, String modifiedBy) {
+    public long updateData(SQLiteDatabase db, int tour_id, String row_id, String location, String hotel, String weather, int vehicle, String description, String modifiedBy) {
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_LOCATION, location);
