@@ -1,48 +1,43 @@
 package com.nnhiep.travelmanager.views;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.databinding.ActivityLoginBinding;
+import com.nnhiep.travelmanager.databinding.ActivityRegisterBinding;
 
-/**
- * Trang đăng nhập
- * @author nnhiep 18.03.2023
- */
-public class LoginActivity extends AppCompatActivity {
-    private ActivityLoginBinding binding;
-    Button btnSignin;
-    EditText eTxtAccount, eTxtPassword;
-    TextView txtErrorAccount, txtErrorPassword, txtForgotPassword, txtChangeSignup;
+public class RegisterActivity extends AppCompatActivity {
+    private ActivityRegisterBinding binding;
+    Button btnSignup;
+    EditText eTxtAccount, eTxtPassword, eTxtConfirmPassword;
+    TextView txtErrorAccount, txtErrorPassword, txtErrorConfirmPassword, txtChangeSignin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Gán giá trị cho đối tượng view binding - nnhiep 18.03.2023
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         // Thiết lập layout cho activity - nnhiep 18.03.2023
         setContentView(binding.getRoot());
 
         setup_ui();
 
-        // Xử lý sự kiện click đăng nhập - nnhiep 18.03.2023
-        btnSignin.setOnClickListener(v -> {
+        // Xử lý sự kiện click đăng ký - nnhiep 18.03.2023
+        btnSignup.setOnClickListener(v -> {
             if(validate()) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                setResult(150, intent);
+                finish();
             }
         });
 
-        // Xử lý sự kiện click chuyển sang màn đăng ký - nnhiep 18.03.2023
-        txtChangeSignup.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivityForResult(intent, 200);
+        // Xử lý sự kiện click chuyển sang màn đăng nhập - nnhiep 18.03.2023
+        txtChangeSignin.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
 
         // Xử lý sự kiện blur ra khỏi input tài khoản - nnhiep 18.03.2023
@@ -58,6 +53,13 @@ public class LoginActivity extends AppCompatActivity {
                 validatePassword();
             }
         });
+
+        // Xử lý sự kiện blur ra khỏi input xác nhận mật khẩu - nnhiep 18.03.2023
+        eTxtConfirmPassword.setOnFocusChangeListener((v, hasFocus) -> {
+            if(!hasFocus) {
+                validateConfirmPassword();
+            }
+        });
     }
 
     /**
@@ -70,16 +72,10 @@ public class LoginActivity extends AppCompatActivity {
         eTxtAccount.requestFocus();
         eTxtAccount.setText("");
         eTxtPassword.setText("");
+        eTxtConfirmPassword.setText("");
         txtErrorAccount.setText("");
         txtErrorPassword.setText("");
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 200 && resultCode == 150) {
-            Toast.makeText(this, this.getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
-        }
+        txtErrorConfirmPassword.setText("");
     }
 
     /**
@@ -87,13 +83,14 @@ public class LoginActivity extends AppCompatActivity {
      * @author nnhiep 18.03.2023
      */
     private void setup_ui() {
-        btnSignin = binding.btnSignin;
+        btnSignup = binding.btnSignup;
         eTxtAccount = binding.eTxtAccount;
         eTxtPassword = binding.eTxtPassword;
+        eTxtConfirmPassword = binding.eTxtConfirmPassword;
         txtErrorAccount = binding.txtErrorAccount;
         txtErrorPassword = binding.txtErrorPassword;
-        txtForgotPassword = binding.txtForgotPassword;
-        txtChangeSignup = binding.txtChangeSignup;
+        txtErrorConfirmPassword = binding.txtErrorConfirmPassword;
+        txtChangeSignin = binding.txtChangeSignin;
         eTxtAccount.requestFocus();
     }
 
@@ -106,9 +103,15 @@ public class LoginActivity extends AppCompatActivity {
         boolean isValid = validateAccount();
         if(!isValid) {
             validatePassword();
+            validateConfirmPassword();
             return false;
         }
         isValid = validatePassword();
+        if(!isValid) {
+            validateConfirmPassword();
+            return false;
+        }
+        isValid = validateConfirmPassword();
         return isValid;
     }
 
@@ -122,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
         if(eTxtAccount.getText().toString().length() < 5) {
-            txtErrorAccount.setText(this.getResources().getString(R.string.account_invalid));
+            txtErrorAccount.setText(this.getResources().getString(R.string.account_min_length));
             return false;
         }
         txtErrorAccount.setText("");
@@ -138,11 +141,29 @@ public class LoginActivity extends AppCompatActivity {
             txtErrorPassword.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(!eTxtPassword.getText().toString().equals("123")) {
-            txtErrorPassword.setText(this.getResources().getString(R.string.confirm_password_invalid));
+        if(eTxtPassword.getText().toString().length() < 8) {
+            txtErrorPassword.setText(this.getResources().getString(R.string.password_min_length));
             return false;
         }
         txtErrorPassword.setText("");
+        return true;
+    }
+
+    /**
+     * Hàm kiểm tra xác nhận mật khẩu
+     * @author nnhiep 18.03.2023
+     */
+    private boolean validateConfirmPassword() {
+        if(!eTxtPassword.getText().toString().isEmpty() && eTxtConfirmPassword.getText().toString().isEmpty()) {
+            txtErrorConfirmPassword.setText(this.getResources().getString(R.string.required));
+            return false;
+        }
+        if(!eTxtPassword.getText().toString().isEmpty() && !eTxtConfirmPassword.getText().toString().isEmpty() &&
+                !eTxtConfirmPassword.getText().toString().equals(eTxtPassword.getText().toString())) {
+            txtErrorConfirmPassword.setText(this.getResources().getString(R.string.password_not_true));
+            return false;
+        }
+        txtErrorConfirmPassword.setText("");
         return true;
     }
     // endregion

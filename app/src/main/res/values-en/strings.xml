@@ -29,14 +29,22 @@
     <string name="delete_tour_success">Success to delete Tour!</string>
     <!-- Login -->
     <string name="login_success">Login successful!</string>
+    <string name="register_success">Register successful!</string>
     <string name="login_title">Already have an account?</string>
+    <string name="register_title">Don\'t have an account?</string>
     <string name="account">Account</string>
     <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
     <string name="forgot_password">FORGOT PASSWORD?</string>
     <string name="change_to_signup">New user? Register now</string>
+    <string name="change_to_signin">Already have an account? Sign in now</string>
     <string name="required">This field is required</string>
     <string name="account_invalid">Account is invalid</string>
+    <string name="account_min_length">Account must have at least 5 characters</string>
+    <string name="password_min_length">Password must have at least 8 characters</string>
+    <string name="password_not_true">Password is not true</string>
     <string name="password_invalid">Password is invalid</string>
+    <string name="confirm_password_invalid">Confirm password is invalid</string>
 </resources>
