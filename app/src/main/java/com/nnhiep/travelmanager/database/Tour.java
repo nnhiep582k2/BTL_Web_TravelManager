@@ -45,7 +45,7 @@ public class Tour {
      * Thêm mới tour
      * @author nnhiep 17.03.2023
      */
-    public long insertARecord(SQLiteDatabase db, String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String createdBy, String image) {
+    public long insertARecord(SQLiteDatabase db, String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String createdBy, byte[] image) {
         ContentValues cv = new ContentValues();
         Date now = new Date();
 
@@ -83,7 +83,7 @@ public class Tour {
      * Hàm cập nhật thông tin tour
      * @author nnhiep 18.03.2023
      */
-    public long updateData(SQLiteDatabase db, String row_id, String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String modifiedBy, String image) {
+    public long updateData(SQLiteDatabase db, String row_id, String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String modifiedBy, byte[] image) {
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_TITLE, title);

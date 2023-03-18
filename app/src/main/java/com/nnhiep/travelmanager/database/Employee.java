@@ -38,7 +38,7 @@ public class Employee {
      * Thêm mới employee
      * @author nnhiep 17.03.2023
      */
-    public long insertARecord(SQLiteDatabase db, String name, int age, int gender, String account, String pasword, String phone, String avatar) {
+    public long insertARecord(SQLiteDatabase db, String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_NAME, name);
@@ -72,7 +72,7 @@ public class Employee {
      * Hàm cập nhật thông tin người dùng
      * @author nnhiep 18.03.2023
      */
-    public long updateData(SQLiteDatabase db, String row_id, String name, int age, int gender, String account, String pasword, String phone, String avatar) {
+    public long updateData(SQLiteDatabase db, String row_id, String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_NAME, name);

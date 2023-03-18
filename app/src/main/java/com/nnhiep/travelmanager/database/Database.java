@@ -98,7 +98,7 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một người dùng
      * @author nnhiep 18.03.2023
      */
-    public void insertAnEmployee(String name, int age, int gender, String account, String pasword, String phone, String avatar) {
+    public void insertAnEmployee(String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         long result = employee.insertARecord(db, name, age, gender, account, pasword, phone, avatar);
@@ -114,7 +114,7 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một lịch trình
      * @author nnhiep 18.03.2023
      */
-    public void insertASchedule(String tour_id, String location, String hotel, String weather, int vehicle, String description, String createdBy) {
+    public void insertASchedule(int tour_id, String location, String hotel, String weather, int vehicle, String description, String createdBy) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         long result = schedule.insertARecord(db, tour_id, location, hotel, weather, vehicle, description, createdBy);
@@ -130,7 +130,7 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một tour
      * @author nnhiep 18.03.2023
      */
-    public void insertATour(String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String createdBy, String image) {
+    public void insertATour(String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String createdBy, byte[] image) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         long result = tour.insertARecord(db, title, price, start_date, end_date, isFavor, isChecked, createdBy, image);
@@ -149,7 +149,7 @@ public class Database extends SQLiteOpenHelper {
      * Sửa thông tin người dùng
      * @author nnhiep 18.03.2023
      */
-    public void updateAnEmployee(String row_id, String name, int age, int gender, String account, String pasword, String phone, String avatar) {
+    public void updateAnEmployee(String row_id, String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         long result = employee.updateData(db, row_id, name, age, gender, account, pasword, phone, avatar);
@@ -165,7 +165,7 @@ public class Database extends SQLiteOpenHelper {
      * Sửa thông tin lịch trình
      * @author nnhiep 18.03.2023
      */
-    public void updateASchedule(String tour_id, String row_id, String location, String hotel, String weather, int vehicle, String description, String modifiedBy) {
+    public void updateASchedule(int tour_id, String row_id, String location, String hotel, String weather, int vehicle, String description, String modifiedBy) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         long result = schedule.updateData(db, tour_id, row_id, location, hotel, weather, vehicle, description, modifiedBy);
@@ -181,7 +181,7 @@ public class Database extends SQLiteOpenHelper {
      * Sửa thông tin tour
      * @author nnhiep 18.03.2023
      */
-    public void updateATour(String row_id, String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String modifiedBy, String image) {
+    public void updateATour(String row_id, String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String modifiedBy, byte[] image) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         long result = tour.updateData(db, row_id, title, price, start_date, end_date, isFavor, isChecked, modifiedBy, image);
