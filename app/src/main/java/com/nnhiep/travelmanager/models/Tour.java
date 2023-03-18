@@ -1,6 +1,5 @@
 package com.nnhiep.travelmanager.models;
 
-import com.nnhiep.travelmanager.interfaces.BaseModel;
 import java.util.Date;
 
 /**
