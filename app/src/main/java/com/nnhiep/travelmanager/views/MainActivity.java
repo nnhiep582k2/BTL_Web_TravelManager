@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.Toast;
+import android.widget.Button;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.databinding.ActivityMainBinding;
 import com.nnhiep.travelmanager.fragments.HomeFragment;
@@ -17,10 +18,12 @@ import com.nnhiep.travelmanager.fragments.UserFragment;
 public class MainActivity extends AppCompatActivity {
     // Khởi tạo đối tượng ánh xạ các thành phần UI - nnhiep 17.03.2023
     private ActivityMainBinding binding;
+    Button btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // Gán giá trị cho đối tượng view binding - nnhiep 17.03.2023
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         // Thiết lập layout cho activity - nnhiep 17.03.2023
