@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- File tiếng Anh -->
+    <!-- Tên app -->
     <string name="app_name">TravelManager</string>
+    <!-- Menu -->
     <string name="home">Home</string>
     <string name="tour">Tour</string>
     <string name="schedule">Schedule</string>
     <string name="user">User</string>
     <string name="settings">Settings</string>
+    <!-- Database -->
+    <string name="insert_employee_failed">Fail to add new Employee!</string>
+    <string name="insert_schedule_failed">Fail to add new Schedule!</string>
+    <string name="insert_tour_failed">Fail to add new Tour!</string>
+    <string name="insert_employee_success">Success to add new Employee!</string>
+    <string name="insert_schedule_success">Success to add new Schedule!</string>
+    <string name="insert_tour_success">Success to add new Tour!</string>
+    <string name="update_employee_failed">Fail to update Employee!</string>
+    <string name="update_schedule_failed">Fail to update Schedule!</string>
+    <string name="update_tour_failed">Fail to update Tour!</string>
+    <string name="update_employee_success">Success to update Employee!</string>
+    <string name="update_schedule_success">Success to update Schedule!</string>
+    <string name="update_tour_success">Success to update Tour!</string>
+    <string name="delete_employee_failed">Fail to delete Employee!</string>
+    <string name="delete_schedule_failed">Fail to delete Schedule!</string>
+    <string name="delete_tour_failed">Fail to delete Tour!</string>
+    <string name="delete_employee_success">Success to delete Employee!</string>
+    <string name="delete_schedule_success">Success to delete Schedule!</string>
+    <string name="delete_tour_success">Success to delete Tour!</string>
 </resources>
