@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelManager"
         tools:targetApi="31">
-
+        <activity
+            android:name=".views.RegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".views.LoginActivity"
             android:exported="true">
@@ -26,11 +32,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".views.MainActivity"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
