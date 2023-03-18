@@ -1,9 +1,29 @@
 <resources>
-    <!-- File tiếng Việt -->
+    <!-- Tên app -->
     <string name="app_name">Quản lý Tour</string>
+    <!-- Menu -->
     <string name="home">Trang chủ</string>
     <string name="tour">Chuyến đi</string>
     <string name="schedule">Lịch trình</string>
     <string name="user">Tài khoản</string>
     <string name="settings">Thiết lập</string>
+    <!-- Database -->
+    <string name="insert_employee_failed">Thêm mới tài khoản thất bại!</string>
+    <string name="insert_schedule_failed">Thêm mới lịch trình thất bại!</string>
+    <string name="insert_tour_failed">Thêm mới tour thất bại!</string>
+    <string name="insert_employee_success">Thêm mới tài khoản thành công!!</string>
+    <string name="insert_schedule_success">Thêm mới lịch trình thành công!</string>
+    <string name="insert_tour_success">Thêm mới tour thành công!</string>
+    <string name="update_employee_failed">Sửa thông tin thất bại!</string>
+    <string name="update_schedule_failed">Sửa lịch trình thất bại!</string>
+    <string name="update_tour_failed">Sửa tour thất bại!</string>
+    <string name="update_employee_success">Sửa thông tin thành công!</string>
+    <string name="update_schedule_success">Sửa lịch trình thành công!</string>
+    <string name="update_tour_success">Sửa tour thành công!</string>
+    <string name="delete_employee_failed">Xóa tài khoản thất bại!</string>
+    <string name="delete_schedule_failed">Xóa lịch trình thất bại!</string>
+    <string name="delete_tour_failed">Xóa tour thất bại!</string>
+    <string name="delete_employee_success">Xóa tài khoản thành công!</string>
+    <string name="delete_schedule_success">Xóa lịch trình thành công!</string>
+    <string name="delete_tour_success">Xóa tour thành công!</string>
 </resources>
