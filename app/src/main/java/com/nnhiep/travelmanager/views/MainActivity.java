@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
+import android.widget.Toast;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.databinding.ActivityMainBinding;
 import com.nnhiep.travelmanager.fragments.HomeFragment;
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         // Thiết lập layout cho activity - nnhiep 17.03.2023
         setContentView(binding.getRoot());
+
+        Toast.makeText(this, this.getResources().getString(R.string.login_success), Toast.LENGTH_SHORT).show();
 
         // Khởi tạo giá trị mặc định lúc mới vào là Trang chủ - nnhiep 17.03.2023
         replaceFragment(new HomeFragment());
