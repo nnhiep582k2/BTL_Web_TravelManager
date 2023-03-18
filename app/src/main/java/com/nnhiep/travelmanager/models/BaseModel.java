@@ -1,4 +1,4 @@
-package com.nnhiep.travelmanager.interfaces;
+package com.nnhiep.travelmanager.models;
 
 import java.util.Date;
 
