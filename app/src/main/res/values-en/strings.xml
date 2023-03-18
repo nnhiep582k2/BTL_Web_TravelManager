@@ -27,4 +27,16 @@
     <string name="delete_employee_success">Success to delete Employee!</string>
     <string name="delete_schedule_success">Success to delete Schedule!</string>
     <string name="delete_tour_success">Success to delete Tour!</string>
+    <!-- Login -->
+    <string name="login_success">Login successful!</string>
+    <string name="login_title">Already have an account?</string>
+    <string name="account">Account</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="change_to_signup">New user? Register now</string>
+    <string name="required">This field is required</string>
+    <string name="account_invalid">Account is invalid</string>
+    <string name="password_invalid">Password is invalid</string>
 </resources>

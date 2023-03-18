@@ -26,4 +26,16 @@
     <string name="delete_employee_success">Xóa tài khoản thành công!</string>
     <string name="delete_schedule_success">Xóa lịch trình thành công!</string>
     <string name="delete_tour_success">Xóa tour thành công!</string>
+    <!-- Login -->
+    <string name="login_success">Đăng nhập thành công!</string>
+    <string name="login_title">Bạn đã có tài khoản?</string>
+    <string name="account">Tài khoản</string>
+    <string name="password">Mật khẩu</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="forgot_password">QUÊN MẬT KHẨU?</string>
+    <string name="change_to_signup">Người mới? Đăng ký ngay</string>
+    <string name="required">Trường này bắt buộc nhập</string>
+    <string name="account_invalid">Tài khoản không hợp lệ</string>
+    <string name="password_invalid">Mật khẩu không hợp lệ</string>
 </resources>
