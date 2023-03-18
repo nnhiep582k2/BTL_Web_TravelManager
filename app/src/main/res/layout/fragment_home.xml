@@ -160,8 +160,9 @@
                             android:id="@+id/textView7"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
                             android:layout_marginBottom="8dp"
-                            android:text="Call manager"
+                            android:text="Search"
                             android:textAlignment="center"
                             android:textColor="@color/primary"
                             android:textStyle="bold" />
@@ -219,7 +220,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="manage your work ok"
+                    android:text="manage your work"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -300,6 +301,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
                             android:background="@drawable/white_background"
                             android:foregroundGravity="center">
 
@@ -310,8 +312,8 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="16dp"
                                 android:layout_marginEnd="16dp"
-                                android:layout_marginBottom="16dp"
-                                android:src="@drawable/ic_1"
+                                android:layout_marginBottom="12dp"
+                                android:src="@drawable/icons8_note_38"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -322,7 +324,7 @@
                             android:id="@+id/textView33"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Map"
+                            android:text="Note"
                             android:textAlignment="center"
                             android:textColor="#2e3d6d"
                             android:textSize="14sp"
@@ -362,7 +364,7 @@
                             android:id="@+id/textView32"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Map"
+                            android:text="Message"
                             android:textAlignment="center"
                             android:textColor="#2e3d6d"
                             android:textSize="14sp"
@@ -402,7 +404,7 @@
                             android:id="@+id/textView30"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Map"
+                            android:text="Report"
                             android:textAlignment="center"
                             android:textColor="#2e3d6d"
                             android:textSize="14sp"
@@ -451,7 +453,7 @@
                             android:id="@+id/textView11"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Map"
+                            android:text="Setting"
                             android:textAlignment="center"
                             android:textColor="#2e3d6d"
                             android:textSize="14sp"
@@ -477,10 +479,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
+                                android:layout_marginTop="4dp"
                                 android:layout_marginEnd="16dp"
-                                android:layout_marginBottom="16dp"
-                                android:src="@drawable/ic_2"
+                                android:layout_marginBottom="12dp"
+                                android:src="@drawable/icons8_share_photo_53"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -491,11 +493,11 @@
                             android:id="@+id/textVie44"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Map"
                             android:textAlignment="center"
                             android:textColor="#2e3d6d"
                             android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:text="Share"/>
 
                     </LinearLayout>
 
@@ -513,14 +515,10 @@
                             android:foregroundGravity="center">
 
                             <ImageView
-                                android:id="@+id/imageView47"
-                                android:layout_width="0dp"
-                                android:layout_height="6dp"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
-                                android:layout_marginEnd="16dp"
-                                android:layout_marginBottom="16dp"
-                                android:src="@drawable/ic_baseline_person_24"
+                                android:id="@+id/imageView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icons8_weather_70"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -531,47 +529,7 @@
                             android:id="@+id/textView46"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Map"
-                            android:textAlignment="center"
-                            android:textColor="#2e3d6d"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/white_background"
-                            android:foregroundGravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView12"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
-                                android:layout_marginEnd="16dp"
-                                android:layout_marginBottom="16dp"
-                                android:src="@drawable/ic_8"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <TextView
-                            android:id="@+id/textView48"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Map"
+                            android:text="Weather"
                             android:textAlignment="center"
                             android:textColor="#2e3d6d"
                             android:textSize="14sp"
