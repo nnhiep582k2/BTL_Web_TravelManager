@@ -2,27 +2,22 @@ package com.nnhiep.travelmanager.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
-
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.views.MainActivity;
 import com.nnhiep.travelmanager.views.Search;
-import com.nnhiep.travelmanager.views.SlideAdapter;
-import com.nnhiep.travelmanager.views.SlideItem;
-
+import com.nnhiep.travelmanager.adapters.SlideAdapter;
+import com.nnhiep.travelmanager.models.SlideItem;
 import java.util.ArrayList;
 import java.util.List;
 
