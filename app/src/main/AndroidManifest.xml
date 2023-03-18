@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelManager"
         tools:targetApi="31">
+
         <activity
             android:name=".views.Search"
             android:exported="false" />
+
         <activity
             android:name=".views.RegisterActivity"
             android:exported="false">
@@ -22,6 +24,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".views.LoginActivity"
             android:exported="true">
@@ -35,6 +38,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".views.MainActivity"
             android:exported="false">
@@ -43,5 +47,4 @@
                 android:value="" />
         </activity>
     </application>
-
 </manifest>

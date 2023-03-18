@@ -1,7 +1,8 @@
-package com.nnhiep.travelmanager.views;
+package com.nnhiep.travelmanager.models;
 
 public class SlideItem {
     private int image;
+
     public SlideItem(int image) {
         this.image = image;
     }
