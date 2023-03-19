@@ -28,6 +28,7 @@ public class Database extends SQLiteOpenHelper {
     Schedule schedule;
     Tour tour;
     NoteTable noteTable;
+    System system;
 
     public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,10 +41,12 @@ public class Database extends SQLiteOpenHelper {
         schedule = new Schedule();
         tour = new Tour();
         noteTable = new NoteTable();
+        system = new System();
         employee.createTableEmployee(db);
         schedule.createTableSchedule(db);
         tour.createTableTour(db);
         noteTable.createTableNote(db);
+        system.createTableSystem(db);
     }
 
     @Override
@@ -52,6 +55,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS schedule");
         db.execSQL("DROP TABLE IF EXISTS tour");
         db.execSQL("DROP TABLE IF EXISTS note");
+        db.execSQL("DROP TABLE IF EXISTS system");
         onCreate(db);
     }
 
@@ -82,6 +86,22 @@ public class Database extends SQLiteOpenHelper {
     public Cursor getDataEmployee() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM employee";
+
+        Cursor cursor = null;
+
+        if(db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    /**
+     * Lấy dữ liệu hệ thống
+     * @author nnhiep 18.03.2023
+     */
+    public Cursor getDataSystem() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT system_is_login FROM system";
 
         Cursor cursor = null;
 
@@ -173,8 +193,26 @@ public class Database extends SQLiteOpenHelper {
 
         if(result == -1) {
             Toast.makeText(context, context.getResources().getString(R.string.insert_employee_failed), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, context.getResources().getString(R.string.insert_employee_success), Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }
+
+    /**
+     * Thêm mới dữ liệu hệ thống
+     * @author nnhiep 19.03.2023
+     */
+    public void insertDataSystem(boolean isLogin) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("system_is_login", isLogin);
+
+        long result =  db.insert("system", null, cv);
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.insert_failed), Toast.LENGTH_SHORT).show();
         }
 
         db.close();
@@ -296,6 +334,25 @@ public class Database extends SQLiteOpenHelper {
             Toast.makeText(context, context.getResources().getString(R.string.update_employee_success), Toast.LENGTH_SHORT).show();
         }
 
+        db.close();
+    }
+
+    /**
+     * Sửa thông tin hệ thống
+     * @author nnhiep 18.03.2023
+     */
+    public void updateDataSystem(String row_id, boolean isLogin) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("system_is_login", isLogin);
+
+        long result =  db.update("system", cv, "system_id=?", new String[]{row_id});
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
+        }
         db.close();
     }
 
