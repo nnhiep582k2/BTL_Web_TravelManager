@@ -1,9 +1,55 @@
 <resources>
-    <!-- File tiếng Việt -->
+    <!-- Tên app -->
     <string name="app_name">Quản lý Tour</string>
+    <!-- Menu -->
     <string name="home">Trang chủ</string>
     <string name="tour">Chuyến đi</string>
     <string name="schedule">Lịch trình</string>
     <string name="user">Tài khoản</string>
     <string name="settings">Thiết lập</string>
+    <!-- Database -->
+    <string name="insert_failed">Thêm mới thất bại!</string>
+    <string name="insert_success">Thêm mới thành công!</string>
+    <string name="update_success">Cập nhật thành công!</string>
+    <string name="update_failed">Cập nhật thất bại!</string>
+    <string name="delete_failed">Xóa thất bại!</string>
+    <string name="delete_success">Xóa thành công!</string>
+    <string name="insert_employee_failed">Thêm mới tài khoản thất bại!</string>
+    <string name="insert_schedule_failed">Thêm mới lịch trình thất bại!</string>
+    <string name="insert_tour_failed">Thêm mới tour thất bại!</string>
+    <string name="insert_employee_success">Thêm mới tài khoản thành công!!</string>
+    <string name="insert_schedule_success">Thêm mới lịch trình thành công!</string>
+    <string name="insert_tour_success">Thêm mới tour thành công!</string>
+    <string name="update_employee_failed">Sửa thông tin thất bại!</string>
+    <string name="update_schedule_failed">Sửa lịch trình thất bại!</string>
+    <string name="update_tour_failed">Sửa tour thất bại!</string>
+    <string name="update_employee_success">Sửa thông tin thành công!</string>
+    <string name="update_schedule_success">Sửa lịch trình thành công!</string>
+    <string name="update_tour_success">Sửa tour thành công!</string>
+    <string name="delete_employee_failed">Xóa tài khoản thất bại!</string>
+    <string name="delete_schedule_failed">Xóa lịch trình thất bại!</string>
+    <string name="delete_tour_failed">Xóa tour thất bại!</string>
+    <string name="delete_employee_success">Xóa tài khoản thành công!</string>
+    <string name="delete_schedule_success">Xóa lịch trình thành công!</string>
+    <string name="delete_tour_success">Xóa tour thành công!</string>
+    <!-- Login -->
+    <string name="login_success">Đăng nhập thành công!</string>
+    <string name="register_success">Đăng ký thành công!</string>
+    <string name="login_title">Bạn đã có tài khoản?</string>
+    <string name="register_title">Bạn chưa có tài khoản?</string>
+    <string name="account">Tài khoản</string>
+    <string name="password">Mật khẩu</string>
+    <string name="confirm_password">Nhập lại mật khẩu</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="forgot_password">QUÊN MẬT KHẨU?</string>
+    <string name="change_to_signup">Người mới? Đăng ký ngay</string>
+    <string name="change_to_signin">Đã có tài khoản? Đăng nhập ngay</string>
+    <string name="required">Trường này bắt buộc nhập</string>
+    <string name="account_invalid">Tài khoản không hợp lệ</string>
+    <string name="account_min_length">Tài khoản phải có tối thiểu 5 ký tự</string>
+    <string name="password_min_length">Mật khẩu phải có tối thiểu 8 ký tự</string>
+    <string name="password_not_true">Mật khẩu không khớp</string>
+    <string name="password_invalid">Mật khẩu không hợp lệ</string>
+    <string name="confirm_password_invalid">Mật khẩu xác nhận không hợp lệ</string>
 </resources>
