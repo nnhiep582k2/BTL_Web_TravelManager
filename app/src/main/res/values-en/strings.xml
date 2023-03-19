@@ -28,6 +28,12 @@
     <string name="delete_schedule_success">Success to delete Schedule!</string>
     <string name="delete_tour_success">Success to delete Tour!</string>
     <!-- Login -->
+    <string name="insert_failed">Insert failed!</string>
+    <string name="insert_success">Insert success!</string>
+    <string name="update_success">Update success!</string>
+    <string name="update_failed">Update failed!</string>
+    <string name="delete_failed">Delete failed!</string>
+    <string name="delete_success">Delete success!</string>
     <string name="login_success">Login successful!</string>
     <string name="register_success">Register successful!</string>
     <string name="login_title">Already have an account?</string>

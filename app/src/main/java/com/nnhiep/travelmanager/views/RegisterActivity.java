@@ -7,10 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.nnhiep.travelmanager.R;
+import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityRegisterBinding;
+import com.nnhiep.travelmanager.models.Schedule;
 
 public class RegisterActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
+    Database db;
     Button btnSignup;
     EditText eTxtAccount, eTxtPassword, eTxtConfirmPassword;
     TextView txtErrorAccount, txtErrorPassword, txtErrorConfirmPassword, txtChangeSignin;
@@ -28,6 +31,10 @@ public class RegisterActivity extends AppCompatActivity {
         // Xử lý sự kiện click đăng ký - nnhiep 18.03.2023
         btnSignup.setOnClickListener(v -> {
             if(validate()) {
+                String account = eTxtAccount.getText().toString();
+                String password = eTxtPassword.getText().toString();
+                db.deleteAllEmployee();
+                db.insertAnEmployee(account, 0, 0, account, password, "", null);
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 setResult(150, intent);
                 finish();
@@ -83,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
      * @author nnhiep 18.03.2023
      */
     private void setup_ui() {
+        db = new Database(this);
         btnSignup = binding.btnSignup;
         eTxtAccount = binding.eTxtAccount;
         eTxtPassword = binding.eTxtPassword;
@@ -120,11 +128,11 @@ public class RegisterActivity extends AppCompatActivity {
      * @author nnhiep 18.03.2023
      */
     private boolean validateAccount() {
-        if(eTxtAccount.getText().toString().isEmpty()) {
+        if(eTxtAccount.getText().toString().trim().isEmpty()) {
             txtErrorAccount.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(eTxtAccount.getText().toString().length() < 5) {
+        if(eTxtAccount.getText().toString().trim().length() < 5) {
             txtErrorAccount.setText(this.getResources().getString(R.string.account_min_length));
             return false;
         }
@@ -137,11 +145,11 @@ public class RegisterActivity extends AppCompatActivity {
      * @author nnhiep 18.03.2023
      */
     private boolean validatePassword() {
-        if(eTxtPassword.getText().toString().isEmpty()) {
+        if(eTxtPassword.getText().toString().trim().isEmpty()) {
             txtErrorPassword.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(eTxtPassword.getText().toString().length() < 8) {
+        if(eTxtPassword.getText().toString().trim().length() < 8) {
             txtErrorPassword.setText(this.getResources().getString(R.string.password_min_length));
             return false;
         }
@@ -154,12 +162,12 @@ public class RegisterActivity extends AppCompatActivity {
      * @author nnhiep 18.03.2023
      */
     private boolean validateConfirmPassword() {
-        if(!eTxtPassword.getText().toString().isEmpty() && eTxtConfirmPassword.getText().toString().isEmpty()) {
+        if(!eTxtPassword.getText().toString().trim().isEmpty() && eTxtConfirmPassword.getText().toString().trim().isEmpty()) {
             txtErrorConfirmPassword.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(!eTxtPassword.getText().toString().isEmpty() && !eTxtConfirmPassword.getText().toString().isEmpty() &&
-                !eTxtConfirmPassword.getText().toString().equals(eTxtPassword.getText().toString())) {
+        if(!eTxtPassword.getText().toString().trim().isEmpty() && !eTxtConfirmPassword.getText().toString().trim().isEmpty() &&
+                !eTxtConfirmPassword.getText().toString().trim().equals(eTxtPassword.getText().toString())) {
             txtErrorConfirmPassword.setText(this.getResources().getString(R.string.password_not_true));
             return false;
         }
