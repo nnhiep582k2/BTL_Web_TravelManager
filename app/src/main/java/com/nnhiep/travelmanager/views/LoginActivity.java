@@ -1,15 +1,21 @@
 package com.nnhiep.travelmanager.views;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.nnhiep.travelmanager.R;
+import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityLoginBinding;
+import com.nnhiep.travelmanager.models.Employee;
+import java.util.ArrayList;
 
 /**
  * Trang đăng nhập
@@ -17,9 +23,13 @@ import com.nnhiep.travelmanager.databinding.ActivityLoginBinding;
  */
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
-    Button btnSignin;
-    EditText eTxtAccount, eTxtPassword;
-    TextView txtErrorAccount, txtErrorPassword, txtForgotPassword, txtChangeSignup;
+    private Database db;
+    private ArrayList<String> user_name, user_account, user_password, user_phone;
+    private ArrayList<Number> user_age, user_gender;
+    private ArrayList<byte[]> user_avatar;
+    private Button btnSignin;
+    private EditText eTxtAccount, eTxtPassword;
+    private TextView txtErrorAccount, txtErrorPassword, txtForgotPassword, txtChangeSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         // Thiết lập layout cho activity - nnhiep 18.03.2023
         setContentView(binding.getRoot());
+        db = new Database(this);
 
         setup_ui();
 
@@ -78,6 +89,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 200 && resultCode == 150) {
+            getDataUser();
+            Employee employee = new Employee(user_account.get(0), user_password.get(0));
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Thông báo");
+            builder.setMessage("Account: " + employee.getAccount() + "\nPassword: " + employee.getPassword());
+            builder.show();
             Toast.makeText(this, this.getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
         }
     }
@@ -87,6 +104,13 @@ public class LoginActivity extends AppCompatActivity {
      * @author nnhiep 18.03.2023
      */
     private void setup_ui() {
+        user_account = new ArrayList<>();
+        user_password = new ArrayList<>();
+        user_name = new ArrayList<>();
+        user_age = new ArrayList<>();
+        user_gender = new ArrayList<>();
+        user_phone = new ArrayList<>();
+        user_avatar = new ArrayList<byte[]>();
         btnSignin = binding.btnSignin;
         eTxtAccount = binding.eTxtAccount;
         eTxtPassword = binding.eTxtPassword;
@@ -94,7 +118,35 @@ public class LoginActivity extends AppCompatActivity {
         txtErrorPassword = binding.txtErrorPassword;
         txtForgotPassword = binding.txtForgotPassword;
         txtChangeSignup = binding.txtChangeSignup;
+        getDataUser();
         eTxtAccount.requestFocus();
+    }
+
+    /**
+     * Lấy thông tin người dùng
+     * @author nnhiep 19.03.2023
+     */
+    private void getDataUser() {
+        try {
+            Cursor cursor = db.getDataEmployee();
+            if(cursor.getCount() == 0 || cursor == null) {
+                Toast.makeText(this, "User has no data", Toast.LENGTH_SHORT).show();
+            } else {
+                while (cursor.moveToNext()) {
+                    user_name.add(cursor.getString(0));
+                    user_age.add(cursor.getInt(1));
+                    user_gender.add(cursor.getInt(2));
+                    user_account.add(cursor.getString(3));
+                    user_password.add(cursor.getString(4));
+                    user_phone.add(cursor.getString(5));
+                    user_avatar.add(cursor.getBlob(6));
+                }
+                cursor.close();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "An error occur!", Toast.LENGTH_SHORT).show();
+            Log.d("Error DB", e.getMessage());
+        }
     }
 
     // region validate
@@ -117,11 +169,11 @@ public class LoginActivity extends AppCompatActivity {
      * @author nnhiep 18.03.2023
      */
     private boolean validateAccount() {
-        if(eTxtAccount.getText().toString().isEmpty()) {
+        if(eTxtAccount.getText().toString().trim().isEmpty()) {
             txtErrorAccount.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(eTxtAccount.getText().toString().length() < 5) {
+        if(!eTxtAccount.getText().toString().trim().equals(user_account.get(0).toString())) {
             txtErrorAccount.setText(this.getResources().getString(R.string.account_invalid));
             return false;
         }
@@ -134,11 +186,11 @@ public class LoginActivity extends AppCompatActivity {
      * @author nnhiep 18.03.2023
      */
     private boolean validatePassword() {
-        if(eTxtPassword.getText().toString().isEmpty()) {
+        if(eTxtPassword.getText().toString().trim().isEmpty()) {
             txtErrorPassword.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(!eTxtPassword.getText().toString().equals("123")) {
+        if(!eTxtPassword.getText().toString().trim().equals(user_password.get(0).toString())) {
             txtErrorPassword.setText(this.getResources().getString(R.string.confirm_password_invalid));
             return false;
         }
