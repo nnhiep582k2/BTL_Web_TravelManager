@@ -1,15 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.TourFragment">
 
-    <TextView
+
+    <androidx.viewpager2.widget.ViewPager2
+              android:id="@+id/viewpager"
+              android:layout_width="match_parent"
+              android:layout_height="200dp"
+
+              android:layout_margin="9dp"
+              tools:layout_editor_absoluteX="9dp"
+              tools:layout_editor_absoluteY="9dp"
+              tools:ignore="MissingConstraints" >
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/banner_background"
+        app:layout_constraintBottom_toTopOf="@+id/listview"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewpager">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="73dp"
+            android:layout_height="53dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/searchView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/trl" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="230dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </SearchView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="95dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="1dp"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/viewpager" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="380dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+
+    <Button
+        android:id="@+id/btnSx"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="2dp"
+        android:text="Sắp xếp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnlike"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="1dp"
+        android:text="Yêu Thích "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="160dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="126dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/travle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview"
+        app:srcCompat="@drawable/travle" />
+
+    <Button
+        android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="24dp"
-        android:text="@string/tour" />
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview" />
 
-</FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
