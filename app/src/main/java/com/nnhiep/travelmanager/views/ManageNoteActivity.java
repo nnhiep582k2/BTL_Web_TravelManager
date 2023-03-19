@@ -2,9 +2,13 @@ package com.nnhiep.travelmanager.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,12 +43,16 @@ public class ManageNoteActivity extends AppCompatActivity {
         listNote = db.getDataNote();
         adapter = new NoteAdapter(listNote, this);
         lvListNote.setAdapter(adapter);
-        lvListNote.setOnItemClickListener((parent, view, position, id) -> itemSelected = position);
+        lvListNote.setOnItemLongClickListener((parent, view, position, id) -> {
+             itemSelected = position;
+             return false;
+        });
         btnAdd.setOnClickListener(v -> {
             Intent intent = new Intent(ManageNoteActivity.this,AddNote.class);
             startActivityForResult(intent,100);
         });
         btnBack.setOnClickListener(v -> finish());
+        registerForContextMenu(lvListNote);
     }
 
     @Override
@@ -61,12 +69,44 @@ public class ManageNoteActivity extends AppCompatActivity {
                 //truong hop them
                 listNote.add(note);
                 db.insertANote(title, description);
-            } else if (requestCode == 200 && resultCode == 150) {
+            } else if (requestCode == 101 && resultCode == 150) {
                 //truong hop sua
                 listNote.set(itemSelected, note);
                 db.updateANote(title,description,id.toString());
             }
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId() == R.id.lvlistNote) {
+            getMenuInflater().inflate(R.menu.note_context, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mnuEdit:
+                Intent intent = new Intent(ManageNoteActivity.this, AddNote.class);
+                Note note = listNote.get(itemSelected);
+                Bundle b = new Bundle();
+                b.putInt("Id", note.getId());
+                b.putString("Title", note.getTitle());
+                b.putString("Description", note.getDescription());
+                intent.putExtras(b);
+                startActivityForResult(intent, 101);
+                break;
+            case R.id.mnuDelete:
+                db.deleteANote(String.valueOf(listNote.get(itemSelected).getId()));
+                listNote.remove(itemSelected);
+                adapter.notifyDataSetChanged();
+                break;
+            default:
+                break;
+        }
+        return super.onContextItemSelected(item);
     }
 }
