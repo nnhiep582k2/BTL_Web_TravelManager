@@ -24,7 +24,7 @@
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/banner6" />
+            app:srcCompat="@drawable/anh_tour4" />
 
         <TextView
             android:id="@+id/TourName"
