@@ -27,6 +27,7 @@ public class Add_Tour extends AppCompatActivity {
     ImageButton ImgCamera,ImgFolder;
     ImageView img_Tour;
     int request_code_camera=200;
+
     int request_code_folder=300;
 
     @Override
