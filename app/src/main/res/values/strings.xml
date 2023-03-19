@@ -33,6 +33,7 @@
     <string name="delete_schedule_success">Xóa lịch trình thành công!</string>
     <string name="delete_tour_success">Xóa tour thành công!</string>
     <!-- Login -->
+    <string name="user_no_data">Chưa có tài khoản nào trong hệ thống</string>
     <string name="login_success">Đăng nhập thành công!</string>
     <string name="register_success">Đăng ký thành công!</string>
     <string name="login_title">Bạn đã có tài khoản?</string>
@@ -52,4 +53,6 @@
     <string name="password_not_true">Mật khẩu không khớp</string>
     <string name="password_invalid">Mật khẩu không hợp lệ</string>
     <string name="confirm_password_invalid">Mật khẩu xác nhận không hợp lệ</string>
+    <!-- Error -->
+    <string name="error_occur">Có lỗi trong quá trình xử lý!</string>
 </resources>
