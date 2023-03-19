@@ -1,6 +1,7 @@
 package com.nnhiep.travelmanager.adapters;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,23 @@ import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.models.Note;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoteAdapter extends BaseAdapter {
     //Nguon du lieu cho adapter
-    private ArrayList<Note> listNode;
+    private List<Note> listNode;
     //Ngu canh ung dung
     private Activity context;
     //Doi tuong de phan tich layout
     private LayoutInflater inflater;
 
     public NoteAdapter() {
+    }
+
+    public NoteAdapter(List<Note> listNode, Activity context) {
+        this.listNode = listNode;
+        this.context = context;
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public NoteAdapter(ArrayList<Note> listNode, Activity context, LayoutInflater inflater) {
@@ -51,8 +59,8 @@ public class NoteAdapter extends BaseAdapter {
         if (v == null) {
             v = inflater.inflate(R.layout.note_item, null);
         }
-        EditText etTitle = v.findViewById(R.id.etTitle);
-        TextInputEditText etDescription = v.findViewById(R.id.etDescription);
+        EditText etTitle = v.findViewById(R.id.etTitleAdd);
+        TextInputEditText etDescription = v.findViewById(R.id.etDescriptionAdd);
         etTitle.setText(listNode.get(position).getTitle());
         etDescription.setText(listNode.get(position).getDescription());
         return v;

@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.nnhiep.travelmanager.R;
+import com.nnhiep.travelmanager.views.ManageNoteActivity;
 
 /**
  * Trang chủ - Thuận
@@ -41,7 +42,7 @@ public class HomeFragment extends Fragment {
         callManager = v.findViewById(R.id.callManager);
         notification = v.findViewById(R.id.notification);
         map = v.findViewById(R.id.map);
-        note = v.findViewById(R.id.note);
+        note = v.findViewById(R.id.noteTable);
         message = v.findViewById(R.id.message);
         report = v.findViewById(R.id.report);
         setting = v.findViewById(R.id.setting);
@@ -60,6 +61,10 @@ public class HomeFragment extends Fragment {
         });
         callManager.setOnClickListener(v1 -> {
             Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel: " + "180000"));
+            startActivity(intent);
+        });
+        note.setOnClickListener(v1 -> {
+            Intent intent = new Intent(getContext(), ManageNoteActivity.class);
             startActivity(intent);
         });
 
