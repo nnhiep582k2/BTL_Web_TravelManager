@@ -180,7 +180,7 @@
                     app:srcCompat="@drawable/ic_baseline_person_24" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/txtDKhoan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -211,7 +211,7 @@
         android:layout_height="89dp"
         android:layout_marginTop="52dp"
         android:elevation="8dp"
-        android:src="@drawable/ic_user_avatar"
+        android:src="@mipmap/ic_launcher_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
