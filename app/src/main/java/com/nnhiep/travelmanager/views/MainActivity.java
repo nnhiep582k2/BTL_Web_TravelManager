@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Gán giá trị cho đối tượng view binding - nnhiep 17.03.2023
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         // Thiết lập layout cho activity - nnhiep 17.03.2023
