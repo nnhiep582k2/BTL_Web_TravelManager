@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private ArrayList<byte[]> user_avatar;
     private Button btnSignin;
     private EditText eTxtAccount, eTxtPassword;
-    private TextView txtErrorAccount, txtErrorPassword, txtForgotPassword, txtChangeSignup;
+    private TextView txtErrorAccount, txtErrorPassword, txtChangeSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
         eTxtPassword = binding.eTxtPassword;
         txtErrorAccount = binding.txtErrorAccount;
         txtErrorPassword = binding.txtErrorPassword;
-        txtForgotPassword = binding.txtForgotPassword;
         txtChangeSignup = binding.txtChangeSignup;
         getDataUser();
         eTxtAccount.requestFocus();
