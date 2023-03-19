@@ -6,9 +6,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
+
 import com.nnhiep.travelmanager.R;
+import com.nnhiep.travelmanager.models.Note;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Cơ sở dữ liệu của chương trình
@@ -21,7 +27,7 @@ public class Database extends SQLiteOpenHelper {
     Employee employee;
     Schedule schedule;
     Tour tour;
-    Note note;
+    NoteTable noteTable;
     System system;
 
     public Database(@Nullable Context context) {
@@ -34,12 +40,12 @@ public class Database extends SQLiteOpenHelper {
         employee = new Employee();
         schedule = new Schedule();
         tour = new Tour();
-        note = new Note();
+        noteTable = new NoteTable();
         system = new System();
         employee.createTableEmployee(db);
         schedule.createTableSchedule(db);
         tour.createTableTour(db);
-        note.createTableNote(db);
+        noteTable.createTableNote(db);
         system.createTableSystem(db);
     }
 
@@ -109,8 +115,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu ghi chú
      * @author nnhiep 18.03.2023
      */
-    public Cursor getDataNote() {
+    public List<Note> getDataNote() {
         SQLiteDatabase db = this.getReadableDatabase();
+        List<Note> data = new ArrayList<>();
         String query = "SELECT * FROM note";
 
         Cursor cursor = null;
@@ -118,7 +125,16 @@ public class Database extends SQLiteOpenHelper {
         if(db != null) {
             cursor = db.rawQuery(query, null);
         }
-        return cursor;
+
+        if (cursor != null){
+            while (cursor.moveToNext()){
+                Note note = new Note(cursor.getInt(0),
+                        cursor.getString(1), cursor.getString(2));
+                data.add(note);
+            }
+            cursor.close();
+        }
+        return data;
     }
 
     /**
