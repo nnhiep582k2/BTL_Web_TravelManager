@@ -21,6 +21,7 @@ public class Database extends SQLiteOpenHelper {
     Employee employee;
     Schedule schedule;
     Tour tour;
+    Note note;
 
     public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -32,9 +33,11 @@ public class Database extends SQLiteOpenHelper {
         employee = new Employee();
         schedule = new Schedule();
         tour = new Tour();
+        note = new Note();
         employee.createTableEmployee(db);
         schedule.createTableSchedule(db);
         tour.createTableTour(db);
+        note.createTableNote(db);
     }
 
     @Override
@@ -42,6 +45,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS employee");
         db.execSQL("DROP TABLE IF EXISTS schedule");
         db.execSQL("DROP TABLE IF EXISTS tour");
+        db.execSQL("DROP TABLE IF EXISTS note");
         onCreate(db);
     }
 
@@ -72,6 +76,22 @@ public class Database extends SQLiteOpenHelper {
     public Cursor getDataEmployee() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM employee";
+
+        Cursor cursor = null;
+
+        if(db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    /**
+     * Lấy dữ liệu ghi chú
+     * @author nnhiep 18.03.2023
+     */
+    public Cursor getDataNote() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM note";
 
         Cursor cursor = null;
 
@@ -139,6 +159,29 @@ public class Database extends SQLiteOpenHelper {
             Toast.makeText(context, context.getResources().getString(R.string.insert_employee_failed), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, context.getResources().getString(R.string.insert_employee_success), Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }
+
+    /**
+     * Thêm mới một ghi chú
+     * @author nnhiep 18.03.2023
+     */
+    public void insertANote(String title, String description) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("note_title", title);
+        cv.put("note_description", description);
+
+        long result =  db.insert("note", null, cv);
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.insert_failed), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, context.getResources().getString(R.string.insert_success), Toast.LENGTH_SHORT).show();
         }
 
         db.close();
@@ -241,6 +284,29 @@ public class Database extends SQLiteOpenHelper {
     }
 
     /**
+     * Sửa thông tin ghi chú
+     * @author nnhiep 18.03.2023
+     */
+    public void updateANote(String title, String description, String row_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("note_title", title);
+        cv.put("note_description", description);
+
+        long result =  db.update("note", cv, "note_id=?", new String[]{row_id});
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, context.getResources().getString(R.string.update_success), Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }
+
+    /**
      * Sửa thông tin lịch trình
      * @author nnhiep 18.03.2023
      */
@@ -321,6 +387,24 @@ public class Database extends SQLiteOpenHelper {
     }
 
     /**
+     * Hàm xóa một ghi chú
+     * @author nnhiep 18.03.2023
+     */
+    public void deleteANote(String row_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long result =  db.delete("note", "note_id=?", new String[]{row_id});
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.delete_failed), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, context.getResources().getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }
+
+    /**
      * Hàm xóa một lịch trình
      * @author nnhiep 18.03.2023
      */
@@ -363,6 +447,15 @@ public class Database extends SQLiteOpenHelper {
     public void deleteAllEmployee() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM employee");
+    }
+
+    /**
+     * Hàm xóa tất cả ghi chú
+     * @author nnhiep 18.03.2023
+     */
+    public void deleteAllNote() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM note");
     }
 
     /**

@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         user_age = new ArrayList<>();
         user_gender = new ArrayList<>();
         user_phone = new ArrayList<>();
-        user_avatar = new ArrayList<byte[]>();
+        user_avatar = new ArrayList<>();
         btnSignin = binding.btnSignin;
         eTxtAccount = binding.eTxtAccount;
         eTxtPassword = binding.eTxtPassword;
@@ -129,17 +129,17 @@ public class LoginActivity extends AppCompatActivity {
     private void getDataUser() {
         try {
             Cursor cursor = db.getDataEmployee();
-            if(cursor.getCount() == 0 || cursor == null) {
+            if(cursor.getCount() == 0) {
                 Toast.makeText(this, "User has no data", Toast.LENGTH_SHORT).show();
             } else {
                 while (cursor.moveToNext()) {
-                    user_name.add(cursor.getString(0));
-                    user_age.add(cursor.getInt(1));
-                    user_gender.add(cursor.getInt(2));
-                    user_account.add(cursor.getString(3));
-                    user_password.add(cursor.getString(4));
-                    user_phone.add(cursor.getString(5));
-                    user_avatar.add(cursor.getBlob(6));
+                    user_name.add(cursor.getString(1));
+                    user_age.add(cursor.getInt(2));
+                    user_gender.add(cursor.getInt(3));
+                    user_account.add(cursor.getString(4));
+                    user_password.add(cursor.getString(5));
+                    user_phone.add(cursor.getString(6));
+                    user_avatar.add(cursor.getBlob(7));
                 }
                 cursor.close();
             }
@@ -173,7 +173,7 @@ public class LoginActivity extends AppCompatActivity {
             txtErrorAccount.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(!eTxtAccount.getText().toString().trim().equals(user_account.get(0).toString())) {
+        if(!eTxtAccount.getText().toString().trim().equals(user_account.get(0))) {
             txtErrorAccount.setText(this.getResources().getString(R.string.account_invalid));
             return false;
         }
@@ -190,7 +190,7 @@ public class LoginActivity extends AppCompatActivity {
             txtErrorPassword.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(!eTxtPassword.getText().toString().trim().equals(user_password.get(0).toString())) {
+        if(!eTxtPassword.getText().toString().trim().equals(user_password.get(0))) {
             txtErrorPassword.setText(this.getResources().getString(R.string.confirm_password_invalid));
             return false;
         }
