@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import com.nnhiep.travelmanager.R;
 
 /**
@@ -13,6 +15,10 @@ import com.nnhiep.travelmanager.R;
 public class UserFragment extends Fragment {
     public UserFragment() {}
 
+    private TextView tvTTin;
+    private TextView tvTourLove;
+    private TextView tvTBao;
+    private TextView tvDKhoan;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
