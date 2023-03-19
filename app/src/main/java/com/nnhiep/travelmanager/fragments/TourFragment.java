@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.views.Search;
 import com.nnhiep.travelmanager.adapters.SlideAdapter;
 import com.nnhiep.travelmanager.models.SlideItem;
+import com.nnhiep.travelmanager.views.Add_Tour;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +37,6 @@ public class TourFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -45,13 +44,18 @@ public class TourFragment extends Fragment {
                              Bundle savedInstanceState) {
         // return inflater.inflate(R.layout.fragment_tour, container, false);
         View v = inflater.inflate(R.layout.fragment_tour, container, false);
-        btnSearch=v.findViewById(R.id.btnAdd);
+        //anh xa
+        btnSearch=v.findViewById(R.id.btnSapXep);
         viewpager2 = v.findViewById(R.id.viewpager);
+
+        //slider images
         List<SlideItem> sliderItem = new ArrayList<>();
-        sliderItem.add(new SlideItem(R.drawable.banner3));
-        sliderItem.add(new SlideItem(R.drawable.banner4));
-        sliderItem.add(new SlideItem(R.drawable.banner5));
-        sliderItem.add(new SlideItem(R.drawable.banner6));
+        sliderItem.add(new SlideItem(R.drawable.banner_bien));
+        sliderItem.add(new SlideItem(R.drawable.banner_du_lich));
+        sliderItem.add(new SlideItem(R.drawable.banner_hanquoc));
+        sliderItem.add(new SlideItem(R.drawable.banner_he));
+        sliderItem.add(new SlideItem(R.drawable.banner_mua_he));
+        sliderItem.add(new SlideItem(R.drawable.banner_30_4));
         viewpager2.setAdapter(new SlideAdapter(sliderItem, viewpager2));
         viewpager2.setClipToPadding(false);
         viewpager2.setClipChildren(false);
@@ -76,10 +80,12 @@ public class TourFragment extends Fragment {
                 SlideHandler.postDelayed(slideerRunnable, 2000);
             }
         });
+
+        //bắt sự kiện cho nút Search
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent intent= new Intent(getContext(), Search.class);
+                 Intent intent= new Intent(getContext(), Add_Tour.class);
                 startActivity(intent);
             }
         });
