@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
  * Bảng ghi chú
  * @author nnhiep 17.03.2023
  */
-public class Note {
+public class NoteTable {
     // region Thông tin bảng dữ liệu
     private static final String TABLE_NAME = "note";
     private static final String COLUMN_ID = "note_id";

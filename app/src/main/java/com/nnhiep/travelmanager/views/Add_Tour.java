@@ -29,7 +29,6 @@ public class Add_Tour extends AppCompatActivity {
     int request_code_camera=200;
     int request_code_folder=300;
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         //khi chụp ảnh
@@ -62,7 +61,6 @@ public class Add_Tour extends AppCompatActivity {
         setContentView(R.layout.activity_add_tour);
         Anhxa();
 
-
         //bắt sự kiện khi click vào camera  -ltphuong 18/03/2023
         ImgCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +69,7 @@ public class Add_Tour extends AppCompatActivity {
                 startActivityForResult(intent,request_code_camera);
             }
             //đổ dữ liệu ra imageview
-
         });
-
 
         //bắt sự kiện khi click vào folder -ltphuong 18/03/2023
         ImgFolder.setOnClickListener(new View.OnClickListener() {
@@ -82,9 +78,9 @@ public class Add_Tour extends AppCompatActivity {
                 Intent intent=new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent,request_code_folder);
-
             }
         });
+
         //bắt sự kiện khi nhấn nút Add
         btnAdd_tour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +103,6 @@ public class Add_Tour extends AppCompatActivity {
                 startActivity(new Intent(Add_Tour.this, TourFragment.class));
             }
         });
-
-
 }
 
     private void Anhxa() {

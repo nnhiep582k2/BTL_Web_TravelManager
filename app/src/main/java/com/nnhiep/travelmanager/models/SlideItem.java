@@ -1,5 +1,9 @@
 package com.nnhiep.travelmanager.models;
 
+/**
+ * Phần tử trong slide
+ * @author ltphuong
+ */
 public class SlideItem {
     private int image;
 
