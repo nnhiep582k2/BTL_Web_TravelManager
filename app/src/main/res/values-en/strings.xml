@@ -28,7 +28,7 @@
     <string name="delete_schedule_success">Success to delete Schedule!</string>
     <string name="delete_tour_success">Success to delete Tour!</string>
     <!-- Login -->
-    <string name="user_no_data">There is no user's data</string>
+    <string name="user_no_data">There is no user\'s data</string>
     <string name="insert_failed">Insert failed!</string>
     <string name="insert_success">Insert success!</string>
     <string name="update_success">Update success!</string>
