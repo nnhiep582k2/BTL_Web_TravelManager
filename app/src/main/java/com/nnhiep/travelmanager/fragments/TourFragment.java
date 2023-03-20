@@ -14,10 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.adapters.SlideAdapter;
 import com.nnhiep.travelmanager.models.SlideItem;
 import com.nnhiep.travelmanager.views.AddTourActivity;
+import com.nnhiep.travelmanager.views.SearchTourActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +27,12 @@ import java.util.List;
  * Trang quản lý Tour - Phương
  */
 public class TourFragment extends Fragment {
-    // private ArrayList<Tour> TourList;
-    // TourAdapter tourAdapter;
     private ListView listView;
-    // private Tour db;
     ViewPager2 viewpager2;
     Button btnSearch;
     Handler SlideHandler=new Handler();
+
+
     public TourFragment() {}
 
     @Override
@@ -39,14 +40,18 @@ public class TourFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+
+    //@SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // return inflater.inflate(R.layout.fragment_tour, container, false);
         View v = inflater.inflate(R.layout.fragment_tour, container, false);
         //anh xa
-        btnSearch=v.findViewById(R.id.btnSapXep);
-        viewpager2 = v.findViewById(R.id.viewpager);
+        viewpager2=v.findViewById(R.id.viewpager);
+        btnSearch=(Button) v.findViewById(R.id.btnSearch);
+
+
 
         //slider images
         List<SlideItem> sliderItem = new ArrayList<>();
@@ -85,8 +90,8 @@ public class TourFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent intent= new Intent(getContext(), AddTourActivity.class);
-                startActivity(intent);
+                 Intent intent= new Intent(getContext(), SearchTourActivity.class);
+                 startActivity(intent);
             }
         });
         return v;

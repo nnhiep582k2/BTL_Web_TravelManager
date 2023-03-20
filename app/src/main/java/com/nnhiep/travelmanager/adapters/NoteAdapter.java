@@ -9,13 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import com.google.android.material.textfield.TextInputEditText;
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.models.Note;
+import com.nnhiep.travelmanager.models.NoteTable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NoteAdapter extends BaseAdapter {
     //Nguon du lieu cho adapter
-    private List<Note> listNode;
+    private List<NoteTable> listNode;
     //Ngu canh ung dung
     private Activity context;
     //Doi tuong de phan tich layout
@@ -24,13 +24,13 @@ public class NoteAdapter extends BaseAdapter {
     public NoteAdapter() {
     }
 
-    public NoteAdapter(List<Note> listNode, Activity context) {
+    public NoteAdapter(List<NoteTable> listNode, Activity context) {
         this.listNode = listNode;
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public NoteAdapter(ArrayList<Note> listNode, Activity context, LayoutInflater inflater) {
+    public NoteAdapter(ArrayList<NoteTable> listNode, Activity context, LayoutInflater inflater) {
         this.listNode = listNode;
         this.context = context;
         this.inflater = inflater;

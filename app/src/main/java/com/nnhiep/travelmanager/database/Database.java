@@ -10,8 +10,8 @@ import android.graphics.BitmapFactory;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.models.Employee;
-import com.nnhiep.travelmanager.models.Note;
+import com.nnhiep.travelmanager.models.EmployeeTable;
+import com.nnhiep.travelmanager.models.NoteTable;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,12 +23,12 @@ import java.util.List;
  */
 public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "TravelManager.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private Context context;
     UserTable user;
-    EmployeeTable employee;
+    com.nnhiep.travelmanager.database.EmployeeTable employee;
     TourTable tour;
-    NoteTable noteTable;
+    com.nnhiep.travelmanager.database.NoteTable noteTable;
     SystemTable system;
     byte[] imageInBytes;
 
@@ -40,9 +40,9 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         user = new UserTable();
-        employee = new EmployeeTable();
+        employee = new com.nnhiep.travelmanager.database.EmployeeTable();
         tour = new TourTable();
-        noteTable = new NoteTable();
+        noteTable = new com.nnhiep.travelmanager.database.NoteTable();
         system = new SystemTable();
         user.createTableUser(db);
         employee.createTableEmployee(db);
@@ -106,9 +106,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu nhân viên
      * @author nnhiep 18.03.2023
      */
-    public List<Employee> getDataEmployee(String sortBy, String order) {
+    public List<EmployeeTable> getDataEmployee(String sortBy, String order) {
         SQLiteDatabase db = this.getReadableDatabase();
-        List<Employee> data = new ArrayList<>();
+        List<EmployeeTable> data = new ArrayList<>();
         String query = "SELECT * FROM employee ORDER BY " + sortBy + " " + order;
 
         Cursor cursor = null;
@@ -127,7 +127,7 @@ public class Database extends SQLiteOpenHelper {
                 String gmail = cursor.getString(5);
                 byte[] avatar = cursor.getBlob(6);
                 Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
-                Employee curEmployee = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
+                EmployeeTable curEmployee = new EmployeeTable(id, name, phone, gmail, age, gender, avatarBitmap);
                 data.add(curEmployee);
             }
             cursor.close();
@@ -140,9 +140,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu nhân viên theo bộ lọc và phân trang
      * @author nnhiep 18.03.2023
      */
-    public List<Employee> getDataEmployeeByFilter(String searchValue) {
+    public List<EmployeeTable> getDataEmployeeByFilter(String searchValue) {
         SQLiteDatabase db = this.getReadableDatabase();
-        List<Employee> data = new ArrayList<>();
+        List<EmployeeTable> data = new ArrayList<>();
         String query =
                 "SELECT * FROM employee WHERE employee_name LIKE '%" + searchValue + "%' " +
                         "OR employee_phone LIKE '%" + searchValue + "%' ORDER BY employee_modified_date DESC";
@@ -163,7 +163,7 @@ public class Database extends SQLiteOpenHelper {
                 String gmail = cursor.getString(5);
                 byte[] avatar = cursor.getBlob(6);
                 Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
-                Employee curEmployee = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
+                EmployeeTable curEmployee = new EmployeeTable(id, name, phone, gmail, age, gender, avatarBitmap);
                 data.add(curEmployee);
             }
             cursor.close();
@@ -176,9 +176,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu nhân viên theo ID
      * @author nnhiep 24.03.2023
      */
-    public Employee getDataEmployeeByID(String targetId) {
+    public EmployeeTable getDataEmployeeByID(String targetId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Employee data = null;
+        EmployeeTable data = null;
         String query = "SELECT * FROM employee WHERE employee_id = \"" + targetId + "\"";
 
         Cursor cursor = null;
@@ -197,7 +197,7 @@ public class Database extends SQLiteOpenHelper {
                 String gmail = cursor.getString(5);
                 byte[] avatar = cursor.getBlob(6);
                 Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
-                data = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
+                data = new EmployeeTable(id, name, phone, gmail, age, gender, avatarBitmap);
                 break;
             }
             cursor.close();
@@ -226,9 +226,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu ghi chú
      * @author nnhiep 18.03.2023
      */
-    public List<Note> getDataNote() {
+    public List<NoteTable> getDataNote() {
         SQLiteDatabase db = this.getReadableDatabase();
-        List<Note> data = new ArrayList<>();
+        List<NoteTable> data = new ArrayList<>();
         String query = "SELECT * FROM note";
 
         Cursor cursor = null;
@@ -239,7 +239,7 @@ public class Database extends SQLiteOpenHelper {
 
         if (cursor != null){
             while (cursor.moveToNext()){
-                Note note = new Note(cursor.getInt(0),
+                NoteTable note = new NoteTable(cursor.getInt(0),
                         cursor.getString(1), cursor.getString(2));
                 data.add(note);
             }
@@ -371,12 +371,13 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một tour
      * @author nnhiep 18.03.2023
      */
-    public void insertATour(String title, double price, String start_date, String end_date, boolean isFavor, String createdBy, byte[] image) {
+    public void insertATour(String id, String title, String price, String start_date, String end_date, boolean isFavor, boolean isChecked, String createdBy, byte[] image) {
         Date now = new Date();
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
+        cv.put("tour_id",id);
         cv.put("tour_title", title);
         cv.put("tour_image", image);
         cv.put("tour_price", price);

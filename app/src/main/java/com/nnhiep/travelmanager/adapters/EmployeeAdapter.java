@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.models.Employee;
+import com.nnhiep.travelmanager.models.EmployeeTable;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ import java.util.List;
  * @author nnhiep 20.03.2023
  */
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
-    List<Employee> items;
+    List<EmployeeTable> items;
     Context context;
 
     @NonNull
@@ -28,7 +28,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
         return new EmployeeViewHolder(view).linkAdapter(this);
     }
 
-    public EmployeeAdapter(List<Employee> items, Context context) {
+    public EmployeeAdapter(List<EmployeeTable> items, Context context) {
         this.context = context;
         this.items = items;
     }
@@ -70,10 +70,10 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
     }
 
     // Lấy một phần tử trong mảng - nnhiep 20.03.2023
-    public Employee getItem(int position) { return items.get(position); }
+    public EmployeeTable getItem(int position) { return items.get(position); }
 
     // Lấy tất cả phần tử trong mảng - nnhiep 20.03.2023
-    public List<Employee> getItems() { return this.items; }
+    public List<EmployeeTable> getItems() { return this.items; }
 }
 
 class EmployeeViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {

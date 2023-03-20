@@ -2,50 +2,134 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="15dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="412dp"
+        android:layout_height="253dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/banner_background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
             android:id="@+id/imageView_flag"
-            android:layout_width="152dp"
-            android:layout_height="101dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="24dp"
+            android:layout_width="163dp"
+            android:layout_height="156dp"
 
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginBottom="36dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/anh_tour4" />
 
         <TextView
-            android:id="@+id/TourName"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="25dp"
-            android:text="Tour Name"
+            android:id="@+id/Nametour"
+            android:layout_width="192dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="8dp"
+            android:text="Tour Name:"
+            android:textAlignment="textStart"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/fee" />
+
+        <TextView
+            android:id="@+id/fee"
+            android:layout_width="221dp"
+            android:layout_height="63dp"
+
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="9dp"
+            android:text="Giá:"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imageView_flag"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/fee"
-            android:layout_width="145dp"
-            android:layout_height="49dp"
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="1dp"
+            android:text="With:"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toStartOf="@+id/Nametour"
+            app:layout_constraintStart_toEndOf="@+id/imageView_flag"
+            app:layout_constraintTop_toBottomOf="@+id/fee" />
 
-            android:layout_marginStart="9dp"
-            android:layout_marginBottom="20dp"
-            android:text="Gia"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_flag" />
+        <TextView
+            android:id="@+id/Star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="19dp"
+            android:text="Star"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toStartOf="@+id/imageView7"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toEndOf="@+id/imageView_flag"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="21dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtdate"
+            app:layout_constraintStart_toEndOf="@+id/Star"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <TextView
+            android:id="@+id/txtdate"
+            android:layout_width="147dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="18dp"
+            android:text="TextView"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Nametour" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="2dp"
+            android:text="From Date:"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toStartOf="@+id/txtdate"
+            app:layout_constraintStart_toEndOf="@+id/imageView_flag"
+            app:layout_constraintTop_toBottomOf="@+id/Nametour" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
