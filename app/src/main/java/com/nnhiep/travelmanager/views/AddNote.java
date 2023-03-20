@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.nnhiep.travelmanager.R;
 
@@ -51,6 +49,5 @@ public class AddNote extends AppCompatActivity {
             setResult(150, intent2);
             finish();
         });
-
     }
 }

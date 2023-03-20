@@ -7,16 +7,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.adapters.NoteAdapter;
 import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.models.Note;
-
 import java.util.List;
 
 public class ManageNoteActivity extends AppCompatActivity {

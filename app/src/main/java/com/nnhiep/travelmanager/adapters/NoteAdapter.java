@@ -7,11 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.models.Note;
-
 import java.util.ArrayList;
 import java.util.List;
 
