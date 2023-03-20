@@ -274,7 +274,7 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một tour
      * @author nnhiep 18.03.2023
      */
-    public void insertATour(String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String createdBy, byte[] image) {
+    public void insertATour(String title, double price, String start_date, String end_date, boolean isFavor, String createdBy, byte[] image) {
         Date now = new Date();
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -286,7 +286,6 @@ public class Database extends SQLiteOpenHelper {
         cv.put("start_date", start_date);
         cv.put("end_date", end_date);
         cv.put("tour_isFavor", isFavor);
-        cv.put("tour_isChecked", isChecked);
         cv.put("tour_created_date", String.valueOf(now));
         cv.put("tour_created_by", createdBy);
         cv.put("tour_modified_date", String.valueOf(now));
@@ -409,7 +408,7 @@ public class Database extends SQLiteOpenHelper {
      * Sửa thông tin tour
      * @author nnhiep 18.03.2023
      */
-    public void updateATour(String row_id, String title, double price, String start_date, String end_date, boolean isFavor, boolean isChecked, String modifiedBy, byte[] image) {
+    public void updateATour(String row_id, String title, double price, String start_date, String end_date, boolean isFavor, String modifiedBy, byte[] image) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -420,7 +419,6 @@ public class Database extends SQLiteOpenHelper {
         cv.put("start_date", start_date);
         cv.put("end_date", end_date);
         cv.put("tour_isFavor", isFavor);
-        cv.put("tour_isChecked", isChecked);
         cv.put("tour_modified_date", String.valueOf(new Date()));
         cv.put("tour_modified_by", modifiedBy);
 

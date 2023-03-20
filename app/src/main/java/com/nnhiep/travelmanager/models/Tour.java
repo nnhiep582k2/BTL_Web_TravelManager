@@ -17,12 +17,12 @@ public class Tour extends BaseModel {
     private byte[] image;
     // Thời gian bắt đầu, thời gian kết thúc
     private Date startDate, endDate;
-    // Có trong danh sách yêu thích không, có đang được chọn không
-    private boolean isFavor, isChecked;
+    // Có trong danh sách yêu thích không
+    private boolean isFavor;
 
     public Tour() {}
 
-    public Tour(String createdBy, String modifiedBy, Date createdDate, Date modifiedDate, int id, double price, String title, byte[] image, Date startDate, Date endDate, boolean isFavor, boolean isChecked) {
+    public Tour(String createdBy, String modifiedBy, Date createdDate, Date modifiedDate, int id, double price, String title, byte[] image, Date startDate, Date endDate, boolean isFavor) {
         super(createdBy, modifiedBy, createdDate, modifiedDate);
         this.id = id;
         this.price = price;
@@ -31,7 +31,6 @@ public class Tour extends BaseModel {
         this.startDate = startDate;
         this.endDate = endDate;
         this.isFavor = isFavor;
-        this.isChecked = isChecked;
     }
 
     public int getId() {
@@ -88,13 +87,5 @@ public class Tour extends BaseModel {
 
     public void setFavor(boolean favor) {
         isFavor = favor;
-    }
-
-    public boolean isChecked() {
-        return isChecked;
-    }
-
-    public void setChecked(boolean checked) {
-        isChecked = checked;
     }
 }

@@ -16,7 +16,6 @@ public class Tour {
     private static final String COLUMN_START_DATE = "start_date";
     private static final String COLUMN_END_DATE = "end_date";
     private static final String COLUMN_ISFAVOR = "tour_isFavor";
-    private static final String COLUMN_ISCHECKED = "tour_isChecked";
     private static final String COLUMN_CREATED_DATE = "tour_created_date";
     private static final String COLUMN_CREATED_BY = "tour_created_by";
     private static final String COLUMN_MODIFIED_DATE = "tour_modified_date";
@@ -32,9 +31,9 @@ public class Tour {
         String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_TITLE + " NVARCHAR(200) NOT NULL, " + COLUMN_IMAGE + " BLOB, " + COLUMN_PRICE + " DOUBLE NOT NULL, " +
                 COLUMN_START_DATE + " DATETIME NOT NULL, " + COLUMN_END_DATE +
-                " DATETIME NOT NULL, " + COLUMN_ISFAVOR + " BOOLEAN, " + COLUMN_ISCHECKED + " BOOLEAN, "
-                + COLUMN_CREATED_DATE + " DATETIME, " + COLUMN_CREATED_BY +
-                " NVARCHAR(200), " + COLUMN_MODIFIED_DATE + " DATETIME, " + COLUMN_MODIFIED_BY + " NVARCHAR(200));";
+                " DATETIME NOT NULL, " + COLUMN_ISFAVOR + " BOOLEAN, " + COLUMN_CREATED_DATE + " DATETIME, "
+                + COLUMN_CREATED_BY + " NVARCHAR(200), " + COLUMN_MODIFIED_DATE + " DATETIME, " +
+                COLUMN_MODIFIED_BY + " NVARCHAR(200));";
         db.execSQL(query);
     }
 }
