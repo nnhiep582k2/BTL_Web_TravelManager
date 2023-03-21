@@ -25,10 +25,10 @@ import java.util.List;
  * Trang quản lý Tour - Phương
  */
 public class TourFragment extends Fragment {
-    // private ArrayList<Tour> TourList;
-    // TourAdapter tourAdapter;
-    private ListView listView;
-    // private Tour db;
+//    private ArrayList<Tour> TourList;
+//    TourAdapter tourAdapter;
+   private ListView listView;
+  // private Tour db;
     ViewPager2 viewpager2;
     Button btnSearch;
     Handler SlideHandler=new Handler();
@@ -90,8 +90,9 @@ public class TourFragment extends Fragment {
             }
         });
         return v;
-    }
 
+
+    }
     private Runnable slideerRunnable=new Runnable() {
         @Override
         public void run() {
@@ -110,4 +111,5 @@ public class TourFragment extends Fragment {
         super.onResume();
         SlideHandler.postDelayed(slideerRunnable,3000);
     }
+
 }

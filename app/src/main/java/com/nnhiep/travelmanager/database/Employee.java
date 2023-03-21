@@ -1,6 +1,12 @@
 package com.nnhiep.travelmanager.database;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+
+import javax.xml.namespace.QName;
 
 /**
  * Bảng nhân viên - người dùng
@@ -32,3 +38,5 @@ public class Employee {
         db.execSQL(query);
     }
 }
+
+

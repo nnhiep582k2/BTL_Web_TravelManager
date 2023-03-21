@@ -1,17 +1,13 @@
 package com.nnhiep.travelmanager.views;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import android.widget.Button;
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityMainBinding;
 import com.nnhiep.travelmanager.fragments.HomeFragment;
 import com.nnhiep.travelmanager.fragments.ScheduleFragment;
@@ -73,20 +69,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.layoutFrame, fragment);
         // Xác nhận thay đổi và áp dụng vào activity
         fragmentTransaction.commit();
-    }
-
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Cảnh báo");
-        builder.setMessage("Bạn có chắc muốn đăng xuất khỏi chương trình?");
-        builder.setPositiveButton("Đăng xuất", (dialog, which) -> {
-            Database db = new Database(this);
-            db.updateDataSystem("1", false);
-            super.onBackPressed();
-        });
-        builder.setNegativeButton("Hủy", (dialog, which) -> {
-        });
-        builder.show();
     }
 }
