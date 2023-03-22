@@ -3,6 +3,7 @@ package com.nnhiep.travelmanager.views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.widget.ListView;
 
 import com.nnhiep.travelmanager.R;
@@ -21,10 +22,18 @@ public class RegisterTour extends AppCompatActivity {
     DSTour dsTour;
     int Tid;
 
+=======
+
+import com.nnhiep.travelmanager.R;
+
+public class RegisterTour extends AppCompatActivity {
+
+>>>>>>> a186555 (truoc khi merge ndthuan)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_tour);
+<<<<<<< HEAD
         Tour_database db = new Tour_database(this);
 
         listView = findViewById(R.id.listview_register_tour);
@@ -32,5 +41,7 @@ public class RegisterTour extends AppCompatActivity {
         adapter = new TourAdapter(this, arrayList);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+=======
+>>>>>>> a186555 (truoc khi merge ndthuan)
     }
 }
