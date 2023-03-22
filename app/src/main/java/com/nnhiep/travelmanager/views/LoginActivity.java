@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void getDataUser() {
         try {
-            Cursor cursor = db.getDataEmployee();
+            Cursor cursor = db.getDataUser();
             if(cursor.getCount() == 0) {
                 Toast.makeText(this, this.getResources().getString(R.string.user_no_data), Toast.LENGTH_SHORT).show();
             } else {

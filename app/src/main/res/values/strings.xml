@@ -4,6 +4,7 @@
     <!-- Menu -->
     <string name="home">Trang chủ</string>
     <string name="tour">Chuyến đi</string>
+    <string name="employee">Nhân viên</string>
     <string name="schedule">Lịch trình</string>
     <string name="user">Tài khoản</string>
     <string name="settings">Thiết lập</string>

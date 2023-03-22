@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.content.DialogInterface;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.widget.Toast;
 import android.widget.Button;
@@ -14,7 +13,7 @@ import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityMainBinding;
 import com.nnhiep.travelmanager.fragments.HomeFragment;
-import com.nnhiep.travelmanager.fragments.ScheduleFragment;
+import com.nnhiep.travelmanager.fragments.EmployeeFragment;
 import com.nnhiep.travelmanager.fragments.SettingsFragment;
 import com.nnhiep.travelmanager.fragments.TourFragment;
 import com.nnhiep.travelmanager.fragments.UserFragment;
@@ -46,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menuTour:
                     replaceFragment(new TourFragment());
                     break;
-                case R.id.menuSchedule:
-                    replaceFragment(new ScheduleFragment());
+                case R.id.menuEmployee:
+                    replaceFragment(new EmployeeFragment());
                     break;
                 case R.id.menuUser:
                     replaceFragment(new UserFragment());

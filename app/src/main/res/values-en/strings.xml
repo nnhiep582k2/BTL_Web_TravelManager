@@ -5,6 +5,7 @@
     <!-- Menu -->
     <string name="home">Home</string>
     <string name="tour">Tour</string>
+    <string name="employee">Employee</string>
     <string name="schedule">Schedule</string>
     <string name="user">User</string>
     <string name="settings">Settings</string>

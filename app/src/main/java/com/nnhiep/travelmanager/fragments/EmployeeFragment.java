@@ -7,69 +7,66 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.adapters.ScheduleAdapter;
-
+import com.nnhiep.travelmanager.adapters.EmployeeAdapter;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
 
 /**
- * Schedule - Hiệp
+ * Employee - Hiệp
  */
-public class ScheduleFragment extends Fragment {
-    String[] dataSchedule = {"Schedule 1", "Schedule 2", "Schedule 3"};
+public class EmployeeFragment extends Fragment {
+    String[] dataEmployee = {"Employee A", "Employee B", "Employee C"};
     int counter = 0;
-    RecyclerView rViewSchedule;
-    ScheduleAdapter adapter;
+    RecyclerView rViewEmployee;
+    EmployeeAdapter adapter;
     ArrayList<String> dataSource;
     Button btnChangeView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_schedule, container, false);
+        View view =  inflater.inflate(R.layout.fragment_employee, container, false);
 
-        getDataSchedule();
+        getDataEmployee();
         buildRecyclerView(view);
 
         // Xử lý click thêm - nnhiep 20.03.2023
-        view.findViewById(R.id.btnAddSchedule).setOnClickListener(v -> {
-            dataSource.add(dataSchedule[counter%3]);
+        view.findViewById(R.id.btnAddEmployee).setOnClickListener(v -> {
+            dataSource.add(dataEmployee[counter%3]);
             counter++;
             adapter.notifyItemInserted(dataSource.size() - 1);
+        });
+
+        // Xử lý click sắp xếp - nnhiep 20.03.2023
+        view.findViewById(R.id.btnSortEmployee).setOnClickListener(v -> {
+
         });
 
         // Xử lý đổi dạng layout - nnhiep 20.03.2023
         btnChangeView.setOnClickListener(v -> {
             // Chuyển về dạng grid view - GridLayout
             if(btnChangeView.getText().equals("Grid")) {
-                rViewSchedule.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                rViewEmployee.setLayoutManager(new GridLayoutManager(getContext(), 2));
                 btnChangeView.setText("List");
                 btnChangeView.setCompoundDrawablesWithIntrinsicBounds(this.getResources().getDrawable(R.drawable.ic_baseline_view_list_24), null, null, null);
             } else {
                 // Chuyển về dạng list view - LinearLayout
-                rViewSchedule.setLayoutManager(new LinearLayoutManager(getContext()));
+                rViewEmployee.setLayoutManager(new LinearLayoutManager(getContext()));
                 btnChangeView.setText("Grid");
                 btnChangeView.setCompoundDrawablesWithIntrinsicBounds(this.getResources().getDrawable(R.drawable.ic_baseline_grid_view_24), null, null, null);
             }
         });
 
-        EditText eTxtSearchSchedule = view.findViewById(R.id.eTxtSearchSchedule);
-        eTxtSearchSchedule.addTextChangedListener(new TextWatcher() {
+        EditText eTxtSearchEmployee = view.findViewById(R.id.eTxtSearchEmployee);
+        eTxtSearchEmployee.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -84,7 +81,7 @@ public class ScheduleFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 if(s.toString().trim().isEmpty()) {
                     adapter.filter(dataSource);
-                } else filterSchedule(s.toString());
+                } else filterEmployee(s.toString());
             }
         });
 
@@ -94,13 +91,21 @@ public class ScheduleFragment extends Fragment {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            // Xử lý click button xóa - nnhiep 20.03.2023
+            // Xử lý click gửi tin nhắn - nnhiep 22.03.2023
             case 1:
+                break;
+            // Xử lý click gọi điện - nnhiep 22.03.2023
+            case 2:
+                break;
+            // Xử lý click sửa - nnhiep 22.03.2023
+            case 3:
+                break;
+            // Xử lý click xóa - nnhiep 22.03.2023
+            case 4:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
                 dialog.setTitle("Delete");
-                dialog.setMessage("Are you sure to delete schedule " + adapter.getItem(item.getGroupId()) + "?");
+                dialog.setMessage("Are you sure to delete employee " + adapter.getItem(item.getGroupId()) + "?");
                 dialog.setPositiveButton("Delete", (dialog1, which) -> {
-                    adapter.getItems().remove(item.getGroupId());
                     adapter.notifyItemRemoved(item.getGroupId());
                     dataSource.remove(item.getGroupId());
                 });
@@ -112,16 +117,16 @@ public class ScheduleFragment extends Fragment {
     }
 
     /**
-     * Hàm lấy dữ liệu tour của user
+     * Hàm lấy dữ liệu nhân viên
      * @author nnhiep 30.03.2023
      */
-    private void getDataSchedule() {
+    private void getDataEmployee() {
         dataSource = new ArrayList<>();
-        dataSource.add("Tour 1");
-        dataSource.add("Tour 2");
-        dataSource.add("Tour 3");
-        dataSource.add("Tour 4");
-        dataSource.add("Tour 5");
+        dataSource.add("Employee 1");
+        dataSource.add("Employee 2");
+        dataSource.add("Employee 3");
+        dataSource.add("Employee 4");
+        dataSource.add("Employee 5");
     }
 
     /**
@@ -129,18 +134,18 @@ public class ScheduleFragment extends Fragment {
      * @author nnhiep 30.03.2023
      */
     private void buildRecyclerView(View view) {
-        rViewSchedule = view.findViewById(R.id.rViewSchedule);
+        rViewEmployee = view.findViewById(R.id.rViewEmployee);
         btnChangeView = view.findViewById(R.id.btnGridView);
-        adapter = new ScheduleAdapter(dataSource);
-        rViewSchedule.setLayoutManager(new LinearLayoutManager(getContext()));
-        rViewSchedule.setAdapter(adapter);
+        adapter = new EmployeeAdapter(dataSource);
+        rViewEmployee.setLayoutManager(new LinearLayoutManager(getContext()));
+        rViewEmployee.setAdapter(adapter);
     }
 
     /**
      * Hàm lọc dữ liệu tìm kiếm
      * @author nnhiep 30.03.2023
      */
-    private void filterSchedule(String searchValue) {
+    private void filterEmployee(String searchValue) {
         ArrayList<String> filteredList = new ArrayList<>();
         ArrayList<String> temp = new ArrayList<>(dataSource);
         for(int i = 0; i < temp.size(); i++) {

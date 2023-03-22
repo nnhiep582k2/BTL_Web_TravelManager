@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ScheduleFragment"
+    tools:context=".fragments.EmployeeFragment"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -13,7 +13,7 @@
         android:orientation="horizontal">
         <EditText
             android:background="@drawable/border_radius"
-            android:id="@+id/eTxtSearchSchedule"
+            android:id="@+id/eTxtSearchEmployee"
             android:layout_weight="1"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
@@ -38,18 +38,33 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rViewSchedule"
+        android:id="@+id/rViewEmployee"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <Button
-        android:id="@+id/btnAddSchedule"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnSortEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sort"
+            android:layout_marginEnd="14dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/btnAddEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:text="Add"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 
 </LinearLayout>

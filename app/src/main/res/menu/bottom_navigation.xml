@@ -12,9 +12,9 @@
         android:icon="@drawable/ic_baseline_flight_24"
         android:title="@string/tour" />
     <item
-        android:id="@+id/menuSchedule"
-        android:icon="@drawable/ic_baseline_calendar_today_24"
-        android:title="@string/schedule" />
+        android:id="@+id/menuEmployee"
+        android:icon="@drawable/ic_baseline_people_alt_24"
+        android:title="@string/employee" />
     <item
         android:id="@+id/menuUser"
         android:icon="@drawable/ic_baseline_person_24"
