@@ -33,8 +33,8 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 String account = eTxtAccount.getText().toString();
                 String password = eTxtPassword.getText().toString();
-                db.deleteAllEmployee();
-                db.insertAnEmployee(account, 0, 0, account, password, "", null);
+                db.deleteAllUser();
+                db.insertAnUser(account, 0, 0, account, password, "", null);
                 setResult(150, intent);
                 finish();
             }

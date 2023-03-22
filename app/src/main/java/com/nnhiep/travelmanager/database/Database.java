@@ -21,8 +21,8 @@ public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "TravelManager.db";
     private static final int DATABASE_VERSION = 1;
     private Context context;
+    User user;
     Employee employee;
-    Schedule schedule;
     Tour tour;
     NoteTable noteTable;
     System system;
@@ -34,13 +34,13 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        user = new User();
         employee = new Employee();
-        schedule = new Schedule();
         tour = new Tour();
         noteTable = new NoteTable();
         system = new System();
+        user.createTableUser(db);
         employee.createTableEmployee(db);
-        schedule.createTableSchedule(db);
         tour.createTableTour(db);
         noteTable.createTableNote(db);
         system.createTableSystem(db);
@@ -48,8 +48,8 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS user");
         db.execSQL("DROP TABLE IF EXISTS employee");
-        db.execSQL("DROP TABLE IF EXISTS schedule");
         db.execSQL("DROP TABLE IF EXISTS tour");
         db.execSQL("DROP TABLE IF EXISTS note");
         db.execSQL("DROP TABLE IF EXISTS system");
@@ -78,6 +78,22 @@ public class Database extends SQLiteOpenHelper {
     // region Get
     /**
      * Lấy dữ liệu người dùng
+     * @author nnhiep 18.03.2023
+     */
+    public Cursor getDataUser() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM user";
+
+        Cursor cursor = null;
+
+        if(db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    /**
+     * Lấy dữ liệu nhân viên
      * @author nnhiep 18.03.2023
      */
     public Cursor getDataEmployee() {
@@ -135,22 +151,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     /**
-     * Lấy dữ liệu lịch trình
-     * @author nnhiep 18.03.2023
-     */
-    public Cursor getDataFilterSchedule() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM schedule";
-
-        Cursor cursor = null;
-
-        if(db != null) {
-            cursor = db.rawQuery(query, null);
-        }
-        return cursor;
-    }
-
-    /**
      * Lấy dữ liệu tour
      * @author nnhiep 18.03.2023
      */
@@ -173,7 +173,34 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một người dùng
      * @author nnhiep 18.03.2023
      */
-    public void insertAnEmployee(String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
+    public void insertAnUser(String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("user_name", name);
+        cv.put("user_age", age);
+        cv.put("user_gender", gender);
+        cv.put("user_account", account);
+        cv.put("user_password", pasword);
+        cv.put("user_phone", phone);
+        cv.put("user_avatar", avatar);
+
+        long result =  db.insert("user", null, cv);
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.insert_failed), Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }
+
+    /**
+     * Thêm mới một nhân viên
+     * @author nnhiep 18.03.2023
+     */
+    public void insertAnEmployee(String name, int age, int gender, String phone, byte[] avatar) {
+        Date now = new Date();
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -181,10 +208,10 @@ public class Database extends SQLiteOpenHelper {
         cv.put("employee_name", name);
         cv.put("employee_age", age);
         cv.put("employee_gender", gender);
-        cv.put("employee_account", account);
-        cv.put("employee_password", pasword);
         cv.put("employee_phone", phone);
         cv.put("employee_avatar", avatar);
+        cv.put("employee_created_date", String.valueOf(now));
+        cv.put("employee_modified_date", String.valueOf(now));
 
         long result =  db.insert("employee", null, cv);
 
@@ -239,38 +266,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     /**
-     * Thêm mới một lịch trình
-     * @author nnhiep 18.03.2023
-     */
-    public void insertASchedule(int tour_id, String location, String hotel, String weather, int vehicle, String description, String createdBy) {
-        Date now = new Date();
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues cv = new ContentValues();
-
-        cv.put("schedule_location", location);
-        cv.put("schedule_hotel", hotel);
-        cv.put("schedule_weather", weather);
-        cv.put("schedule_vehicle", vehicle);
-        cv.put("schedule_description", description);
-        cv.put("schedule_created_date", String.valueOf(now));
-        cv.put("schedule_created_by", createdBy);
-        cv.put("schedule_modified_date", String.valueOf(now));
-        cv.put("schedule_modified_by", createdBy);
-        cv.put("tour_tour_id", tour_id);
-
-        long result =  db.insert("schedule", null, cv);
-
-        if(result == -1) {
-            Toast.makeText(context, context.getResources().getString(R.string.insert_schedule_failed), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, context.getResources().getString(R.string.insert_schedule_success), Toast.LENGTH_SHORT).show();
-        }
-
-        db.close();
-    }
-
-    /**
      * Thêm mới một tour
      * @author nnhiep 18.03.2023
      */
@@ -309,7 +304,35 @@ public class Database extends SQLiteOpenHelper {
      * Sửa thông tin người dùng
      * @author nnhiep 18.03.2023
      */
-    public void updateAnEmployee(String row_id, String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
+    public void updateAnUser(String row_id, String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("user_name", name);
+        cv.put("user_age", age);
+        cv.put("user_gender", gender);
+        cv.put("user_account", account);
+        cv.put("user_password", pasword);
+        cv.put("user_phone", phone);
+        cv.put("user_avatar", avatar);
+
+        long result =  db.update("user", cv, "user_id=?", new String[]{row_id});
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, context.getResources().getString(R.string.update_success), Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }
+
+    /**
+     * Sửa thông tin nhân viên
+     * @author nnhiep 18.03.2023
+     */
+    public void updateAnEmployee(String row_id, String name, int age, int gender, String phone, byte[] avatar) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -317,10 +340,9 @@ public class Database extends SQLiteOpenHelper {
         cv.put("employee_name", name);
         cv.put("employee_age", age);
         cv.put("employee_gender", gender);
-        cv.put("employee_account", account);
-        cv.put("employee_password", pasword);
         cv.put("employee_phone", phone);
         cv.put("employee_avatar", avatar);
+        cv.put("employee_modified_date", String.valueOf(new Date()));
 
         long result =  db.update("employee", cv, "employee_id=?", new String[]{row_id});
 
@@ -376,35 +398,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     /**
-     * Sửa thông tin lịch trình
-     * @author nnhiep 18.03.2023
-     */
-    public void updateASchedule(int tour_id, String row_id, String location, String hotel, String weather, int vehicle, String description, String modifiedBy) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues cv = new ContentValues();
-
-        cv.put("schedule_location", location);
-        cv.put("schedule_hotel", hotel);
-        cv.put("schedule_weather", weather);
-        cv.put("schedule_vehicle", vehicle);
-        cv.put("schedule_description", description);
-        cv.put("schedule_modified_date", String.valueOf(new Date()));
-        cv.put("schedule_modified_by", modifiedBy);
-        cv.put("tour_tour_id", tour_id);
-
-        long result =  db.update("schedule", cv, "schedule_id=?", new String[]{row_id});
-
-        if(result == -1) {
-            Toast.makeText(context, context.getResources().getString(R.string.update_schedule_failed), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, context.getResources().getString(R.string.update_schedule_success), Toast.LENGTH_SHORT).show();
-        }
-
-        db.close();
-    }
-
-    /**
      * Sửa thông tin tour
      * @author nnhiep 18.03.2023
      */
@@ -440,6 +433,24 @@ public class Database extends SQLiteOpenHelper {
      * Hàm xóa thông tin người dùng
      * @author nnhiep 18.03.2023
      */
+    public void deleteUser(String row_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long result =  db.delete("user", "user_id=?", new String[]{row_id});
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.delete_failed), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, context.getResources().getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }
+
+    /**
+     * Hàm xóa thông tin nhân viên
+     * @author nnhiep 18.03.2023
+     */
     public void deleteEmployee(String row_id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -473,24 +484,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     /**
-     * Hàm xóa một lịch trình
-     * @author nnhiep 18.03.2023
-     */
-    public void deleteASchedule(String row_id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        long result =  db.delete("schedule", "schedule_id=?", new String[]{row_id});
-
-        if(result == -1) {
-            Toast.makeText(context, context.getResources().getString(R.string.delete_schedule_failed), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, context.getResources().getString(R.string.delete_schedule_success), Toast.LENGTH_SHORT).show();
-        }
-
-        db.close();
-    }
-
-    /**
      * Hàm xóa một tour
      * @author nnhiep 18.03.2023
      */
@@ -512,6 +505,15 @@ public class Database extends SQLiteOpenHelper {
      * Hàm xóa tất cả người dùng
      * @author nnhiep 18.03.2023
      */
+    public void deleteAllUser() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM user");
+    }
+
+    /**
+     * Hàm xóa tất cả nhân viên
+     * @author nnhiep 18.03.2023
+     */
     public void deleteAllEmployee() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM employee");
@@ -524,15 +526,6 @@ public class Database extends SQLiteOpenHelper {
     public void deleteAllNote() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM note");
-    }
-
-    /**
-     * Hàm xóa tất cả lịch trình
-     * @author nnhiep 18.03.2023
-     */
-    public void deleteAllSchedule() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM schedule");
     }
 
     /**

@@ -1,10 +1,10 @@
 package com.nnhiep.travelmanager.models;
 
 /**
- * Nhân viên
+ * Người dùng
  * @author nnhiep 18.03.2023
  */
-public class Employee {
+public class User {
     // ID, tên, số điện thoại, tài khoản, mật khẩu
     private String id, name, phone, account, password;
     // Tuổi, giới tính
@@ -12,14 +12,14 @@ public class Employee {
     // Ảnh đại diện
     private byte[] avatar;
 
-    public Employee() {}
+    public User() {}
 
-    public Employee(String account, String password) {
+    public User(String account, String password) {
         this.account = account;
         this.password = password;
     }
 
-    public Employee(String id, String name, String phone, String account, String password, int age, int gender, byte[] avatar) {
+    public User(String id, String name, String phone, String account, String password, int age, int gender, byte[] avatar) {
         this.id = id;
         this.name = name;
         this.phone = phone;
