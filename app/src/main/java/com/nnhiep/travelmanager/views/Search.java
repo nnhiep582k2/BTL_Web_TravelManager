@@ -80,6 +80,7 @@ public class Search extends AppCompatActivity  implements SearchView.OnQueryText
         btnSx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 SortDes();
             }
         });
@@ -292,8 +293,8 @@ public class Search extends AppCompatActivity  implements SearchView.OnQueryText
                 String oldstar = dsTour.getStar();
                 String olddate = dsTour.getDate();
                 byte[] oldimage = dsTour.getImage();
-                et_title.setText(oldtitle);
-                et_price.setText(oldprice);
+                et_title.setText(oldprice);
+                et_price.setText(oldtitle);
                 et_star.setText(oldstar);
                 et_date.setText(olddate);
                 //chuyen byte ve bitmap
