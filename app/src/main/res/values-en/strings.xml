@@ -57,4 +57,11 @@
     <string name="confirm_password_invalid">Confirm password is invalid</string>
     <!-- Error -->
     <string name="error_occur">An error occur!</string>
+    <!-- Dropdown search -->
+    <string-array name="sort_employee">
+        <item>Sort</item>
+        <item>Sort by Name</item>
+        <item>Sort by Age</item>
+        <item>Sort by Gender</item>
+    </string-array>
 </resources>

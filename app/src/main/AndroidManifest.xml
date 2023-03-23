@@ -12,11 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelManager"
         tools:targetApi="31">
-
         <activity
-            android:name=".views.Add_Tour"
+            android:name=".views.AddEmployeeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".views.AddTourActivity"
             android:exported="false" />
-
         <activity
             android:name=".views.RegisterActivity"
             android:exported="false">
@@ -24,7 +29,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".views.LoginActivity"
             android:exported="true">
@@ -38,7 +42,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".views.MainActivity"
             android:exported="false">
@@ -46,7 +49,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".views.ManageNoteActivity"
             android:exported="false">
@@ -54,13 +56,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:name=".views.AddNote"
+            android:name=".views.AddNoteActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
     </application>
+
 </manifest>

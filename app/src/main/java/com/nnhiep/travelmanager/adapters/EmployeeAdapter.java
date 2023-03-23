@@ -4,11 +4,13 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.nnhiep.travelmanager.R;
+import com.nnhiep.travelmanager.models.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
  * @author nnhiep 20.03.2023
  */
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
-    List<String> items;
+    List<Employee> items;
 
     @NonNull
     @Override
@@ -26,13 +28,39 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
         return new EmployeeViewHolder(view).linkAdapter(this);
     }
 
-    public EmployeeAdapter(List<String> items) {
+    public EmployeeAdapter(List<Employee> items) {
         this.items = items;
     }
 
     @Override
     public void onBindViewHolder(@NonNull EmployeeViewHolder holder, int position) {
-        holder.txtTitleEmployee.setText(items.get(position));
+        holder.txtEmployeeName.setText(items.get(position).getName());
+        holder.txtEmployeeAge.setText(formatAge(items.get(position).getAge()));
+        holder.txtEmployeeGender.setText(formatGender(items.get(position).getGender()));
+        holder.txtEmployeePhone.setText(items.get(position).getPhone());
+        holder.imgAvatar.setImageResource(items.get(position).getAvatar());
+    }
+
+    // Hàm định dạng tuổi - nnhiep 22.03.2023
+    private String formatAge(int age) {
+        return age + " tuổi";
+    }
+
+    // Hàm định dạng giới tính - nnhiep 22.03.2023
+    private String formatGender(int gender) {
+        String sex = "";
+        switch (gender) {
+            case 0:
+                sex = "Nữ";
+                break;
+            case 1:
+                sex = "Nam";
+                break;
+            case 2:
+                sex = "Khác";
+                break;
+        }
+        return sex;
     }
 
     @Override
@@ -41,13 +69,13 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
     }
 
     // Lấy một phần tử trong mảng - nnhiep 20.03.2023
-    public String getItem(int position) { return items.get(position); }
+    public Employee getItem(int position) { return items.get(position); }
 
     // Lấy tất cả phần tử trong mảng - nnhiep 20.03.2023
-    public List<String> getItems() { return this.items; }
+    public List<Employee> getItems() { return this.items; }
 
     // Hàm lọc dữ liệu - nnhiep 20.03.2023
-    public void filter(ArrayList<String> filteredList) {
+    public void filter(ArrayList<Employee> filteredList) {
         items = filteredList;
         notifyDataSetChanged();
     }
@@ -55,12 +83,17 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
 
 class EmployeeViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
     private EmployeeAdapter employeeAdapter;
-    TextView txtTitleEmployee;
+    TextView txtEmployeeName, txtEmployeeAge, txtEmployeeGender, txtEmployeePhone;
+    ImageView imgAvatar;
     CardView cViewEmployee;
 
     public EmployeeViewHolder(@NonNull View itemView) {
         super(itemView);
-        txtTitleEmployee = itemView.findViewById(R.id.txtTitleEmployee);
+        imgAvatar = itemView.findViewById(R.id.imgAvatar);
+        txtEmployeeName = itemView.findViewById(R.id.txtEmployeeName);
+        txtEmployeeAge = itemView.findViewById(R.id.txtEmployeeAge);
+        txtEmployeeGender = itemView.findViewById(R.id.txtEmployeeGender);
+        txtEmployeePhone = itemView.findViewById(R.id.txtEmployeePhone);
         cViewEmployee = itemView.findViewById(R.id.cViewEmployee);
         cViewEmployee.setOnCreateContextMenuListener(this);
     }
