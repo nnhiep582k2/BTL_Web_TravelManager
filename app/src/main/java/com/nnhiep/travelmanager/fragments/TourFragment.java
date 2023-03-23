@@ -17,7 +17,7 @@ import android.widget.ListView;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.adapters.SlideAdapter;
 import com.nnhiep.travelmanager.models.SlideItem;
-import com.nnhiep.travelmanager.views.Add_Tour;
+import com.nnhiep.travelmanager.views.AddTourActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +85,7 @@ public class TourFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent intent= new Intent(getContext(), Add_Tour.class);
+                 Intent intent= new Intent(getContext(), AddTourActivity.class);
                 startActivity(intent);
             }
         });

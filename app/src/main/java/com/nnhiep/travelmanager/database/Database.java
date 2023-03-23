@@ -199,7 +199,7 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một nhân viên
      * @author nnhiep 18.03.2023
      */
-    public void insertAnEmployee(String name, int age, int gender, String phone, byte[] avatar) {
+    public void insertAnEmployee(String name, int age, int gender, String phone, String gmail, byte[] avatar) {
         Date now = new Date();
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -209,6 +209,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("employee_age", age);
         cv.put("employee_gender", gender);
         cv.put("employee_phone", phone);
+        cv.put("employee_gmail", gmail);
         cv.put("employee_avatar", avatar);
         cv.put("employee_created_date", String.valueOf(now));
         cv.put("employee_modified_date", String.valueOf(now));
@@ -332,7 +333,7 @@ public class Database extends SQLiteOpenHelper {
      * Sửa thông tin nhân viên
      * @author nnhiep 18.03.2023
      */
-    public void updateAnEmployee(String row_id, String name, int age, int gender, String phone, byte[] avatar) {
+    public void updateAnEmployee(String row_id, String name, int age, int gender, String phone, String gmail, byte[] avatar) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -341,6 +342,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("employee_age", age);
         cv.put("employee_gender", gender);
         cv.put("employee_phone", phone);
+        cv.put("employee_gmail", gmail);
         cv.put("employee_avatar", avatar);
         cv.put("employee_modified_date", String.valueOf(new Date()));
 

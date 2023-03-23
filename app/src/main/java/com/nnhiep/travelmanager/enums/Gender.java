@@ -6,9 +6,19 @@ package com.nnhiep.travelmanager.enums;
  */
 public enum Gender {
     // Nữ
-    Female,
+    Female(0),
     // Nam
-    Male,
+    Male(1),
     // Khác
-    Other
+    Other(2);
+
+    Gender(int item) {
+        this.sex = item;
+    }
+
+    public int getGender() {
+        return sex;
+    }
+
+    private int sex;
 }

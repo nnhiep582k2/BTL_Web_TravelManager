@@ -56,4 +56,11 @@
     <string name="confirm_password_invalid">Mật khẩu xác nhận không hợp lệ</string>
     <!-- Error -->
     <string name="error_occur">Có lỗi trong quá trình xử lý!</string>
+    <!-- Dropdown search -->
+    <string-array name="sort_employee">
+        <item>Sắp xếp</item>
+        <item>Sắp xếp theo tên</item>
+        <item>Sắp xếp theo tuổi</item>
+        <item>Sắp xếp theo giới tính</item>
+    </string-array>
 </resources>

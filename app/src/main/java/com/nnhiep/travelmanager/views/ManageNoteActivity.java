@@ -45,7 +45,7 @@ public class ManageNoteActivity extends AppCompatActivity {
              return false;
         });
         btnAdd.setOnClickListener(v -> {
-            Intent intent = new Intent(ManageNoteActivity.this,AddNote.class);
+            Intent intent = new Intent(ManageNoteActivity.this, AddNoteActivity.class);
             startActivityForResult(intent,100);
         });
         btnBack.setOnClickListener(v -> finish());
@@ -87,7 +87,7 @@ public class ManageNoteActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mnuEdit:
-                Intent intent = new Intent(ManageNoteActivity.this, AddNote.class);
+                Intent intent = new Intent(ManageNoteActivity.this, AddNoteActivity.class);
                 Note note = listNote.get(itemSelected);
                 Bundle b = new Bundle();
                 b.putInt("Id", note.getId());

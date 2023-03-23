@@ -21,7 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class Add_Tour extends AppCompatActivity {
+public class AddTourActivity extends AppCompatActivity {
     Button btnAdd_tour,btnCancel_tour;
     EditText IdTour,NameTour,FeeTour;
     ImageButton ImgCamera,ImgFolder;
@@ -99,8 +99,8 @@ public class Add_Tour extends AppCompatActivity {
 //                db.insertATour(IdTour.getText().toString().trim(),NameTour.getText().toString().trim(),
 //                               FeeTour.getText().toString().trim(),null,
 //                        null,null,null,null,hinhAnh);
-                Toast.makeText(Add_Tour.this, "Thêm Tour Thành Công ", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Add_Tour.this, TourFragment.class));
+                Toast.makeText(AddTourActivity.this, "Thêm Tour Thành Công ", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AddTourActivity.this, TourFragment.class));
             }
         });
 }

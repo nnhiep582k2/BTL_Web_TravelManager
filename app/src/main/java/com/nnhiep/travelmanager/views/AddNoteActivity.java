@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.nnhiep.travelmanager.R;
 
-public class AddNote extends AppCompatActivity {
+public class AddNoteActivity extends AppCompatActivity {
     EditText etTitle;
     TextInputEditText etDescription;
     Button btnAdd, btnCancel;
