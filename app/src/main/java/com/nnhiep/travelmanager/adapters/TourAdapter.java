@@ -78,4 +78,8 @@ public class TourAdapter extends BaseAdapter {
         return view;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 443aaf1 (truoc khi nop)

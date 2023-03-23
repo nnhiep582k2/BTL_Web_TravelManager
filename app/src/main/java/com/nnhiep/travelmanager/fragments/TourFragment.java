@@ -13,7 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.ListView;
+=======
+>>>>>>> 443aaf1 (truoc khi nop)
 
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.adapters.SlideAdapter;
@@ -27,10 +30,15 @@ import java.util.List;
  * Trang quản lý Tour - Phương
  */
 public class TourFragment extends Fragment {
+<<<<<<< HEAD
     private ListView listView;
     ViewPager2 viewpager2;
+=======
+
+>>>>>>> 443aaf1 (truoc khi nop)
     Button btnSearch;
     Handler SlideHandler=new Handler();
+    ViewPager2 viewpager2;
 
 
     public TourFragment() {}

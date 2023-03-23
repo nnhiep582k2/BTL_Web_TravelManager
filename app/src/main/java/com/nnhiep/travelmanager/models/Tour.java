@@ -6,7 +6,7 @@ import java.util.Date;
  * Model Tour
  * @author nnhiep 18.03.2023
  */
-public class TourTable extends BaseModel {
+public class Tour extends BaseModel {
     // ID
     private int id;
     // Giá
@@ -20,9 +20,9 @@ public class TourTable extends BaseModel {
     // Có trong danh sách yêu thích không
     private boolean isFavor;
 
-    public TourTable() {}
+    public Tour() {}
 
-    public TourTable(String createdBy, String modifiedBy, Date createdDate, Date modifiedDate, int id, double price, String title, byte[] image, Date startDate, Date endDate, boolean isFavor) {
+    public Tour(String createdBy, String modifiedBy, Date createdDate, Date modifiedDate, int id, double price, String title, byte[] image, Date startDate, Date endDate, boolean isFavor) {
         super(createdBy, modifiedBy, createdDate, modifiedDate);
         this.id = id;
         this.price = price;

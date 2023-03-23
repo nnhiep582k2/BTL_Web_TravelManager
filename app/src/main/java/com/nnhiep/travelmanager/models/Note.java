@@ -4,21 +4,21 @@ package com.nnhiep.travelmanager.models;
  * Ghi chú
  * @author ndthuan
  */
-public class NoteTable {
+public class Note {
     private int id;
     private String title;
     private String description;
 
-    public NoteTable() {
+    public Note() {
     }
 
-    public NoteTable(int id, String title, String description) {
+    public Note(int id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
     }
 
-    public NoteTable(String title, String description) {
+    public Note(String title, String description) {
         this.title = title;
         this.description = description;
     }

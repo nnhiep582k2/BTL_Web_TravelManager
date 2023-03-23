@@ -20,7 +20,7 @@ import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityAddEmployeeBinding;
 import com.nnhiep.travelmanager.fragments.EmployeeFragment;
-import com.nnhiep.travelmanager.models.EmployeeTable;
+import com.nnhiep.travelmanager.models.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +29,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
     private Database db;
     Bitmap imgStore = null;
     private Uri imgPath;
-    List<EmployeeTable> listEmployees;
-    EmployeeTable employee;
+    List<Employee> listEmployees;
+    Employee employee;
     de.hdodenhof.circleimageview.CircleImageView imgEmployeeAvatar;
     Spinner spinnerGender;
     TextView txtChangeAvatar, txtErrorAvatar, txtErrorName, txtErrorAge, txtErrorPhone, txtErrorGmail;
@@ -216,7 +216,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
             imgEmployeeAvatar.setImageBitmap(employee.getAvatar());
         } else {
             mode = "Add";
-            employee = new EmployeeTable();
+            employee = new Employee();
         }
     }
 

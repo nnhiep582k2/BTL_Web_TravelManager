@@ -1,29 +1,30 @@
 package com.nnhiep.travelmanager.models;
 
-import android.graphics.Bitmap;
-
-import java.util.Date;
-
 /**
- * Nhân viên
+ * Người dùng
  * @author nnhiep 18.03.2023
  */
-public class EmployeeTable extends BaseModel {
-    // ID, tên, số điện thoại, gmail
-    private String id, name, phone, gmail;
+public class User {
+    // ID, tên, số điện thoại, tài khoản, mật khẩu
+    private String id, name, phone, account, password;
     // Tuổi, giới tính
     private int age, gender;
     // Ảnh đại diện
-    private Bitmap avatar;
+    private byte[] avatar;
 
-    public EmployeeTable() {}
+    public User() {}
 
-    public EmployeeTable(String id, String name, String phone, String gmail, int age, int gender, Bitmap avatar) {
-        super("nnhiep", "nnhiep", new Date(), new Date());
+    public User(String account, String password) {
+        this.account = account;
+        this.password = password;
+    }
+
+    public User(String id, String name, String phone, String account, String password, int age, int gender, byte[] avatar) {
         this.id = id;
         this.name = name;
         this.phone = phone;
-        this.gmail = gmail;
+        this.account = account;
+        this.password = password;
         this.age = age;
         this.gender = gender;
         this.avatar = avatar;
@@ -53,12 +54,20 @@ public class EmployeeTable extends BaseModel {
         this.phone = phone;
     }
 
-    public String getGmail() {
-        return gmail;
+    public String getAccount() {
+        return account;
     }
 
-    public void setGmail(String gmail) {
-        this.gmail = gmail;
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getAge() {
@@ -77,11 +86,11 @@ public class EmployeeTable extends BaseModel {
         this.gender = gender;
     }
 
-    public Bitmap getAvatar() {
+    public byte[] getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Bitmap avatar) {
+    public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
     }
 }

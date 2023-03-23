@@ -38,20 +38,32 @@
           app:layout_constraintTop_toBottomOf="@+id/tbar" />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 443aaf1 (truoc khi nop)
       <Button
           android:id="@+id/sapxep_tour"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+<<<<<<< HEAD
           android:text="Sắp xếp "
           android:textSize="18sp" />
+=======
+          android:text="Sắp xếp " />
+>>>>>>> 443aaf1 (truoc khi nop)
 
       <Button
           android:id="@+id/register"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+<<<<<<< HEAD
           android:text="Danh sách Tour đã đăng ký "
           android:textSize="18sp" />
 
 =======
 >>>>>>> 23e446c (them sua xoa tour)
+=======
+          android:text="Danh sách Tour đã đăng ký " />
+
+>>>>>>> 443aaf1 (truoc khi nop)
 </LinearLayout>

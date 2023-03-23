@@ -13,13 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.adapters.NoteAdapter;
 import com.nnhiep.travelmanager.database.Database;
-import com.nnhiep.travelmanager.models.NoteTable;
+import com.nnhiep.travelmanager.models.Note;
 import java.util.List;
 
 public class ManageNoteActivity extends AppCompatActivity {
     private ImageView btnAdd, btnBack;
     private ListView lvListNote;
-    private List<NoteTable> listNote;
+    private List<Note> listNote;
     private Database db;
     private NoteAdapter adapter;
     int itemSelected;
@@ -61,7 +61,7 @@ public class ManageNoteActivity extends AppCompatActivity {
             String title = b.getString("Title") != null ? b.getString("Title") : "";
             String description = b.getString("Description");
             Integer id = b.getInt("Id");
-            NoteTable note = new NoteTable(title, description);
+            Note note = new Note(title, description);
             if (requestCode == 100 && resultCode == 150) {
                 //truong hop them
                 listNote.add(note);
@@ -88,7 +88,7 @@ public class ManageNoteActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.mnuEdit:
                 Intent intent = new Intent(ManageNoteActivity.this, AddNoteActivity.class);
-                NoteTable note = listNote.get(itemSelected);
+                Note note = listNote.get(itemSelected);
                 Bundle b = new Bundle();
                 b.putInt("Id", note.getId());
                 b.putString("Title", note.getTitle());

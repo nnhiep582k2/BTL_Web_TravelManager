@@ -33,7 +33,7 @@ import android.widget.TextView;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.adapters.EmployeeAdapter;
 import com.nnhiep.travelmanager.database.Database;
-import com.nnhiep.travelmanager.models.EmployeeTable;
+import com.nnhiep.travelmanager.models.Employee;
 import com.nnhiep.travelmanager.views.AddEmployeeActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ public class EmployeeFragment extends Fragment {
     RecyclerView rViewEmployee;
     Database db;
     EmployeeAdapter adapter;
-    List<EmployeeTable> dataSource;
+    List<Employee> dataSource;
     Button btnChangeView;
     TextView txtNoData;
     LinearLayout layoutItemEmployee;

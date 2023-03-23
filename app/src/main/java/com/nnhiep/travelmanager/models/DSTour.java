@@ -93,7 +93,10 @@ public class DSTour {
 
     private String day,month,year;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 443aaf1 (truoc khi nop)
     public String getDate() {
         return date;
     }
@@ -106,6 +109,11 @@ public class DSTour {
     // Ảnh
     private byte[] image;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 443aaf1 (truoc khi nop)
       public static class PriceDes implements Comparator<DSTour>
     {
         public int compare(DSTour a,DSTour b)

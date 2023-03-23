@@ -13,9 +13,15 @@ import com.nnhiep.travelmanager.models.DSTour;
 import java.util.ArrayList;
 
 public class Tour_database extends SQLiteOpenHelper {
+<<<<<<< HEAD
     public static final String DB_NAME="Tour.db2223s";
     public static final String TABLE_NAME="Tour1234";
       public static final String TABLE_REGISTER="RegisterTour23";
+=======
+    public static final String DB_NAME="Tour.db222";
+    public static final String TABLE_NAME="Tour1234";
+      public static final String TABLE_REGISTER="RegisterTour";
+>>>>>>> 443aaf1 (truoc khi nop)
     public static final String COL_ID="id";
     public static final String COL_TILTLE="title";
     public static final String COL_PRICE="price";
@@ -37,12 +43,20 @@ public class Tour_database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + "(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,price TEXT,star TEXT,date TEXT,image BLOB)");
         db.execSQL("create table " + TABLE_REGISTER + "(id INTEGER PRIMARY KEY ,title TEXT,price TEXT,star TEXT,date TEXT,image BLOB)");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 443aaf1 (truoc khi nop)
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + TABLE_NAME );
+<<<<<<< HEAD
          db.execSQL("drop table if exists " + TABLE_REGISTER);
+=======
+         db.execSQL("drop table if exists " + TABLE_REGISTER );
+>>>>>>> 443aaf1 (truoc khi nop)
 
 
     }

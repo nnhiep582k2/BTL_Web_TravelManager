@@ -10,8 +10,9 @@ import android.graphics.BitmapFactory;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.models.EmployeeTable;
-import com.nnhiep.travelmanager.models.NoteTable;
+import com.nnhiep.travelmanager.models.Employee;
+import com.nnhiep.travelmanager.models.Note;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,9 +27,9 @@ public class Database extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
     private Context context;
     UserTable user;
-    com.nnhiep.travelmanager.database.EmployeeTable employee;
+    EmployeeTable employee;
     TourTable tour;
-    com.nnhiep.travelmanager.database.NoteTable noteTable;
+    NoteTable noteTable;
     SystemTable system;
     byte[] imageInBytes;
 
@@ -40,9 +41,9 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         user = new UserTable();
-        employee = new com.nnhiep.travelmanager.database.EmployeeTable();
+        employee = new EmployeeTable();
         tour = new TourTable();
-        noteTable = new com.nnhiep.travelmanager.database.NoteTable();
+        noteTable = new NoteTable();
         system = new SystemTable();
         user.createTableUser(db);
         employee.createTableEmployee(db);
@@ -57,7 +58,6 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS employee");
         db.execSQL("DROP TABLE IF EXISTS tour");
         db.execSQL("DROP TABLE IF EXISTS note");
-        db.execSQL("DROP TABLE IF EXISTS system");
         onCreate(db);
     }
 
@@ -106,9 +106,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu nhân viên
      * @author nnhiep 18.03.2023
      */
-    public List<EmployeeTable> getDataEmployee(String sortBy, String order) {
+    public List<Employee> getDataEmployee(String sortBy, String order) {
         SQLiteDatabase db = this.getReadableDatabase();
-        List<EmployeeTable> data = new ArrayList<>();
+        List<Employee> data = new ArrayList<>();
         String query = "SELECT * FROM employee ORDER BY " + sortBy + " " + order;
 
         Cursor cursor = null;
@@ -127,7 +127,7 @@ public class Database extends SQLiteOpenHelper {
                 String gmail = cursor.getString(5);
                 byte[] avatar = cursor.getBlob(6);
                 Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
-                EmployeeTable curEmployee = new EmployeeTable(id, name, phone, gmail, age, gender, avatarBitmap);
+                Employee curEmployee = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
                 data.add(curEmployee);
             }
             cursor.close();
@@ -140,9 +140,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu nhân viên theo bộ lọc và phân trang
      * @author nnhiep 18.03.2023
      */
-    public List<EmployeeTable> getDataEmployeeByFilter(String searchValue) {
+    public List<Employee> getDataEmployeeByFilter(String searchValue) {
         SQLiteDatabase db = this.getReadableDatabase();
-        List<EmployeeTable> data = new ArrayList<>();
+        List<Employee> data = new ArrayList<>();
         String query =
                 "SELECT * FROM employee WHERE employee_name LIKE '%" + searchValue + "%' " +
                         "OR employee_phone LIKE '%" + searchValue + "%' ORDER BY employee_modified_date DESC";
@@ -163,7 +163,7 @@ public class Database extends SQLiteOpenHelper {
                 String gmail = cursor.getString(5);
                 byte[] avatar = cursor.getBlob(6);
                 Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
-                EmployeeTable curEmployee = new EmployeeTable(id, name, phone, gmail, age, gender, avatarBitmap);
+                Employee curEmployee = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
                 data.add(curEmployee);
             }
             cursor.close();
@@ -176,9 +176,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu nhân viên theo ID
      * @author nnhiep 24.03.2023
      */
-    public EmployeeTable getDataEmployeeByID(String targetId) {
+    public Employee getDataEmployeeByID(String targetId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        EmployeeTable data = null;
+        Employee data = null;
         String query = "SELECT * FROM employee WHERE employee_id = \"" + targetId + "\"";
 
         Cursor cursor = null;
@@ -197,7 +197,7 @@ public class Database extends SQLiteOpenHelper {
                 String gmail = cursor.getString(5);
                 byte[] avatar = cursor.getBlob(6);
                 Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
-                data = new EmployeeTable(id, name, phone, gmail, age, gender, avatarBitmap);
+                data = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
                 break;
             }
             cursor.close();
@@ -226,9 +226,9 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu ghi chú
      * @author nnhiep 18.03.2023
      */
-    public List<NoteTable> getDataNote() {
+    public List<Note> getDataNote() {
         SQLiteDatabase db = this.getReadableDatabase();
-        List<NoteTable> data = new ArrayList<>();
+        List<Note> data = new ArrayList<>();
         String query = "SELECT * FROM note";
 
         Cursor cursor = null;
@@ -239,7 +239,7 @@ public class Database extends SQLiteOpenHelper {
 
         if (cursor != null){
             while (cursor.moveToNext()){
-                NoteTable note = new NoteTable(cursor.getInt(0),
+                Note note = new Note(cursor.getInt(0),
                         cursor.getString(1), cursor.getString(2));
                 data.add(note);
             }
@@ -319,26 +319,8 @@ public class Database extends SQLiteOpenHelper {
 
         if(result == -1) {
             Toast.makeText(context, context.getResources().getString(R.string.insert_employee_failed), Toast.LENGTH_SHORT).show();
-        }
-
-        db.close();
-    }
-
-    /**
-     * Thêm mới dữ liệu hệ thống
-     * @author nnhiep 19.03.2023
-     */
-    public void insertDataSystem(boolean isLogin) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues cv = new ContentValues();
-
-        cv.put("system_is_login", isLogin);
-
-        long result =  db.insert("system", null, cv);
-
-        if(result == -1) {
-            Toast.makeText(context, context.getResources().getString(R.string.insert_failed), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, context.getResources().getString(R.string.insert_employee_success), Toast.LENGTH_SHORT).show();
         }
 
         db.close();
@@ -376,6 +358,7 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
+        cv.put("tour_id",id);
 
         cv.put("tour_id",id);
         cv.put("tour_title", title);
@@ -457,25 +440,6 @@ public class Database extends SQLiteOpenHelper {
             Toast.makeText(context, context.getResources().getString(R.string.update_employee_failed), Toast.LENGTH_SHORT).show();
         }
 
-        db.close();
-    }
-
-    /**
-     * Sửa thông tin hệ thống
-     * @author nnhiep 18.03.2023
-     */
-    public void updateDataSystem(String row_id, boolean isLogin) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues cv = new ContentValues();
-
-        cv.put("system_is_login", isLogin);
-
-        long result =  db.update("system", cv, "system_id=?", new String[]{row_id});
-
-        if(result == -1) {
-            Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
-        }
         db.close();
     }
 

@@ -26,7 +26,11 @@ public class SlideAdapter extends RecyclerView.Adapter<SlideAdapter.SlideViewHol
     @Override
     public SlideViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new SlideViewHolder(
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.slider_search_item, parent,false)
+                LayoutInflater.from(parent.getContext()).inflate(
+                        R.layout.slider_search_item,
+                        parent,
+                        false
+                )
         );
     }
 
@@ -42,6 +46,7 @@ public class SlideAdapter extends RecyclerView.Adapter<SlideAdapter.SlideViewHol
     public int getItemCount() {
         return slideitem.size();
     }
+
 
     class SlideViewHolder extends RecyclerView.ViewHolder {
         private RoundedImageView imageview;
