@@ -26,10 +26,14 @@
           android:id="@+id/lstTour"
           android:layout_width="409dp"
 <<<<<<< HEAD
+<<<<<<< HEAD
           android:layout_height="508dp"
 =======
           android:layout_height="538dp"
 >>>>>>> 23e446c (them sua xoa tour)
+=======
+          android:layout_height="508dp"
+>>>>>>> 717018d (xong full _ co chinh sua chinh sau)
           android:layout_marginStart="1dp"
           android:layout_marginTop="16dp"
           android:layout_marginEnd="1dp"
@@ -46,16 +50,22 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
 <<<<<<< HEAD
+<<<<<<< HEAD
           android:text="Sắp xếp "
           android:textSize="18sp" />
 =======
           android:text="Sắp xếp " />
 >>>>>>> 443aaf1 (truoc khi nop)
+=======
+          android:text="Sắp xếp "
+          android:textSize="18sp" />
+>>>>>>> 717018d (xong full _ co chinh sua chinh sau)
 
       <Button
           android:id="@+id/register"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+<<<<<<< HEAD
 <<<<<<< HEAD
           android:text="Danh sách Tour đã đăng ký "
           android:textSize="18sp" />
@@ -64,6 +74,10 @@
 >>>>>>> 23e446c (them sua xoa tour)
 =======
           android:text="Danh sách Tour đã đăng ký " />
+=======
+          android:text="Danh sách Tour đã đăng ký "
+          android:textSize="18sp" />
+>>>>>>> 717018d (xong full _ co chinh sua chinh sau)
 
 >>>>>>> 443aaf1 (truoc khi nop)
 </LinearLayout>

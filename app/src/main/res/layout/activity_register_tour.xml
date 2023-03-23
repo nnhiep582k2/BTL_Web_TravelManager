@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".views.RegisterTour">
 
-<<<<<<< HEAD
     <TextView
         android:layout_width="409dp"
         android:layout_height="80dp"
@@ -19,16 +18,12 @@
         android:textStyle="bold" />
 
 
-=======
->>>>>>> 443aaf1 (truoc khi nop)
+
     <ListView
         android:id="@+id/listview_register_tour"
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="639dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp" />
-<<<<<<< HEAD
+
 </LinearLayout>
-=======
-</LinearLayout>
->>>>>>> 443aaf1 (truoc khi nop)
