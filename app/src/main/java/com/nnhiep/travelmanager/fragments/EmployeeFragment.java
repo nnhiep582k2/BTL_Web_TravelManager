@@ -1,14 +1,17 @@
 package com.nnhiep.travelmanager.fragments;
 
+import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
@@ -56,7 +59,7 @@ public class EmployeeFragment extends Fragment {
         db = new Database(this.getContext());
 
         // Thông báo - nnhiep 25.03.2023
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("EmployeeFragment", "Employee Fragment", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = this.getContext().getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
@@ -79,7 +82,7 @@ public class EmployeeFragment extends Fragment {
         // Xử lý đổi dạng layout - nnhiep 20.03.2023
         btnChangeView.setOnClickListener(v -> {
             // Chuyển về dạng grid view - GridLayout
-            if(btnChangeView.getText().equals(getContext().getResources().getString(R.string.grid_view))) {
+            if (btnChangeView.getText().equals(getContext().getResources().getString(R.string.grid_view))) {
                 rViewEmployee.setLayoutManager(new GridLayoutManager(getContext(), 3));
                 layoutItemEmployee.setOrientation(LinearLayout.VERTICAL);
 
@@ -99,10 +102,12 @@ public class EmployeeFragment extends Fragment {
         EditText eTxtSearchEmployee = view.findViewById(R.id.eTxtSearchEmployee);
         eTxtSearchEmployee.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -143,7 +148,7 @@ public class EmployeeFragment extends Fragment {
                 dialog.setPositiveButton(getContext().getResources().getString(R.string.delete), (dialog1, which) -> {
                     db.deleteEmployee(adapter.getItem(item.getGroupId()).getId());
                     notifyToUser(2);
-                    refreshData("employee_modified_date","DESC", false, "");
+                    refreshData("employee_modified_date", "DESC", false, "");
                 });
                 dialog.setNegativeButton(getContext().getResources().getString(R.string.edit), (dialog2, which) -> {
                 });
@@ -157,12 +162,12 @@ public class EmployeeFragment extends Fragment {
      * @author nnhiep 30.03.2023
      */
     private void getDataEmployee(String sortBy, String order, boolean isFilter, String searchValue) {
-        if(!isFilter) {
+        if (!isFilter) {
             dataSource = db.getDataEmployee(sortBy, order);
         } else {
             dataSource = db.getDataEmployeeByFilter(searchValue);
         }
-        if(dataSource.size() == 0) {
+        if (dataSource.size() == 0) {
             dataSource = new ArrayList<>();
             rViewEmployee.setVisibility(View.GONE);
             txtNoData.setVisibility(View.VISIBLE);
@@ -188,13 +193,13 @@ public class EmployeeFragment extends Fragment {
      */
     private void buildDropdownSort(View view) {
         String[] dropdownSort = view.getResources().getStringArray(R.array.sort_employee);
-        AutoCompleteTextView aCompleteSort =  view.findViewById(R.id.aCompleteSort);
+        AutoCompleteTextView aCompleteSort = view.findViewById(R.id.aCompleteSort);
         ArrayAdapter sortAdapter = new ArrayAdapter(requireContext(), R.layout.dropdown_employee_item, dropdownSort);
         aCompleteSort.setAdapter(sortAdapter);
         aCompleteSort.setOnItemClickListener((parent, view1, position, id) -> {
             switch (position) {
                 case 0:
-                    refreshData("employee_modified_date","DESC", false, "");
+                    refreshData("employee_modified_date", "DESC", false, "");
                     break;
                 case 1:
                     refreshData("employee_name", "ASC", false, "");
@@ -212,11 +217,11 @@ public class EmployeeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 200 && resultCode == 150) {
+        if (requestCode == 200 && resultCode == 150) {
             notifyToUser(1);
             refreshData("employee_modified_date", "DESC", false, "");
         }
-        if(requestCode == 250 && resultCode == 150) {
+        if (requestCode == 250 && resultCode == 150) {
             notifyToUser(0);
             refreshData("employee_modified_date", "DESC", false, "");
         }
@@ -231,14 +236,14 @@ public class EmployeeFragment extends Fragment {
         NotificationCompat.Builder notification = new NotificationCompat.Builder(getContext(), "EmployeeFragment")
                 .setAutoCancel(true);
         // Thêm
-        if(mode == 0) {
+        if (mode == 0) {
             notification
                     .setSmallIcon(R.drawable.ic_baseline_notification_add_24)
                     .setContentTitle(getContext().getResources().getString(R.string.add_success_title))
                     .setContentText(getContext().getResources().getString(R.string.add_success_content));
         }
         // Sửa
-        else if(mode == 1) {
+        else if (mode == 1) {
             notification
                     .setSmallIcon(R.drawable.ic_baseline_edit_notifications_24)
                     .setContentTitle(getContext().getResources().getString(R.string.edit_success_title))
@@ -250,6 +255,9 @@ public class EmployeeFragment extends Fragment {
                     .setContentText(getContext().getResources().getString(R.string.delete_success_content));
         }
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this.getContext());
+        if (ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
         managerCompat.notify(1, notification.build());
     }
 
