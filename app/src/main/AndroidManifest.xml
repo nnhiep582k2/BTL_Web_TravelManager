@@ -29,6 +29,9 @@
             android:exported="false" />
 >>>>>>> 443aaf1 (truoc khi nop)
         <activity
+            android:name=".register_detail"
+            android:exported="false" />
+        <activity
             android:name=".views.RegisterTour"
             android:exported="false" />
         <activity
