@@ -49,9 +49,5 @@ dependencies {
     // Import libs
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
-<<<<<<< HEAD
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-=======
-
->>>>>>> 2f7946e (up code)
 }

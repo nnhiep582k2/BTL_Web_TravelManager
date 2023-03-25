@@ -61,7 +61,6 @@
     <string name="avatar_invalid">Ảnh không hợp lệ</string>
     <!-- Error -->
     <string name="error_occur">Có lỗi trong quá trình xử lý!</string>
-<<<<<<< HEAD
     <!-- Dropdown search -->
     <string-array name="sort_employee">
         <item>Sắp xếp theo ngày</item>
@@ -104,8 +103,6 @@
     <string name="grid_view">Lưới</string>
     <string name="list_view">Danh sách</string>
     <string name="add">Thêm</string>
-=======
-
     <string name="article_string" translatable="false">Điều khoản và chính sách</string>
     <string name="article_subheading" translatable="false"> Nội dung</string>
     <string name="paragraph" translatable="false">
@@ -312,5 +309,4 @@ Trang web này và nội dung của nó nhằm tuân thủ luật pháp và quy 
          \n
         *các nội dung cần thiết khác theo yêu cầu của Ban quản lý CBT
     </string>
->>>>>>> 2f7946e (up code)
 </resources>
