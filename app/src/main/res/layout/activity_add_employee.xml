@@ -6,17 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".views.AddEmployeeActivity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgEmployeeAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/employee_avatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/employee_male"
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="32dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/txtErrorAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_orange"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imgEmployeeAvatar"/>
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/txtChangeAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,67 +34,120 @@
         tools:layout_editor_absoluteY="170dp"
         android:layout_below="@+id/imgEmployeeAvatar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="18dp"/>
 
     <EditText
+        android:textSize="16sp"
         android:id="@+id/eTextEChangeName"
-        android:layout_width="wrap_content"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="218dp"
         android:layout_below="@+id/txtChangeAvatar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Name"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="218dp" />
+    <TextView
+        android:id="@+id/txtErrorName"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_orange"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/eTextEChangeName"/>
 
     <EditText
+        android:textSize="16sp"
         android:id="@+id/eTextEChangeAge"
-        android:layout_width="wrap_content"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Age"
+        android:hint="Age"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="281dp"
         android:layout_below="@+id/eTextEChangeName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/txtErrorAge"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_orange"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/eTextEChangeAge"/>
 
     <EditText
+        android:textSize="16sp"
         android:id="@+id/eTextEChangePhone"
-        android:layout_width="wrap_content"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Phone"
+        android:hint="Phone"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="343dp"
         android:layout_below="@+id/eTextEChangeAge"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/txtErrorPhone"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_orange"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/eTextEChangePhone"/>
 
     <EditText
+        android:textSize="16sp"
         android:id="@+id/eTextEChangeGmail"
-        android:layout_width="wrap_content"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Gmail"
+        android:hint="Gmail"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="402dp"
         android:layout_below="@+id/eTextEChangePhone"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/txtErrorGmail"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_orange"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/eTextEChangeGmail"/>
 
     <Spinner
         android:id="@+id/spinnerGender"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="40dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="493dp"
         android:layout_below="@+id/eTextEChangeGmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerGender"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+        <Button
+            android:backgroundTint="@color/red_orange"
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"/>
+        <Button
+            android:layout_marginStart="20dp"
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"/>
+    </LinearLayout>
 </RelativeLayout>

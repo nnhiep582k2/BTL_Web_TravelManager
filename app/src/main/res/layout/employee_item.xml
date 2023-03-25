@@ -17,12 +17,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgAvatar"
-            android:src="@drawable/employee_avatar"
-            android:scaleType="fitXY"
-            android:layout_width="80dp"
-            android:layout_height="80dp"/>
+            android:src="@drawable/employee_male"
+            android:scaleType="centerCrop"
+            android:layout_width="72dp"
+            android:layout_height="72dp"/>
         <LinearLayout
             android:weightSum="12"
             android:layout_marginStart="10dp"

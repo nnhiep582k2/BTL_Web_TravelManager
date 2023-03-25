@@ -4,7 +4,6 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -38,7 +37,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
         holder.txtEmployeeAge.setText(formatAge(items.get(position).getAge()));
         holder.txtEmployeeGender.setText(formatGender(items.get(position).getGender()));
         holder.txtEmployeePhone.setText(items.get(position).getPhone());
-        holder.imgAvatar.setImageResource(items.get(position).getAvatar());
+        holder.imgAvatar.setImageBitmap(items.get(position).getAvatar());
     }
 
     // Hàm định dạng tuổi - nnhiep 22.03.2023
@@ -84,7 +83,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
 class EmployeeViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
     private EmployeeAdapter employeeAdapter;
     TextView txtEmployeeName, txtEmployeeAge, txtEmployeeGender, txtEmployeePhone;
-    ImageView imgAvatar;
+    de.hdodenhof.circleimageview.CircleImageView imgAvatar;
     CardView cViewEmployee;
 
     public EmployeeViewHolder(@NonNull View itemView) {

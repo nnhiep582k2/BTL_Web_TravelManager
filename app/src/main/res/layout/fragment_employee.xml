@@ -32,7 +32,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             app:boxStrokeColor="@color/primary"
-            android:outlineSpotShadowColor="@color/primary"
             android:layout_width="138dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -55,6 +54,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/txtNoData"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="0dp"
+        android:text="No data"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:gravity="center"/>
 
     <LinearLayout
         android:layout_height="50dp"

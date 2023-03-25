@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
  * Bảng thông tin hệ thống
  * @author nnhiep 19.03.2023
  */
-public class System {
+public class SystemTable {
     // region Thông tin bảng dữ liệu
     private static final String TABLE_NAME = "system";
     private static final String COLUMN_ID = "system_id";
