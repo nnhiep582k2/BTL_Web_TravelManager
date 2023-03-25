@@ -99,6 +99,7 @@ public class User_TTin_Edit extends AppCompatActivity {
                                 InputStream inputStream = getContentResolver().openInputStream(uri);
                                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                                 imgavatar.setImageBitmap(bitmap);
+
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
