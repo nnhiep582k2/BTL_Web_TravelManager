@@ -27,10 +27,10 @@
     <string name="update_employee_success">Sửa thông tin thành công!</string>
     <string name="update_schedule_success">Sửa lịch trình thành công!</string>
     <string name="update_tour_success">Sửa tour thành công!</string>
-    <string name="delete_employee_failed">Xóa tài khoản thất bại!</string>
+    <string name="delete_employee_failed">Xóa nhân viên thất bại!</string>
     <string name="delete_schedule_failed">Xóa lịch trình thất bại!</string>
     <string name="delete_tour_failed">Xóa tour thất bại!</string>
-    <string name="delete_employee_success">Xóa tài khoản thành công!</string>
+    <string name="delete_employee_success">Xóa nhân viên thành công!</string>
     <string name="delete_schedule_success">Xóa lịch trình thành công!</string>
     <string name="delete_tour_success">Xóa tour thành công!</string>
     <!-- Login -->
@@ -68,4 +68,39 @@
         <item>Sắp xếp theo tuổi</item>
         <item>Sắp xếp theo giới tính</item>
     </string-array>
+    <!-- Adapter -->
+    <string name="adapter_age"> tuổi</string>
+    <string name="female">Nữ</string>
+    <string name="male">Nam</string>
+    <string name="other">Khác</string>
+    <string name="action">Tác vụ</string>
+    <string name="send_message">Gửi tin nhắn</string>
+    <string name="call">Gọi điện</string>
+    <string name="edit">Sửa</string>
+    <string name="delete">Xóa</string>
+    <string name="sure_to_delete">Bạn có chắc chắn muốn xóa nhân viên </string>
+    <string name="cancel">Hủy</string>
+    <string name="add_success_title">Thêm thành công</string>
+    <string name="edit_success_title">Sửa thành công</string>
+    <string name="delete_success_title">Xóa thành công</string>
+    <string name="add_success_content">Bạn vừa thêm một nhân viên!</string>
+    <string name="edit_success_content">Bạn vừa sửa thông tin một nhân viên!</string>
+    <string name="delete_success_content">Bạn vừa xóa một nhân viên!</string>
+    <!-- Warning -->
+    <string name="warning">Cảnh báo</string>
+    <string name="sure_to_exit">Bạn có chắc muốn đăng xuất khỏi chương trình?</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="change_avatar">Đổi ảnh đại điện</string>
+    <string name="name">Tên</string>
+    <string name="age">Tuổi</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="gender">Giới tính</string>
+    <string name="gmail">Gmail</string>
+    <string name="save">Lưu</string>
+    <string name="search">Tìm kiếm...</string>
+    <string name="sort">Sắp xếp</string>
+    <string name="no_data">Không có dữ liệu</string>
+    <string name="grid_view">Lưới</string>
+    <string name="list_view">Danh sách</string>
+    <string name="add">Thêm</string>
 </resources>

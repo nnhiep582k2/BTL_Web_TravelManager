@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.widget.Toast;
 import android.widget.Button;
@@ -77,14 +76,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Cảnh báo");
-        builder.setMessage("Bạn có chắc muốn đăng xuất khỏi chương trình?");
-        builder.setPositiveButton("Đăng xuất", (dialog, which) -> {
+        builder.setTitle(this.getResources().getString(R.string.warning));
+        builder.setMessage(this.getResources().getString(R.string.sure_to_exit));
+        builder.setPositiveButton(this.getResources().getString(R.string.logout), (dialog, which) -> {
             Database db = new Database(this);
             db.updateDataSystem("1", false);
             super.onBackPressed();
         });
-        builder.setNegativeButton("Hủy", (dialog, which) -> {
+        builder.setNegativeButton(this.getResources().getString(R.string.cancel), (dialog, which) -> {
         });
         builder.show();
     }

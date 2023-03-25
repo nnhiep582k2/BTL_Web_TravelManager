@@ -34,7 +34,7 @@
                 android:id="@+id/txtEmployeeName"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="User Name"
+                android:text="@string/name"
                 android:textSize="14sp"
                 android:layout_gravity="start"/>
             <TextView
@@ -42,7 +42,7 @@
                 android:id="@+id/txtEmployeeAge"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="User Age"
+                android:text="@string/age"
                 android:textSize="14sp"
                 android:layout_gravity="start"/>
             <TextView
@@ -50,7 +50,7 @@
                 android:id="@+id/txtEmployeeGender"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="User Gender"
+                android:text="@string/gender"
                 android:textSize="14sp"
                 android:layout_gravity="start"/>
             <TextView
@@ -58,7 +58,7 @@
                 android:id="@+id/txtEmployeePhone"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="User Phone"
+                android:text="@string/phone"
                 android:textSize="14sp"
                 android:layout_gravity="start"/>
         </LinearLayout>

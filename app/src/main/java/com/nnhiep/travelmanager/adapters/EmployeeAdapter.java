@@ -1,5 +1,6 @@
 package com.nnhiep.travelmanager.adapters;
 
+import android.content.Context;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.models.Employee;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
     List<Employee> items;
+    Context context;
 
     @NonNull
     @Override
@@ -27,7 +28,8 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
         return new EmployeeViewHolder(view).linkAdapter(this);
     }
 
-    public EmployeeAdapter(List<Employee> items) {
+    public EmployeeAdapter(List<Employee> items, Context context) {
+        this.context = context;
         this.items = items;
     }
 
@@ -42,7 +44,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
 
     // Hàm định dạng tuổi - nnhiep 22.03.2023
     private String formatAge(int age) {
-        return age + " tuổi";
+        return age + context.getResources().getString(R.string.adapter_age);
     }
 
     // Hàm định dạng giới tính - nnhiep 22.03.2023
@@ -50,13 +52,13 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
         String sex = "";
         switch (gender) {
             case 0:
-                sex = "Nữ";
+                sex = context.getResources().getString(R.string.female);
                 break;
             case 1:
-                sex = "Nam";
+                sex = context.getResources().getString(R.string.male);
                 break;
             case 2:
-                sex = "Khác";
+                sex = context.getResources().getString(R.string.other);
                 break;
         }
         return sex;
@@ -72,12 +74,6 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
 
     // Lấy tất cả phần tử trong mảng - nnhiep 20.03.2023
     public List<Employee> getItems() { return this.items; }
-
-    // Hàm lọc dữ liệu - nnhiep 20.03.2023
-    public void filter(ArrayList<Employee> filteredList) {
-        items = filteredList;
-        notifyDataSetChanged();
-    }
 }
 
 class EmployeeViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
@@ -110,10 +106,10 @@ class EmployeeViewHolder extends RecyclerView.ViewHolder implements View.OnCreat
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.setHeaderTitle("Action");
-        menu.add(getAdapterPosition(), 1, 0, "Send Message");
-        menu.add(getAdapterPosition(), 2, 1, "Call");
-        menu.add(getAdapterPosition(), 3, 2, "Edit");
-        menu.add(getAdapterPosition(), 4, 3, "Delete");
+        menu.setHeaderTitle(v.getContext().getResources().getString(R.string.action));
+        menu.add(getAdapterPosition(), 1, 0, v.getContext().getResources().getString(R.string.send_message));
+        menu.add(getAdapterPosition(), 2, 1, v.getContext().getResources().getString(R.string.call));
+        menu.add(getAdapterPosition(), 3, 2, v.getContext().getResources().getString(R.string.edit));
+        menu.add(getAdapterPosition(), 4, 3, v.getContext().getResources().getString(R.string.delete));
     }
 }

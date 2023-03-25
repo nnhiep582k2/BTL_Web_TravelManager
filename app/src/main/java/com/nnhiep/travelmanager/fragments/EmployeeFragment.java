@@ -1,11 +1,16 @@
 package com.nnhiep.travelmanager.fragments;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +27,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.adapters.EmployeeAdapter;
 import com.nnhiep.travelmanager.database.Database;
@@ -51,11 +55,18 @@ public class EmployeeFragment extends Fragment {
         layoutItemEmployee = childView.findViewById(R.id.layoutItemEmployee);
         db = new Database(this.getContext());
 
+        // Thông báo - nnhiep 25.03.2023
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("EmployeeFragment", "Employee Fragment", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = this.getContext().getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
         rViewEmployee = view.findViewById(R.id.rViewEmployee);
         btnChangeView = view.findViewById(R.id.btnGridView);
         txtNoData = view.findViewById(R.id.txtNoData);
 
-        getDataEmployee("employee_modified_date", "DESC");
+        getDataEmployee("employee_modified_date", "DESC", false, "");
         buildRecyclerView(view);
         buildDropdownSort(view);
 
@@ -68,18 +79,18 @@ public class EmployeeFragment extends Fragment {
         // Xử lý đổi dạng layout - nnhiep 20.03.2023
         btnChangeView.setOnClickListener(v -> {
             // Chuyển về dạng grid view - GridLayout
-            if(btnChangeView.getText().equals("Grid")) {
+            if(btnChangeView.getText().equals(getContext().getResources().getString(R.string.grid_view))) {
                 rViewEmployee.setLayoutManager(new GridLayoutManager(getContext(), 3));
                 layoutItemEmployee.setOrientation(LinearLayout.VERTICAL);
 
-                btnChangeView.setText("List");
+                btnChangeView.setText(getContext().getResources().getString(R.string.list_view));
                 btnChangeView.setCompoundDrawablesWithIntrinsicBounds(this.getResources().getDrawable(R.drawable.ic_baseline_view_list_24), null, null, null);
             } else {
                 // Chuyển về dạng list view - LinearLayout
                 rViewEmployee.setLayoutManager(new LinearLayoutManager(getContext()));
                 layoutItemEmployee.setOrientation(LinearLayout.HORIZONTAL);
 
-                btnChangeView.setText("Grid");
+                btnChangeView.setText(getContext().getResources().getString(R.string.grid_view));
                 btnChangeView.setCompoundDrawablesWithIntrinsicBounds(this.getResources().getDrawable(R.drawable.ic_baseline_grid_view_24), null, null, null);
             }
         });
@@ -88,20 +99,14 @@ public class EmployeeFragment extends Fragment {
         EditText eTxtSearchEmployee = view.findViewById(R.id.eTxtSearchEmployee);
         eTxtSearchEmployee.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().trim().isEmpty()) {
-
-                } else filterEmployee(s.toString());
+                filterEmployee(s.toString());
             }
         });
 
@@ -133,13 +138,14 @@ public class EmployeeFragment extends Fragment {
             // Xử lý click xóa - nnhiep 22.03.2023
             case 4:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-                dialog.setTitle("Delete");
-                dialog.setMessage("Are you sure to delete employee " + adapter.getItem(item.getGroupId()).getName() + "?");
-                dialog.setPositiveButton("Delete", (dialog1, which) -> {
+                dialog.setTitle(getContext().getResources().getString(R.string.delete));
+                dialog.setMessage(getContext().getResources().getString(R.string.sure_to_delete) + adapter.getItem(item.getGroupId()).getName() + "?");
+                dialog.setPositiveButton(getContext().getResources().getString(R.string.delete), (dialog1, which) -> {
                     db.deleteEmployee(adapter.getItem(item.getGroupId()).getId());
-                    refreshData("employee_modified_date","DESC");
+                    notifyToUser(2);
+                    refreshData("employee_modified_date","DESC", false, "");
                 });
-                dialog.setNegativeButton("Cancel", (dialog2, which) -> {
+                dialog.setNegativeButton(getContext().getResources().getString(R.string.edit), (dialog2, which) -> {
                 });
                 dialog.show();
         }
@@ -150,19 +156,14 @@ public class EmployeeFragment extends Fragment {
      * Hàm lấy dữ liệu nhân viên
      * @author nnhiep 30.03.2023
      */
-    private void getDataEmployee(String sortBy, String order) {
-//        dataSource.add(new Employee("1", "Nguyễn Ngọc Hiệp", "0972844478", "nnhiep582k2@gmail.com", 21, 1, R.drawable.employee_male));
-//        dataSource.add(new Employee("2", "Nguyễn Thị Hoa", "0999999999", "nthoa@gmail.com", 45, 0, R.drawable.employee_female));
-//        dataSource.add(new Employee("3", "Nguyễn Ngọc Sơn", "0988888888", "nnson@gmail.com", 18, 1, R.drawable.employee_male));
-//        dataSource.add(new Employee("4", "Nguyễn Ngọc Điệp", "0977777777", "nvdiepgmail@gmail.com", 45, 1, R.drawable.employee_male));
-//        dataSource.add(new Employee("5", "Ứng Phương Thảo", "0966666666", "upthao@gmail.com", 22, 0, R.drawable.employee_female));
-//        dataSource.add(new Employee("6", "Lê Ngọc Lâm", "0955555555", "lnlam@gmail.com", 27, 2, R.drawable.employee_male));
-//        dataSource.add(new Employee("7", "Nguyễn Quốc Đạt", "0922222222", "nqdat@gmail.com", 26, 1, R.drawable.employee_male));
-//        dataSource.add(new Employee("8", "Tạ Long Khánh", "0933333333", "tlkhanh@gmail.com", 26, 2, R.drawable.employee_male));
-//        dataSource.add(new Employee("9", "Phùng Đình Dương", "0922222222", "pdduong@gmail.com", 25, 2, R.drawable.employee_male));
-        dataSource = db.getDataEmployee(sortBy, order);
+    private void getDataEmployee(String sortBy, String order, boolean isFilter, String searchValue) {
+        if(!isFilter) {
+            dataSource = db.getDataEmployee(sortBy, order);
+        } else {
+            dataSource = db.getDataEmployeeByFilter(searchValue);
+        }
         if(dataSource.size() == 0) {
-            dataSource = new ArrayList<Employee>();
+            dataSource = new ArrayList<>();
             rViewEmployee.setVisibility(View.GONE);
             txtNoData.setVisibility(View.VISIBLE);
         } else {
@@ -176,7 +177,7 @@ public class EmployeeFragment extends Fragment {
      * @author nnhiep 30.03.2023
      */
     private void buildRecyclerView(View view) {
-        adapter = new EmployeeAdapter(dataSource);
+        adapter = new EmployeeAdapter(dataSource, view.getContext());
         rViewEmployee.setLayoutManager(new LinearLayoutManager(getContext()));
         rViewEmployee.setAdapter(adapter);
     }
@@ -193,16 +194,16 @@ public class EmployeeFragment extends Fragment {
         aCompleteSort.setOnItemClickListener((parent, view1, position, id) -> {
             switch (position) {
                 case 0:
-                    refreshData("employee_modified_date","DESC");
+                    refreshData("employee_modified_date","DESC", false, "");
                     break;
                 case 1:
-                    refreshData("employee_name", "ASC");
+                    refreshData("employee_name", "ASC", false, "");
                     break;
                 case 2:
-                    refreshData("employee_age", "ASC");
+                    refreshData("employee_age", "ASC", false, "");
                     break;
                 case 3:
-                    refreshData("employee_gender", "ASC");
+                    refreshData("employee_gender", "ASC", false, "");
                     break;
             }
         });
@@ -212,20 +213,57 @@ public class EmployeeFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 200 && resultCode == 150) {
-            refreshData("employee_modified_date", "DESC");
+            notifyToUser(1);
+            refreshData("employee_modified_date", "DESC", false, "");
         }
         if(requestCode == 250 && resultCode == 150) {
-            refreshData("employee_modified_date", "DESC");
+            notifyToUser(0);
+            refreshData("employee_modified_date", "DESC", false, "");
         }
+    }
+
+    /**
+     * Gửi thông báo đến người dùng khi thêm thành công nhân viên
+     * @author nnhiep 24.03.2023
+     */
+    private void notifyToUser(int mode) {
+        // Tạo đối tượng NotificationCompat.Builder - nnhiep 25.03.2023
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(getContext(), "EmployeeFragment")
+                .setAutoCancel(true);
+        // Thêm
+        if(mode == 0) {
+            notification
+                    .setSmallIcon(R.drawable.ic_baseline_notification_add_24)
+                    .setContentTitle(getContext().getResources().getString(R.string.add_success_title))
+                    .setContentText(getContext().getResources().getString(R.string.add_success_content));
+        }
+        // Sửa
+        else if(mode == 1) {
+            notification
+                    .setSmallIcon(R.drawable.ic_baseline_edit_notifications_24)
+                    .setContentTitle(getContext().getResources().getString(R.string.edit_success_title))
+                    .setContentText(getContext().getResources().getString(R.string.edit_success_content));
+        } else {
+            notification
+                    .setSmallIcon(R.drawable.ic_baseline_notification_important_24)
+                    .setContentTitle(getContext().getResources().getString(R.string.delete_success_title))
+                    .setContentText(getContext().getResources().getString(R.string.delete_success_content));
+        }
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this.getContext());
+        managerCompat.notify(1, notification.build());
     }
 
     /**
      * Lấy lại dữ liệu
      * @author nnhiep 24.03.2023
      */
-    private void refreshData(String sortBy, String order) {
-        getDataEmployee(sortBy, order);
-        adapter = new EmployeeAdapter(dataSource);
+    private void refreshData(String sortBy, String order, boolean isFilter, String searchValue) {
+        if(!isFilter) {
+            getDataEmployee(sortBy, order, false, "");
+        } else {
+            getDataEmployee(sortBy, order, true, searchValue);
+        }
+        adapter = new EmployeeAdapter(dataSource, getContext());
         rViewEmployee.setLayoutManager(new LinearLayoutManager(getContext()));
         rViewEmployee.setAdapter(adapter);
     }
@@ -235,14 +273,6 @@ public class EmployeeFragment extends Fragment {
      * @author nnhiep 30.03.2023
      */
     private void filterEmployee(String searchValue) {
-        ArrayList<Employee> filteredList = new ArrayList<>();
-        ArrayList<Employee> temp = new ArrayList<Employee>(dataSource);
-        for(int i = 0; i < temp.size(); i++) {
-            if(temp.get(i).getName().toLowerCase().contains(searchValue)) {
-                filteredList.add(temp.get(i));
-            }
-        }
-
-        adapter.filter(filteredList);
+        refreshData("employee_modified_date", "DESC", true, searchValue);
     }
 }

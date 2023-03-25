@@ -29,7 +29,7 @@
         android:id="@+id/txtChangeAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Avatar"
+        android:text="@string/change_avatar"
         tools:layout_editor_absoluteX="174dp"
         tools:layout_editor_absoluteY="170dp"
         android:layout_below="@+id/imgEmployeeAvatar"
@@ -46,7 +46,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Name"
+        android:hint="@string/name"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="218dp" />
     <TextView
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Age"
+        android:hint="@string/age"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="281dp"
         android:layout_below="@+id/eTextEChangeName"
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Phone"
+        android:hint="@string/phone"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="343dp"
         android:layout_below="@+id/eTextEChangeAge"
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Gmail"
+        android:hint="@string/gmail"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="402dp"
         android:layout_below="@+id/eTextEChangePhone"
@@ -142,12 +142,12 @@
             android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"/>
+            android:text="@string/cancel"/>
         <Button
             android:layout_marginStart="20dp"
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"/>
+            android:text="@string/save"/>
     </LinearLayout>
 </RelativeLayout>
