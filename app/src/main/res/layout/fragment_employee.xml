@@ -10,10 +10,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="61dp"
+        android:layout_height="58dp"
         android:orientation="horizontal">
         <EditText
-            android:background="@drawable/border_radius"
+            android:background="@drawable/border_radius2"
             android:id="@+id/eTxtSearchEmployee"
             android:layout_weight="1"
             android:paddingStart="16dp"
@@ -23,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginEnd="20dp"
-            android:textSize="14sp"
-            android:hint="Search..."
+            android:textSize="13sp"
+            android:hint="@string/search"
             android:textCursorDrawable="@drawable/custom_cursor"
             android:textColorHighlight="@color/primary"
             android:textColorLink="@color/primary"
@@ -38,12 +38,13 @@
             android:layout_marginBottom="4dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
             <AutoCompleteTextView
+                android:background="@drawable/border_spinner"
                 android:id="@+id/aCompleteSort"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="none"
-                android:textSize="14sp"
-                android:text="Sort" />
+                android:textSize="12sp"
+                android:text="@string/sort" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -60,7 +61,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_height="0dp"
-        android:text="No data"
+        android:text="@string/no_data"
         android:visibility="gone"
         android:layout_weight="1"
         android:textAlignment="center"
@@ -78,7 +79,7 @@
             android:layout_weight="1"
             android:textSize="14sp"
             android:drawableLeft="@drawable/ic_baseline_grid_view_24"
-            android:text="Grid"/>
+            android:text="@string/grid_view"/>
 
         <Button
             android:id="@+id/btnAddEmployee"
@@ -86,7 +87,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginStart="14dp"
-            android:text="Add"
+            android:text="@string/add"
             android:textSize="14sp"
             android:layout_gravity="center"/>
     </LinearLayout>

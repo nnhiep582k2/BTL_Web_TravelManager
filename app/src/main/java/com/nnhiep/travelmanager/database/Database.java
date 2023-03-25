@@ -132,6 +132,42 @@ public class Database extends SQLiteOpenHelper {
     }
 
     /**
+     * Lấy dữ liệu nhân viên theo bộ lọc và phân trang
+     * @author nnhiep 18.03.2023
+     */
+    public List<Employee> getDataEmployeeByFilter(String searchValue) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<Employee> data = new ArrayList<>();
+        String query =
+                "SELECT * FROM employee WHERE employee_name LIKE '%" + searchValue + "%' " +
+                        "OR employee_phone LIKE '%" + searchValue + "%' ORDER BY employee_modified_date DESC";
+
+        Cursor cursor = null;
+
+        if(db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        if (cursor != null) {
+            while (cursor.moveToNext()){
+                String id = cursor.getInt(0) + "";
+                String name = cursor.getString(1);
+                int age = cursor.getInt(2);
+                int gender = cursor.getInt(3);
+                String phone = cursor.getString(4);
+                String gmail = cursor.getString(5);
+                byte[] avatar = cursor.getBlob(6);
+                Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
+                Employee curEmployee = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
+                data.add(curEmployee);
+            }
+            cursor.close();
+        }
+
+        return data;
+    }
+
+    /**
      * Lấy dữ liệu nhân viên theo ID
      * @author nnhiep 24.03.2023
      */
@@ -413,8 +449,6 @@ public class Database extends SQLiteOpenHelper {
 
         if(result == -1) {
             Toast.makeText(context, context.getResources().getString(R.string.update_employee_failed), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, context.getResources().getString(R.string.update_employee_success), Toast.LENGTH_SHORT).show();
         }
 
         db.close();
@@ -523,8 +557,6 @@ public class Database extends SQLiteOpenHelper {
 
         if(result == -1) {
             Toast.makeText(context, context.getResources().getString(R.string.delete_employee_failed), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, context.getResources().getString(R.string.delete_employee_success), Toast.LENGTH_SHORT).show();
         }
 
         db.close();

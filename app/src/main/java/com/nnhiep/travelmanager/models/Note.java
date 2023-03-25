@@ -1,5 +1,9 @@
 package com.nnhiep.travelmanager.models;
 
+/**
+ * Ghi chú
+ * @author ndthuan
+ */
 public class Note {
     private int id;
     private String title;

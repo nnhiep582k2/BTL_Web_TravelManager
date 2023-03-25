@@ -60,7 +60,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
                 Intent intent = new Intent(AddEmployeeActivity.this, EmployeeFragment.class);
                 if(imgStore == null && !hasImage) {
                     imgStore = BitmapFactory.decodeResource(getResources(), choseImage);
-                } else {
+                } else if(imgStore == null) {
                     imgStore = employee.getAvatar();
                 }
                 if(mode.equals("Add")) db.insertAnEmployee(employee.getName(), employee.getAge(), employee.getGender(), employee.getPhone(), employee.getGmail(), imgStore);
@@ -156,9 +156,9 @@ public class AddEmployeeActivity extends AppCompatActivity {
      */
     private void setupSpinner() {
         ArrayList<String> arrayGender = new ArrayList<>();
-        arrayGender.add("Female");
-        arrayGender.add("Male");
-        arrayGender.add("Other");
+        arrayGender.add(this.getResources().getString(R.string.female));
+        arrayGender.add(this.getResources().getString(R.string.male));
+        arrayGender.add(this.getResources().getString(R.string.other));
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arrayGender);
         spinnerGender.setAdapter(adapter);

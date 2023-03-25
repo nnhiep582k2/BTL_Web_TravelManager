@@ -69,4 +69,39 @@
         <item>Sort by Age</item>
         <item>Sort by Gender</item>
     </string-array>
+    <!-- Adapter -->
+    <string name="adapter_age"> year olds</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="other">Other</string>
+    <string name="action">Action</string>
+    <string name="send_message">Send message</string>
+    <string name="call">Call</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="sure_to_delete">Are you sure to delete employee </string>
+    <string name="cancel">Cancel</string>
+    <string name="add_success_title">Adding successfully</string>
+    <string name="edit_success_title">Editting successfully</string>
+    <string name="delete_success_title">Deleting successfully</string>
+    <string name="add_success_content">You\'ve just add an employee!</string>
+    <string name="edit_success_content">You\'ve just edit an employee\'s infomartion!</string>
+    <string name="delete_success_content">You\'ve just delete an employee!</string>
+    <!-- Warning -->
+    <string name="warning">Warning</string>
+    <string name="sure_to_exit">Are you sure to logout?</string>
+    <string name="logout">Logout</string>
+    <string name="change_avatar">Change avatar</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="phone">Phone number</string>
+    <string name="gender">Gender</string>
+    <string name="gmail">Gmail</string>
+    <string name="save">Save</string>
+    <string name="search">Search...</string>
+    <string name="sort">Sort</string>
+    <string name="no_data">No data</string>
+    <string name="grid_view">Grid</string>
+    <string name="list_view">List</string>
+    <string name="add">Add</string>
 </resources>
