@@ -55,11 +55,16 @@
     <string name="password_not_true">Password is not true</string>
     <string name="password_invalid">Password is invalid</string>
     <string name="confirm_password_invalid">Confirm password is invalid</string>
+    <string name="name_invalid">Name is invalid</string>
+    <string name="age_invalid">Age is invalid</string>
+    <string name="phone_invalid">Phone number is invalid</string>
+    <string name="gmail_invalid">Gmail is invalid</string>
+    <string name="avatar_invalid">Image is invalid</string>
     <!-- Error -->
     <string name="error_occur">An error occur!</string>
     <!-- Dropdown search -->
     <string-array name="sort_employee">
-        <item>Sort</item>
+        <item>Sort by Date</item>
         <item>Sort by Name</item>
         <item>Sort by Age</item>
         <item>Sort by Gender</item>

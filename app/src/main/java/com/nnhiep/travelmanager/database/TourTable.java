@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
  * Bảng tour du lịch
  * @author nnhiep 17.03.2023
  */
-public class Tour {
+public class TourTable {
     // region Thông tin bảng dữ liệu
     private static final String TABLE_NAME = "tour";
     private static final String COLUMN_ID = "tour_id";

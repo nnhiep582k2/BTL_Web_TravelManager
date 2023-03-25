@@ -5,10 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.nnhiep.travelmanager.R;
+import com.nnhiep.travelmanager.models.Employee;
 import com.nnhiep.travelmanager.models.Note;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,11 +25,12 @@ public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "TravelManager.db";
     private static final int DATABASE_VERSION = 1;
     private Context context;
-    User user;
-    Employee employee;
-    Tour tour;
+    UserTable user;
+    EmployeeTable employee;
+    TourTable tour;
     NoteTable noteTable;
-    System system;
+    SystemTable system;
+    byte[] imageInBytes;
 
     public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,11 +39,11 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        user = new User();
-        employee = new Employee();
-        tour = new Tour();
+        user = new UserTable();
+        employee = new EmployeeTable();
+        tour = new TourTable();
         noteTable = new NoteTable();
-        system = new System();
+        system = new SystemTable();
         user.createTableUser(db);
         employee.createTableEmployee(db);
         tour.createTableTour(db);
@@ -96,16 +101,68 @@ public class Database extends SQLiteOpenHelper {
      * Lấy dữ liệu nhân viên
      * @author nnhiep 18.03.2023
      */
-    public Cursor getDataEmployee() {
+    public List<Employee> getDataEmployee(String sortBy, String order) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM employee";
+        List<Employee> data = new ArrayList<>();
+        String query = "SELECT * FROM employee ORDER BY " + sortBy + " " + order;
 
         Cursor cursor = null;
 
         if(db != null) {
             cursor = db.rawQuery(query, null);
         }
-        return cursor;
+
+        if (cursor != null) {
+            while (cursor.moveToNext()){
+                String id = cursor.getInt(0) + "";
+                String name = cursor.getString(1);
+                int age = cursor.getInt(2);
+                int gender = cursor.getInt(3);
+                String phone = cursor.getString(4);
+                String gmail = cursor.getString(5);
+                byte[] avatar = cursor.getBlob(6);
+                Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
+                Employee curEmployee = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
+                data.add(curEmployee);
+            }
+            cursor.close();
+        }
+
+        return data;
+    }
+
+    /**
+     * Lấy dữ liệu nhân viên theo ID
+     * @author nnhiep 24.03.2023
+     */
+    public Employee getDataEmployeeByID(String targetId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Employee data = null;
+        String query = "SELECT * FROM employee WHERE employee_id = \"" + targetId + "\"";
+
+        Cursor cursor = null;
+
+        if(db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        if (cursor != null) {
+            while (cursor.moveToFirst()){
+                String id = cursor.getInt(0) + "";
+                String name = cursor.getString(1);
+                int age = cursor.getInt(2);
+                int gender = cursor.getInt(3);
+                String phone = cursor.getString(4);
+                String gmail = cursor.getString(5);
+                byte[] avatar = cursor.getBlob(6);
+                Bitmap avatarBitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
+                data = new Employee(id, name, phone, gmail, age, gender, avatarBitmap);
+                break;
+            }
+            cursor.close();
+        }
+
+        return data;
     }
 
     /**
@@ -199,9 +256,12 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một nhân viên
      * @author nnhiep 18.03.2023
      */
-    public void insertAnEmployee(String name, int age, int gender, String phone, String gmail, byte[] avatar) {
+    public void insertAnEmployee(String name, int age, int gender, String phone, String gmail, Bitmap avatar) {
         Date now = new Date();
         SQLiteDatabase db = this.getWritableDatabase();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        avatar.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        imageInBytes = byteArrayOutputStream.toByteArray();
 
         ContentValues cv = new ContentValues();
 
@@ -210,7 +270,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("employee_gender", gender);
         cv.put("employee_phone", phone);
         cv.put("employee_gmail", gmail);
-        cv.put("employee_avatar", avatar);
+        cv.put("employee_avatar", imageInBytes);
         cv.put("employee_created_date", String.valueOf(now));
         cv.put("employee_modified_date", String.valueOf(now));
 
@@ -333,8 +393,11 @@ public class Database extends SQLiteOpenHelper {
      * Sửa thông tin nhân viên
      * @author nnhiep 18.03.2023
      */
-    public void updateAnEmployee(String row_id, String name, int age, int gender, String phone, String gmail, byte[] avatar) {
+    public void updateAnEmployee(String row_id, String name, int age, int gender, String phone, String gmail, Bitmap avatar) {
         SQLiteDatabase db = this.getWritableDatabase();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        avatar.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        imageInBytes = byteArrayOutputStream.toByteArray();
 
         ContentValues cv = new ContentValues();
 
@@ -343,7 +406,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("employee_gender", gender);
         cv.put("employee_phone", phone);
         cv.put("employee_gmail", gmail);
-        cv.put("employee_avatar", avatar);
+        cv.put("employee_avatar", imageInBytes);
         cv.put("employee_modified_date", String.valueOf(new Date()));
 
         long result =  db.update("employee", cv, "employee_id=?", new String[]{row_id});

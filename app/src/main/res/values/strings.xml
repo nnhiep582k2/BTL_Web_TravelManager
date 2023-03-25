@@ -54,11 +54,16 @@
     <string name="password_not_true">Mật khẩu không khớp</string>
     <string name="password_invalid">Mật khẩu không hợp lệ</string>
     <string name="confirm_password_invalid">Mật khẩu xác nhận không hợp lệ</string>
+    <string name="name_invalid">Tên không hợp lệ</string>
+    <string name="age_invalid">Tuổi không hợp lệ</string>
+    <string name="phone_invalid">Số điện thoại không hợp lệ</string>
+    <string name="gmail_invalid">Gmail không hợp lệ</string>
+    <string name="avatar_invalid">Ảnh không hợp lệ</string>
     <!-- Error -->
     <string name="error_occur">Có lỗi trong quá trình xử lý!</string>
     <!-- Dropdown search -->
     <string-array name="sort_employee">
-        <item>Sắp xếp</item>
+        <item>Sắp xếp theo ngày</item>
         <item>Sắp xếp theo tên</item>
         <item>Sắp xếp theo tuổi</item>
         <item>Sắp xếp theo giới tính</item>

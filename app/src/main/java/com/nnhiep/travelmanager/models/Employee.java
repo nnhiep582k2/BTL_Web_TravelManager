@@ -1,5 +1,7 @@
 package com.nnhiep.travelmanager.models;
 
+import android.graphics.Bitmap;
+
 import java.util.Date;
 
 /**
@@ -12,11 +14,11 @@ public class Employee extends BaseModel {
     // Tuổi, giới tính
     private int age, gender;
     // Ảnh đại diện
-    private int avatar;
+    private Bitmap avatar;
 
     public Employee() {}
 
-    public Employee(String id, String name, String phone, String gmail, int age, int gender, int avatar) {
+    public Employee(String id, String name, String phone, String gmail, int age, int gender, Bitmap avatar) {
         super("nnhiep", "nnhiep", new Date(), new Date());
         this.id = id;
         this.name = name;
@@ -75,11 +77,11 @@ public class Employee extends BaseModel {
         this.gender = gender;
     }
 
-    public int getAvatar() {
+    public Bitmap getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(Bitmap avatar) {
         this.avatar = avatar;
     }
 }
