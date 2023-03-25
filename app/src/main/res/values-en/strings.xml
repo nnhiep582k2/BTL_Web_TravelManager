@@ -104,4 +104,21 @@
     <string name="grid_view">Grid</string>
     <string name="list_view">List</string>
     <string name="add">Add</string>
+<!--setting-->
+    <string name="article_string">Rules</string>
+    <string name="article_subheading"> Content</string>
+
+    <string name="rules">Rules</string>
+    <string name="contact">Contact</string>
+    <string name="version">Version</string>
+    <string name="instruct">Instruct</string>
+    <string name="team_product">Team Product</string>
+
+    <string name="settings_set">Setting</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="change_language">Change language</string>
+
+    <string name="heading_instruct">Instruct</string>
+
+    <string name="subheading_in">Content</string>
 </resources>

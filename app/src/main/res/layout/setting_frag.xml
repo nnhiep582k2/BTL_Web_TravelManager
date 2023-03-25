@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brset"
+    android:orientation="vertical"
+    tools:context=".fragments.SettingsFragment"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:padding="14dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/settings_set"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+     <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <ImageView
+                 android:layout_width="100dp"
+                 android:layout_height="100dp"
+                 android:layout_gravity="center"
+                 android:layout_marginTop="10dp"
+                 android:src="@drawable/profile"/>
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:layout_marginTop="10dp"
+                 android:text="David Tom"
+                 android:textColor="@color/white"
+                 android:textSize="22dp"
+                 android:textStyle="bold"
+                 />
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:layout_marginTop="10dp"
+                 android:text="+81 190088888"
+                 android:textColor="@color/white"
+                 android:textSize="12dp"
+                 android:textStyle="bold"
+                 />
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:orientation="horizontal"
+                 android:layout_marginStart="20dp"
+                 android:layout_marginEnd="20dp"
+                 android:layout_marginTop="15dp"
+
+                 >
+
+
+                 <androidx.appcompat.widget.AppCompatButton
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="0dp"
+                     android:background="@drawable/bg_set_profile"
+                     android:paddingStart="30dp"
+                     android:paddingEnd="20dp"
+                     android:layout_marginLeft="30dp"
+                     android:text="@string/edit_profile"
+                     android:textAllCaps="false"
+                     android:textColor="@color/white" />
+
+                 <androidx.appcompat.widget.AppCompatButton
+                     android:id="@+id/changeLang"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="0dp"
+                     android:background="@drawable/bg_set_profile"
+                     android:paddingStart="30dp"
+                     android:paddingEnd="20dp"
+                     android:layout_marginLeft="30dp"
+                     android:text="@string/change_language"
+                     android:textAllCaps="false"
+                     android:textColor="@color/white" />
+
+             </LinearLayout>
+
+             <LinearLayout
+                 android:background="@drawable/round_back_while"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginStart="20dp"
+                 android:layout_marginEnd="20dp"
+                 android:layout_marginTop="40dp"
+                 android:orientation="vertical"
+                 android:padding="15dp" >
+
+                 <!--                 rules-->
+
+                 <RelativeLayout
+
+                     android:id="@+id/RelaRules"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                     <ImageView
+                         android:id="@+id/rulesicon"
+                         android:layout_width="40dp"
+                         android:layout_height="40dp"
+                         android:background="@drawable/round_rules"
+                         android:padding="12dp"
+                         android:src="@drawable/icons8_rules_64_set" />
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerVertical="true"
+                         android:layout_marginStart="60dp"
+                         android:text="@string/rules"
+                         android:textColor="@color/white"
+                         android:textStyle="bold" />
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentEnd="true"
+                         android:layout_centerVertical="true"
+                         android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+
+                 </RelativeLayout>
+<!--contact-->
+                 <RelativeLayout
+                     android:id="@+id/Relacontact"
+                     android:layout_marginTop="20dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                     <ImageView
+                         android:layout_width="40dp"
+                         android:id="@+id/contacticon"
+                         android:layout_height="40dp"
+                         android:src="@drawable/icons8_contact_64_set"
+                         android:background="@drawable/round_contact"
+                         android:padding="12dp"/>
+                     <TextView
+                         android:layout_marginStart="60dp"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerVertical="true"
+                         android:text="@string/contact"
+                         android:textColor="@color/white"
+                         android:textStyle="bold"
+                         />
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/baseline_keyboard_arrow_right_24"
+                         android:layout_alignParentEnd="true"
+                         android:layout_centerVertical="true"/>
+
+                 </RelativeLayout>
+
+<!--                 version-->
+
+                 <RelativeLayout
+                     android:id="@+id/RelaVersion"
+                     android:layout_marginTop="20dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                     <ImageView
+                         android:layout_width="40dp"
+                         android:id="@+id/versionicon"
+                         android:layout_height="40dp"
+                         android:src="@drawable/icons8_version_64_set"
+                         android:background="@drawable/round_version"
+                         android:padding="12dp"/>
+                     <TextView
+                         android:layout_marginStart="60dp"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerVertical="true"
+                         android:text="@string/version"
+                         android:textColor="@color/white"
+                         android:textStyle="bold"
+                         />
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/baseline_keyboard_arrow_right_24"
+                         android:layout_alignParentEnd="true"
+                         android:layout_centerVertical="true"/>
+
+
+                 </RelativeLayout>
+                     
+             </LinearLayout>
+
+
+<!--             round 2-->
+
+             <LinearLayout
+                 android:background="@drawable/round_back_while"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginStart="20dp"
+                 android:layout_marginEnd="20dp"
+                 android:layout_marginTop="40dp"
+                 android:orientation="vertical"
+                 android:padding="15dp" >
+
+                 <RelativeLayout
+                     android:id="@+id/RelaIntruct"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                     <ImageView
+                         android:layout_width="40dp"
+                         android:id="@+id/instructicon"
+                         android:layout_height="40dp"
+                         android:src="@drawable/icons8_open_book_64_set"
+                         android:background="@drawable/round_instruct"
+                         android:padding="12dp"/>
+                     <TextView
+                         android:layout_marginStart="60dp"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerVertical="true"
+                         android:text="@string/instruct"
+                         android:textColor="@color/white"
+                         android:textStyle="bold"
+                         />
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/baseline_keyboard_arrow_right_24"
+                         android:layout_alignParentEnd="true"
+                         android:layout_centerVertical="true"/>
+
+                 </RelativeLayout>
+
+                 <!--                 Team-->
+
+                 <RelativeLayout
+                     android:id="@+id/RelaTeam"
+                     android:layout_marginTop="20dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                     <ImageView
+                         android:layout_width="40dp"
+                         android:id="@+id/teamicon"
+                         android:layout_height="40dp"
+                         android:src="@drawable/icons8_team_64_set"
+                         android:background="@drawable/round_team"
+                         android:padding="12dp"/>
+                     <TextView
+                         android:layout_marginStart="60dp"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerVertical="true"
+                         android:text="@string/team_product"
+                         android:textColor="@color/white"
+                         android:textStyle="bold"
+                         />
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/baseline_keyboard_arrow_right_24"
+                         android:layout_alignParentEnd="true"
+                         android:layout_centerVertical="true"/>
+
+
+                 </RelativeLayout>
+
+                 <!--                 fqa-->
+
+                 <RelativeLayout
+                     android:id="@+id/RelaFqa"
+                     android:layout_marginTop="20dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                     <ImageView
+                         android:layout_width="40dp"
+                         android:id="@+id/fqaicon"
+                         android:layout_height="40dp"
+                         android:src="@drawable/icons8_question_64_set"
+                         android:background="@drawable/round_fqa"
+                         android:padding="12dp"/>
+                     <TextView
+                         android:layout_marginStart="60dp"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerVertical="true"
+                         android:text="FQA"
+                         android:textColor="@color/white"
+                         android:textStyle="bold"
+                         />
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/baseline_keyboard_arrow_right_24"
+                         android:layout_alignParentEnd="true"
+                         android:layout_centerVertical="true"/>
+
+
+                 </RelativeLayout>
+
+             </LinearLayout>
+
+
+         </LinearLayout>
+
+     </ScrollView>
+
+</LinearLayout>
