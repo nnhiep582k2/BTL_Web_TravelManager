@@ -61,6 +61,11 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+    public Cursor SelectData(String query) {
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(query, null);
+    }
     /**
      * Hàm truy vấn tự định nghĩa
      * @author nnhiep 18.03.2023

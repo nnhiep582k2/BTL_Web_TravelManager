@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private Database db;
-    private ArrayList<String> user_name, user_account, user_password, user_phone;
+    private ArrayList<String> user_id,user_name, user_account, user_password, user_phone;
     private ArrayList<Number> user_age, user_gender;
     private ArrayList<byte[]> user_avatar;
     private Button btnSignin;
@@ -128,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, this.getResources().getString(R.string.user_no_data), Toast.LENGTH_SHORT).show();
             } else {
                 cursor.moveToFirst();
+                user_id.add(cursor.getString(0));
                 user_name.add(cursor.getString(1));
                 user_age.add(cursor.getInt(2));
                 user_gender.add(cursor.getInt(3));
