@@ -37,6 +37,7 @@ public class Employee {
                 + COLUMN_PHONE + " VARCHAR(50), " + COLUMN_AVATAR + " BLOB);";
         db.execSQL(query);
     }
+
 }
 
 

@@ -1,16 +1,26 @@
 package com.nnhiep.travelmanager.fragments;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.views.Add_Tour;
+
+import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.views.User_TTin;
+import com.nnhiep.travelmanager.views.User_TTin_Edit;
+
+import java.util.ArrayList;
 
 /**
  * Trang quản lý thông tin cá nhân - Quốc
@@ -18,13 +28,15 @@ import com.nnhiep.travelmanager.views.User_TTin;
 public class UserFragment extends Fragment {
     public UserFragment() {}
 
-    private TextView tvTTin;
+    private TextView tvTTin,txtuser;
     private TextView tvTourLove;
     private TextView tvTBao;
     private TextView tvDKhoan;
+    private static Database db;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -38,6 +50,8 @@ public class UserFragment extends Fragment {
         tvTourLove = v.findViewById(R.id.txtuserlove);
         tvTBao = v.findViewById(R.id.txtTbao);
         tvDKhoan = v.findViewById(R.id.txtDKhoan);
+        txtuser = v.findViewById(R.id.txtuser);
+
         //bat su kien text view
         tvTTin.setOnClickListener(new View.OnClickListener() {
             @Override

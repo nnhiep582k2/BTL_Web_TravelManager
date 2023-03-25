@@ -8,7 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.nnhiep.travelmanager.R;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Cơ sở dữ liệu của chương trình
@@ -22,6 +25,7 @@ public class Database extends SQLiteOpenHelper {
     Schedule schedule;
     Tour tour;
     Note note;
+
 
     public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 2);
@@ -68,6 +72,11 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+
+    public Cursor SelectData(String query) {
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(query, null);
+    }
     // region Get
     /**
      * Lấy dữ liệu người dùng
@@ -253,13 +262,12 @@ public class Database extends SQLiteOpenHelper {
     }
     // endregion
 
-
     // region Update
     /**
      * Sửa thông tin người dùng
      * @author nnhiep 18.03.2023
      */
-    public void updateAnEmployee(String row_id, String name, int age, int gender, String account, String pasword, String phone, byte[] avatar) {
+    public void updateAnEmployee(byte[] avatar,String row_id, String name, int age, int gender, String account, String pasword, String phone) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -475,5 +483,9 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM tour");
     }
+
+    public void insertAnEmployee(com.nnhiep.travelmanager.models.Employee employee) {
+    }
+
     // endregion
 }

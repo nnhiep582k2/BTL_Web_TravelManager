@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityRegisterBinding;
-import com.nnhiep.travelmanager.models.Schedule;
 
 public class RegisterActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
@@ -34,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String account = eTxtAccount.getText().toString();
                 String password = eTxtPassword.getText().toString();
                 db.deleteAllEmployee();
-                db.insertAnEmployee(account, 0, 0, account, password, "", null);
+                db.insertAnEmployee("", 0, 0, account, password, "", null);
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 setResult(150, intent);
                 finish();

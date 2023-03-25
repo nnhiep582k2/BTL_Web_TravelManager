@@ -49,7 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         btnSignin.setOnClickListener(v -> {
             if(validate()) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(LoginActivity.this, User_DKTTin.class);
+                startActivityForResult(intent,200);
             }
         });
 

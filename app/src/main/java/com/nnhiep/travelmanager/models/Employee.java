@@ -5,29 +5,37 @@ package com.nnhiep.travelmanager.models;
  * @author nnhiep 18.03.2023
  */
 public class Employee {
+    // Ảnh đại diện
+    private byte[] avatar;
     // ID, tên, số điện thoại, tài khoản, mật khẩu
     private String id, name, phone, account, password;
     // Tuổi, giới tính
     private int age, gender;
-    // Ảnh đại diện
-    private byte[] avatar;
 
-    public Employee() {}
 
     public Employee(String account, String password) {
         this.account = account;
         this.password = password;
     }
+    public Employee(String name) {
+        this.account = name;
 
-    public Employee(String id, String name, String phone, String account, String password, int age, int gender, byte[] avatar) {
+    }
+
+    public Employee(byte[] avatar){
+        this.avatar = avatar;
+    }
+    public Employee(byte[] avatar,String id, String name, int age, int gender, String account, String password, String phone) {
         this.id = id;
+        this.avatar = avatar;
         this.name = name;
-        this.phone = phone;
-        this.account = account;
-        this.password = password;
         this.age = age;
         this.gender = gender;
-        this.avatar = avatar;
+        this.account = account;
+        this.password = password;
+        this.phone = phone;
+
+
     }
 
     public String getId() {
@@ -93,4 +101,9 @@ public class Employee {
     public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
     }
+
+    public void notifyDataSetChanged() {
+    }
 }
+
+
