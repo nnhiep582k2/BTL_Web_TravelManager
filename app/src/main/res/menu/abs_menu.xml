@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+<<<<<<< HEAD
     <item
         android:title="register"
         android:icon="@drawable/baseline_playlist_add_24"/>
@@ -9,5 +10,16 @@
      <item
         android:title="delete"
         android:icon="@drawable/baseline_delete_24"/>
+=======
+   <item
+       android:title="register"
+       android:icon="@drawable/baseline_playlist_add_24"/>
+<!--    <item-->
+<!--       android:title="delete"-->
+<!--       android:icon="@drawable/delete"/>-->
+
+
+
+>>>>>>> 319c104 (fear: add files)
 
 </menu>
