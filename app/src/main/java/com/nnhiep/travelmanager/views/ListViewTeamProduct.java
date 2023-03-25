@@ -6,16 +6,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.databinding.ActivityMainBinding;
 import com.nnhiep.travelmanager.databinding.ListviewTeamproductMainBinding;
 
 import java.util.ArrayList;
 
-public class ListView_TeamProduct extends AppCompatActivity {
+public class ListViewTeamProduct extends AppCompatActivity {
     //ActivityMainBinding binding;
     private ListviewTeamproductMainBinding binding;
     private ListView lst;
@@ -36,15 +34,15 @@ public class ListView_TeamProduct extends AppCompatActivity {
         String[] country = {"Ha Noi","Singapore","Campuchia","ThaiLan","Korea"};
 
 
-        ArrayList<User_List_Team> user_arrayList = new ArrayList<>();
+        ArrayList<UserListTeam> user_arrayList = new ArrayList<>();
         for (int i =0;i<imageId.length;i++){
-            User_List_Team user = new User_List_Team(name[i],lastMessage[i],lastmsgTime[i],phone[i],country[i],imageId[i]);
+            UserListTeam user = new UserListTeam(name[i],lastMessage[i],lastmsgTime[i],phone[i],country[i],imageId[i]);
             user_arrayList.add(user);
 
         }
 
 
-        ListAdapter_TeamPro_Set lstAdapter = new ListAdapter_TeamPro_Set(ListView_TeamProduct.this, user_arrayList);
+        ListAdapterTeamProSet lstAdapter = new ListAdapterTeamProSet(ListViewTeamProduct.this, user_arrayList);
 //       lst.setAdapter(lstAdapter);
         binding.listview.setAdapter(lstAdapter);
 //       lst.setClickable(true);
@@ -53,7 +51,7 @@ public class ListView_TeamProduct extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent m = new Intent(ListView_TeamProduct.this,UserActivity.class);
+                Intent m = new Intent(ListViewTeamProduct.this,UserActivity.class);
                 m.putExtra("name",name[position]);
                 m.putExtra("phone",phone[position]);
                 m.putExtra("country",country[position]);
