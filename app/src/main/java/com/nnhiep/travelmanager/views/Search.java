@@ -379,7 +379,7 @@ public class Search extends AppCompatActivity  implements SearchView.OnQueryText
 
     //Được gọi khi văn bản truy vấn được thay đổi bởi người dùng
     @Override
-    //tìm kiếm theo ngày,tháng,năm
+    //tìm kiếm theo ngày,tháng,năm or theo mô tả
     public boolean onQueryTextChange(String newText) {
         //khởi tạo một mảng để lưu những kq tìm kiếm
         searchList=new ArrayList<>();
@@ -387,7 +387,8 @@ public class Search extends AppCompatActivity  implements SearchView.OnQueryText
         for(DSTour dsTour1:arrayList)
         {
             String title=dsTour1.getDate();
-            if(title.contains(newText))
+            String a=dsTour1.getPrice();
+            if(title.contains(newText) || a.contains(newText))
             {
                 searchList.add(dsTour1);
             }

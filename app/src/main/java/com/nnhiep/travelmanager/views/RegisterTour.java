@@ -30,27 +30,19 @@ public class RegisterTour extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_tour);
-<<<<<<< HEAD
 
-=======
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
         Tour_database db = new Tour_database(this);
 
         listView = findViewById(R.id.listview_register_tour);
         arrayList = db.getRegisterData();
         adapter = new TourAdapter(this, arrayList);
         listView.setAdapter(adapter);
-<<<<<<< HEAD
         adapter.notifyDataSetChanged();
-=======
-         adapter.notifyDataSetChanged();
-        listView.setMultiChoiceModeListener(modeListener);
-        listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
-
-
     }
-<<<<<<< HEAD
+}
+//        listView.setMultiChoiceModeListener(modeListener);
+//        listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
+
 //     AbsListView.MultiChoiceModeListener modeListener= new AbsListView.MultiChoiceModeListener() {
 //         @Override
 //         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -107,40 +99,38 @@ public class RegisterTour extends AppCompatActivity {
 //         }
 //     };
 
-}
-=======
 
-    private void showRegisterdata() {
-        arrayList = db.getTourData();
-        adapter = new TourAdapter(this, arrayList);
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-    }
-
-    AbsListView.MultiChoiceModeListener modeListener = new AbsListView.MultiChoiceModeListener() {
-        @Override
-        //Khi người dùng nhấn chọn một item nào đó thì nó sẽ arraylist sẽ lấy vị tri của phần tử đó,rôì lấy id
-        public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-             dsTour=arrayList.get(position);
-             Tid= dsTour.getId();
-
-        }
-
-        //phương thức khởi tạo
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            getMenuInflater().inflate(R.menu.abs_menu, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
-        }
-
-        //khi người dùng nhấp vào item
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+//    private void showRegisterdata() {
+//        arrayList = db.getTourData();
+//        adapter = new TourAdapter(this, arrayList);
+//        listView.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
+//    }
+//
+//    AbsListView.MultiChoiceModeListener modeListener = new AbsListView.MultiChoiceModeListener() {
+//        @Override
+//        //Khi người dùng nhấn chọn một item nào đó thì nó sẽ arraylist sẽ lấy vị tri của phần tử đó,rôì lấy id
+//        public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+//             dsTour=arrayList.get(position);
+//             Tid= dsTour.getId();
+//
+//        }
+//
+//        //phương thức khởi tạo
+//        @Override
+//        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+//            getMenuInflater().inflate(R.menu.abs_menu, menu);
+//            return true;
+//        }
+//
+//        @Override
+//        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+//            return false;
+//        }
+//
+//        //khi người dùng nhấp vào item
+//        @Override
+//        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 //            if (item.getTitle().equals("delete")) {
 //                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterTour.this);
 //                builder.setTitle("delete")
@@ -168,14 +158,11 @@ public class RegisterTour extends AppCompatActivity {
 //                builder.create().show();
 //            }
 ////
-       return true;
-    }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-
-        }
-    };
-}
-
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
+//       return true;
+//    }
+//
+//        @Override
+//        public void onDestroyActionMode(ActionMode mode) {
+//
+//        }
+//    };
