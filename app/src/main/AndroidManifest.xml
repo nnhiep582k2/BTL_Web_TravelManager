@@ -19,6 +19,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelManager"
         tools:targetApi="31">
+
+        <activity android:name=".views.ListView_TeamProduct"
+            android:exported="false" />
+        <activity android:name=".views.UserActivity"
+            android:exported="false" />
+        <activity android:name=".views.Rules_Set"
+            android:exported="false" />
+        <activity android:name=".views.Instruct_Set"
+            android:exported="false" />
+        <activity android:name=".views.FQA_Set"
+            android:exported="false" />
         <activity
             android:name=".views.AddEmployeeActivity"
             android:exported="false">

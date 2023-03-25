@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.FQA_Set">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/artice_hading"
+        android:background="@color/primary"
+        android:textColor="@color/white"
+        android:padding="@dimen/pading"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold"
+        android:text="@string/heading_fqa"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_subheading"
+        android:layout_below="@id/artice_hading"
+        android:padding="@dimen/pading"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+        android:text="@string/sub_fqa"
+        android:background="@color/primary_bolder"
+
+
+        />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_subheading">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paragrap_fqa"
+            android:id="@+id/article"
+            android:layout_below="@id/article_subheading"
+            android:lineSpacingExtra="5sp"
+            android:padding="@dimen/pading"
+
+
+            />
+    </ScrollView>
+
+</RelativeLayout>
