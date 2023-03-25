@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.nnhiep.travelmanager.R;
 
-public class Instruct_Set extends AppCompatActivity {
+public class RulesSet extends AppCompatActivity {
+
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.instruction_main);
+        setContentView(R.layout.rules_setting);
+
     }
 }

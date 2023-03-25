@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.nnhiep.travelmanager.R;
-import com.nnhiep.travelmanager.views.FQA_Set;
-import com.nnhiep.travelmanager.views.Instruct_Set;
-import com.nnhiep.travelmanager.views.ListView_TeamProduct;
-import com.nnhiep.travelmanager.views.Rules_Set;
+import com.nnhiep.travelmanager.views.FQASet;
+import com.nnhiep.travelmanager.views.InstructSet;
+import com.nnhiep.travelmanager.views.ListViewTeamProduct;
+import com.nnhiep.travelmanager.views.RulesSet;
 
 /**
  * Trang thiết lập - Bắc
@@ -41,7 +41,7 @@ public class SettingsFragment extends Fragment {
         imageFQA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), FQA_Set.class);
+                Intent intent = new Intent(getActivity(), FQASet.class);
                 startActivity(intent);
             }
         });
@@ -49,14 +49,14 @@ public class SettingsFragment extends Fragment {
         imginstruct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Instruct_Set.class);
+                Intent intent = new Intent(getActivity(), InstructSet.class);
                 startActivity(intent);
             }
         });
         imgRules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Rules_Set.class);
+                Intent intent = new Intent(getActivity(), RulesSet.class);
                 startActivity(intent);
             }
         });
@@ -76,7 +76,7 @@ public class SettingsFragment extends Fragment {
         imgTeam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),ListView_TeamProduct.class);
+                Intent intent = new Intent(getActivity(), ListViewTeamProduct.class);
                 startActivity(intent);
             }
         });

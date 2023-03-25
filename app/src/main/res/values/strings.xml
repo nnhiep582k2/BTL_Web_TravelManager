@@ -103,6 +103,7 @@
     <string name="grid_view">Lưới</string>
     <string name="list_view">Danh sách</string>
     <string name="add">Thêm</string>
+    <!-- Settings -->
     <string name="article_string" translatable="false">Điều khoản và chính sách</string>
     <string name="article_subheading" translatable="false"> Nội dung</string>
     <string name="paragraph" translatable="false">

@@ -15,16 +15,16 @@ import com.nnhiep.travelmanager.R;
 
 import java.util.ArrayList;
 
-public class ListAdapter_TeamPro_Set extends ArrayAdapter<User_List_Team> {
+public class ListAdapterTeamProSet extends ArrayAdapter<UserListTeam> {
 
-    public ListAdapter_TeamPro_Set(Context context, ArrayList<User_List_Team> userArrayList){
+    public ListAdapterTeamProSet(Context context, ArrayList<UserListTeam> userArrayList){
           super(context,R.layout.list_item_teamproduct,userArrayList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-          User_List_Team user = getItem(position);
+          UserListTeam user = getItem(position);
           if (convertView == null)
           {
               convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_teamproduct,parent,false);
