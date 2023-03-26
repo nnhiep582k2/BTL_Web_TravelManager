@@ -27,7 +27,7 @@ public class Tour_database extends SQLiteOpenHelper {
 
 
     public Tour_database(@Nullable Context context) {
-        super(context,DB_NAME,null,3);
+        super(context,DB_NAME,null,2);
         SQLiteDatabase db=this.getWritableDatabase();
 
     }
@@ -37,7 +37,6 @@ public class Tour_database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + "(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,price TEXT,star TEXT,date TEXT,image BLOB)");
         db.execSQL("create table " + TABLE_REGISTER + "(id INTEGER PRIMARY KEY ,title TEXT,price TEXT,star TEXT,date TEXT,image BLOB)");
-
     }
 
     @Override

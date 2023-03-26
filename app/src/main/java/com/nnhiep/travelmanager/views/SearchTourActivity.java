@@ -545,6 +545,7 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
         adapter.searchFilter(searchList);
         return true;
     }
+
     //sắp xếp theo ngày tháng từ gần tới xa của Tour
       private void SortDes ()
         {
