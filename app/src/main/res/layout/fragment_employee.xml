@@ -64,6 +64,7 @@
         android:text="@string/no_data"
         android:visibility="gone"
         android:layout_weight="1"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:gravity="center"/>
 
