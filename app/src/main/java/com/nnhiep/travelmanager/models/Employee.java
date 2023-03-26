@@ -1,7 +1,6 @@
 package com.nnhiep.travelmanager.models;
 
 import android.graphics.Bitmap;
-
 import java.util.Date;
 
 /**

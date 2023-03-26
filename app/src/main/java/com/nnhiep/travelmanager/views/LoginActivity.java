@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         db = new Database(this);
 
         checkUserExist();
-
         setup_ui();
 
         // Xử lý sự kiện click đăng nhập - nnhiep 18.03.2023

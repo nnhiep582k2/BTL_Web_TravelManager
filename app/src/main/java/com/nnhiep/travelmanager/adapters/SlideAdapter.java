@@ -1,13 +1,11 @@
 package com.nnhiep.travelmanager.adapters;
 
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.models.SlideItem;
 import java.util.List;
@@ -46,7 +44,6 @@ public class SlideAdapter extends RecyclerView.Adapter<SlideAdapter.SlideViewHol
     public int getItemCount() {
         return slideitem.size();
     }
-
 
     class SlideViewHolder extends RecyclerView.ViewHolder {
         private RoundedImageView imageview;

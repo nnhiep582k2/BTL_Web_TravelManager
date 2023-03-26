@@ -8,10 +8,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,43 +17,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
-import com.nnhiep.travelmanager.databinding.ActivityAddEmployeeBinding;
-import com.nnhiep.travelmanager.databinding.UserLviewBinding;
-import com.nnhiep.travelmanager.databinding.UserThongtinBinding;
-import com.nnhiep.travelmanager.fragments.EmployeeFragment;
-import com.nnhiep.travelmanager.models.Employee;
-import com.nnhiep.travelmanager.models.User;
-
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class User_TTin_Edit extends AppCompatActivity {
     private ImageView imgavatar;
-    private EditText edtId, edtName, edtAge, edtGender, edtAccount, edtPass, edtPhone;
+    private EditText edtId, edtName, edtAge, edtAccount, edtPass, edtPhone;
     private Button btnBack, btnOK;
-    private ArrayList<String> user_name, user_account, user_password, user_phone;
-    private UserThongtinBinding binding;
-    private ArrayList<Number> user_age, user_gender;
-    private ArrayList<byte[]> user_avatar;
     Spinner spinnerGender;
     private static Database db;
-    private Bitmap bitmap;
-    private User user;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,7 +63,6 @@ public class User_TTin_Edit extends AppCompatActivity {
         String pass = c.getString(5);
         String phone = c.getString(6);
         byte[] image = c.getBlob(7);
-
         edtId.setText(id);
         edtName.setText(name);
         edtAge.setText(String.valueOf(age));
@@ -105,71 +82,46 @@ public class User_TTin_Edit extends AppCompatActivity {
             imgavatar.setImageBitmap(bitmap);
         }
         ActivityResultLauncher<Intent> activityPickerResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                            Uri uri = result.getData().getData();
-                            try {
-                                InputStream inputStream = getContentResolver().openInputStream(uri);
-                                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                                imgavatar.setImageBitmap(bitmap);
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Uri uri = result.getData().getData();
+                        try {
+                            InputStream inputStream = getContentResolver().openInputStream(uri);
+                            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                            imgavatar.setImageBitmap(bitmap);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
                         }
                     }
                 });
         imgavatar = (ImageView) findViewById(R.id.imgavatar);
-        imgavatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                activityPickerResultLauncher.launch(intent);
-            }
+        imgavatar.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            activityPickerResultLauncher.launch(intent);
         });
         btnBack = (Button) findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        btnBack.setOnClickListener(view -> finish());
         btnOK = (Button) findViewById(R.id.btnOK);
-        btnOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String id = edtId.getText().toString().trim();
-                String name = edtName.getText().toString().trim();
-                int age = Integer.parseInt(edtAge.getText().toString().trim());
-                String genderStr = spinnerGender.getSelectedItem().toString().trim();
-                int gender = genderStr.equals("Male") ? 0 : 1;
-
-                String account = edtAccount.getText().toString().trim();
-                String pass = edtPass.getText().toString().trim();
-                String phone = edtPhone.getText().toString().trim();
-
-
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) imgavatar.getDrawable();
-                Bitmap bitmap = bitmapDrawable.getBitmap();
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 1, byteArrayOutputStream);
-                byte[] image = byteArrayOutputStream.toByteArray();
-
-
-                db.updateAnUser( id, name, age, gender, account, pass, phone,image);
-                Intent intent = new Intent(User_TTin_Edit.this, User_TTin.class);
-                startActivityForResult(intent, 100);
-            }
+        btnOK.setOnClickListener(view -> {
+            String id1 = edtId.getText().toString().trim();
+            String name1 = edtName.getText().toString().trim();
+            int age1 = Integer.parseInt(edtAge.getText().toString().trim());
+            String genderStr = spinnerGender.getSelectedItem().toString().trim();
+            int gender1 = genderStr.equals("Male") ? 0 : 1;
+            String account1 = edtAccount.getText().toString().trim();
+            String pass1 = edtPass.getText().toString().trim();
+            String phone1 = edtPhone.getText().toString().trim();
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) imgavatar.getDrawable();
+            Bitmap bitmap = bitmapDrawable.getBitmap();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 1, byteArrayOutputStream);
+            byte[] image1 = byteArrayOutputStream.toByteArray();
+            db.updateAnUser(id1, name1, age1, gender1, account1, pass1, phone1, image1);
+            Intent intent = new Intent(User_TTin_Edit.this, User_TTin.class);
+            startActivityForResult(intent, 100);
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
+        btnBack.setOnClickListener(view -> finish());
         edtName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -209,7 +161,6 @@ public class User_TTin_Edit extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String phoneNumber = s.toString().trim();
@@ -226,15 +177,12 @@ public class User_TTin_Edit extends AppCompatActivity {
 
             }
         });
-
-        
     }
+
     private void setupSpinner() {
         ArrayList<String> arrayGender = new ArrayList<>();
         arrayGender.add(this.getResources().getString(R.string.male));
         arrayGender.add(this.getResources().getString(R.string.female));
-
-
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arrayGender);
         spinnerGender.setAdapter(adapter);
         final int[] gender = {0}; // 0 là male, 1 là female
@@ -244,7 +192,6 @@ public class User_TTin_Edit extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 String selectedGender = adapterView.getItemAtPosition(position).toString();
-
                 if (selectedGender.equals("Male")) {
                     gender[0] = 0;
                 } else if (selectedGender.equals("Female")) {
@@ -257,9 +204,6 @@ public class User_TTin_Edit extends AppCompatActivity {
 
             }
         });
-
     }
-
-    
 }
 

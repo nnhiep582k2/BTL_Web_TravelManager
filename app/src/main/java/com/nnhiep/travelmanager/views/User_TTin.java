@@ -1,58 +1,30 @@
 package com.nnhiep.travelmanager.views;
+
 import android.content.Intent;
 import android.database.Cursor;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
-import com.nnhiep.travelmanager.databinding.ActivityLoginBinding;
 import com.nnhiep.travelmanager.databinding.UserLviewBinding;
-import com.nnhiep.travelmanager.fragments.UserFragment;
-import com.nnhiep.travelmanager.models.Employee;
 import com.nnhiep.travelmanager.models.User;
-
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-
 public class User_TTin extends AppCompatActivity {
-    private Button btnEdit;
     private TextView txtid, txtName, txtAge, txtGender, txtAccount, txtPass, txtSDT;
-
     private ImageView avatar;
     Database db;
     private ArrayList<String> user_id, user_name, user_account, user_password, user_phone;
     private UserLviewBinding binding;
     private Button btn_edit, btn_back;
-
     private ArrayList<Number> user_age, user_gender;
     private ArrayList<byte[]> user_avatar;
-    Cursor cursor = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,23 +36,15 @@ public class User_TTin extends AppCompatActivity {
         db = new Database(this);
         setup_ui();
 
-
-        btn_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(User_TTin.this, User_TTin_Edit.class);
-                startActivity(intent);
-            }
-        });
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish(); // Đóng màn hình hiện tại
-            }
+        btn_edit.setOnClickListener(view -> {
+            Intent intent = new Intent(User_TTin.this, User_TTin_Edit.class);
+            startActivity(intent);
         });
 
+        btn_back.setOnClickListener(view -> {
+            finish(); // Đóng màn hình hiện tại
+        });
     }
-
 
     @Override
     protected void onResume() {
@@ -95,7 +59,6 @@ public class User_TTin extends AppCompatActivity {
             avatar.setImageBitmap(bitmap1); // Hiển thị ảnh
         }
 
-
         txtid.setText(user.getId());
         txtName.setText(user.getName());
         txtAge.setText(String.valueOf(user.getAge()));
@@ -106,7 +69,6 @@ public class User_TTin extends AppCompatActivity {
             genderText = "Female";
         }
         txtGender.setText(genderText);
-
         txtAccount.setText(user.getAccount());
         txtPass.setText(user.getPassword());
         txtSDT.setText(user.getPhone());
@@ -135,10 +97,7 @@ public class User_TTin extends AppCompatActivity {
         txtSDT = binding.txtSDT;
         btn_edit = binding.btnEdit;
         btn_back = binding.btnQlai;
-
-
         getDataUser();
-
     }
 
     /**

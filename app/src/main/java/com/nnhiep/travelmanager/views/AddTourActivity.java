@@ -1,9 +1,7 @@
 package com.nnhiep.travelmanager.views;
 
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,16 +15,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.fragments.TourFragment;
-
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class AddTourActivity extends AppCompatActivity {
-    Button btnAdd_tour, btnCancel_tour, btnEdit_tour;
+    Button btnAdd_tour;
     EditText IdTour, NameTour, FeeTour;
     ImageButton ImgCamera, ImgFolder;
     ImageView img_Tour;
@@ -49,7 +45,6 @@ public class AddTourActivity extends AppCompatActivity {
                 //chuyển về bitmap
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 img_Tour.setImageBitmap(bitmap);
-
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -61,7 +56,6 @@ public class AddTourActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_tour);
-
         //nhận dữ liệu từ intent khác gửi sang
         Intent intent = getIntent();
         //lay bundle
@@ -75,8 +69,6 @@ public class AddTourActivity extends AppCompatActivity {
             NameTour.setText(name);
             FeeTour.setText(phone);
             btnAdd_tour.setText("Edit");
-
-
         }
 
         //bắt sự kiện khi click vào camera  -ltphuong 18/03/2023
@@ -86,7 +78,6 @@ public class AddTourActivity extends AppCompatActivity {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, request_code_camera);
             }
-            //đổ dữ liệu ra imageview
         });
 
         //bắt sự kiện khi click vào folder -ltphuong 18/03/2023
@@ -114,75 +105,9 @@ public class AddTourActivity extends AppCompatActivity {
                 //chuyển về mảng Byte
                 byte[] hinhAnh = byteArray.toByteArray();
                 //Thêm Tour
-//                db.insertATour(IdTour.getText().toString().trim(),NameTour.getText().toString().trim(),
-//                               FeeTour.getText().toString().trim(),null,
-//                        null,null,null,null,hinhAnh);
                 Toast.makeText(AddTourActivity.this, "Thêm Tour Thành Công ", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(AddTourActivity.this, TourFragment.class));
             }
         });
     }
 }
-
-//        btnEdit_tour.setOnClickListener(new View.OnClickListener() {
-//                                            @Override
-//                                            public void onClick(View v) {
-//                                                int id = Integer.parseInt(IdTour.getText().toString());
-//                                                String title = NameTour.getText().toString();
-//                                                String price = FeeTour.getText().toString();
-//                                                BitmapDrawable bitmapDrawable = (BitmapDrawable) img_Tour.getDrawable();
-//                                                Bitmap bitmap = bitmapDrawable.getBitmap();
-//                                                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//                                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-//                                                byte[] hinhAnh = byteArrayOutputStream.toByteArray();
-//                                            })
-//                Intent intent=new Intent();
-//                Bundle b=new Bundle();
-//               b.putInt("Id",id);
-//                b.putString("Title",title);
-//               b.putString("Price",price);
-//               b.putByteArray("Image",hinhAnh);
-//               intent.putExtras(b);
-//                setResult(150,intent);
-//               finish();
-//                                            }
-//                                        });
-
-
-//bắt sự kiện khi nhấn nút Add
-//        btnAdd_tour.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //chuyen data imageview _>byte[]
-//                BitmapDrawable bitmapDrawable= (BitmapDrawable) img_Tour.getDrawable();
-//                Bitmap bitmap = bitmapDrawable.getBitmap();
-//                ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
-//                bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream) ;
-//                byte[] hinhAnh =byteArrayOutputStream.toByteArray();
-//                Search.database.insertTour(
-//                        IdTour.getText().toString().trim(),
-//                        NameTour.getText().toString().trim(),
-//                        FeeTour.getText().toString().trim(),
-//                        hinhAnh
-//
-//
-//
-////                );
-//                Toast.makeText(Add_Tour.this, "Đã thêm", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(Add_Tour.this,Search.class));
-//            }
-//        });
-//
-//
-//}
-
-//    private void Anhxa() {
-//            btnAdd_tour=(Button) findViewById(R.id.btnAdd_Tour);
-//            btnEdit_tour=(Button) findViewById(R.id.btnCancel);
-//            IdTour= (EditText) findViewById(R.id.Id_tour);
-//            NameTour= (EditText) findViewById(R.id.Name_tour);
-//            FeeTour= (EditText) findViewById(R.id.Fee_Tour);
-//            img_Tour= (ImageView) findViewById(R.id.img_tour);
-//            ImgCamera= (ImageButton) findViewById(R.id.img_camera);
-//            ImgFolder=(ImageButton) findViewById(R.id.img_folder);
-//    }

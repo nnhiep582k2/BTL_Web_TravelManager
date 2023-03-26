@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Permissions nnhiep - 21.03.2023 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -25,7 +26,7 @@
             android:name=".views.RegisterTour"
             android:exported="false" />
         <activity
-            android:name=".views.register_detail"
+            android:name=".models.RegisterDetail"
             android:exported="false" />
         <activity
             android:name=".views.ListViewTeamProduct"
@@ -40,7 +41,7 @@
             android:name=".views.InstructSet"
             android:exported="false" />
         <activity
-            android:name=".views.FQASet"
+            android:name=".views.FAQSet"
             android:exported="false" />
         <activity
             android:name=".views.AddEmployeeActivity"
@@ -64,10 +65,8 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -117,7 +116,5 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
     </application>
-
 </manifest>
