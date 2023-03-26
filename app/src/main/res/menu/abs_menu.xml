@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="register"
+        android:icon="@drawable/baseline_playlist_add_24"/>
+     <item
+        android:title="update"
+        android:icon="@drawable/baseline_update_24"/>
+     <item
+        android:title="delete"
+        android:icon="@drawable/baseline_delete_24"/>
+</menu>

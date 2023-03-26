@@ -7,11 +7,30 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
+<<<<<<< HEAD
             <value value="C:\Users\Admin\.android\avd\Pixel_6_Pro_API_30.avd" />
+=======
+            <value value="C:\Users\PHUONG\.android\avd\Pixel_XL_API_33_2.avd" />
+>>>>>>> b450485 (dfghj)
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     <timeTargetWasSelectedWithDropDown value="2023-03-26T04:28:55.977244700Z" />
+=======
+    <timeTargetWasSelectedWithDropDown value="2023-03-26T02:31:48.920961700Z" />
+>>>>>>> b450485 (dfghj)
+=======
+    <timeTargetWasSelectedWithDropDown value="2023-03-26T02:31:48.920961700Z" />
+=======
+    <timeTargetWasSelectedWithDropDown value="2023-03-20T14:38:33.939585900Z" />
+>>>>>>> 23e446c (them sua xoa tour)
+>>>>>>> 3198384 (feat: xu ly conflict)
+=======
+    <timeTargetWasSelectedWithDropDown value="2023-03-26T05:37:38.066337100Z" />
+>>>>>>> 84f2ddd (da fix xong ,cho merge)
   </component>
 </project>

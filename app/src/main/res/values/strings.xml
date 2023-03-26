@@ -34,7 +34,7 @@
     <string name="delete_schedule_success">Xóa lịch trình thành công!</string>
     <string name="delete_tour_success">Xóa tour thành công!</string>
     <!-- Login -->
-    <string name="user_no_data">Chưa có tài khoản nào trong hệ thống</string>
+    <string name="user_no_data">Không có dữ liệu</string>
     <string name="login_success">Đăng nhập thành công!</string>
     <string name="register_success">Đăng ký thành công!</string>
     <string name="login_title">Bạn đã có tài khoản?</string>
@@ -313,7 +313,6 @@ Trang web này và nội dung của nó nhằm tuân thủ luật pháp và quy 
          \n
         *các nội dung cần thiết khác theo yêu cầu của Ban quản lý CBT
     </string>
-
     <string name="rules">Chính sách và bảo mật</string>
     <string name="contact">Liên lạc</string>
     <string name="version">Phiên Bản</string>
@@ -323,5 +322,6 @@ Trang web này và nội dung của nó nhằm tuân thủ luật pháp và quy 
     <string name="settings_set">Cài đặt</string>
     <string name="edit_profile">Chỉnh sửa cá nhân</string>
     <string name="change_language">Thay đổi ngôn ngữ</string>
+
 
 </resources>

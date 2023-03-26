@@ -38,9 +38,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SearchTourActivity extends AppCompatActivity  implements SearchView.OnQueryTextListener {
+public class Search extends AppCompatActivity  implements SearchView.OnQueryTextListener {
     TextView et_title,et_price,et_star,et_date;
-     EditText et_title1,et_price1,et_star1,et_date1;
     Tour_database db;
     ImageView img_Tour;
     ListView lst;
@@ -74,7 +73,7 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SearchTourActivity.this,RegisterTour.class);
+                Intent intent=new Intent(Search.this,RegisterTour.class);
                 startActivity(intent);
             }
         });
@@ -110,7 +109,7 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getTitle().equals("New"))
         {
-             LayoutInflater inflater=(LayoutInflater) SearchTourActivity.this.getSystemService(LAYOUT_INFLATER_SERVICE);
+             LayoutInflater inflater=(LayoutInflater) Search.this.getSystemService(LAYOUT_INFLATER_SERVICE);
         View view=inflater.inflate(R.layout.activity_add_tour,null);
 
          et_title=view.findViewById(R.id.Name_tour_detail);
@@ -132,7 +131,7 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
                                             startActivityForResult(intent, 200);
                                         }
                                     });
-        AlertDialog.Builder builder=new AlertDialog.Builder(SearchTourActivity.this);
+        AlertDialog.Builder builder=new AlertDialog.Builder(Search.this);
         builder.setView(view)
                 .setTitle("Adding new Tour")
                 .setMessage("Enter Tour information")
@@ -148,10 +147,10 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
                         if(res==true)
                         {
                             showTourdata();
-                            Toast.makeText(SearchTourActivity.this, "New Tour added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Search.this, "New Tour added", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(SearchTourActivity.this, "New Tour not added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Search.this, "New Tour not added", Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -172,7 +171,7 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
         else {
 
         }
-        LayoutInflater inflater=(LayoutInflater) SearchTourActivity.this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater=(LayoutInflater) Search.this.getSystemService(LAYOUT_INFLATER_SERVICE);
         View view=inflater.inflate(R.layout.activity_add_tour,null);
 
          et_title=view.findViewById(R.id.Name_tour_detail);
@@ -194,7 +193,7 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
                                             startActivityForResult(intent, 200);
                                         }
                                     });
-        AlertDialog.Builder builder=new AlertDialog.Builder(SearchTourActivity.this);
+        AlertDialog.Builder builder=new AlertDialog.Builder(Search.this);
         builder.setView(view)
                 .setTitle("Adding new Tour")
                 .setMessage("Enter Tour information")
@@ -210,10 +209,10 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
                         if(res==true)
                         {
                             showTourdata();
-                            Toast.makeText(SearchTourActivity.this, "New Tour added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Search.this, "New Tour added", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(SearchTourActivity.this, "New Tour not added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Search.this, "New Tour not added", Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -288,7 +287,7 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
             //kiểm tra title có trùng với title mà mình đã set trong abs_menu chưa(tương tự như id)
             if (item.getTitle().equals("register")) {
                 //nếu trùng rồi thì điều hướng tới một layout add tour
-                LayoutInflater inflater = (LayoutInflater) SearchTourActivity.this.getSystemService(LAYOUT_INFLATER_SERVICE);
+                LayoutInflater inflater = (LayoutInflater) Search.this.getSystemService(LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.register_detail, null);
 
                //ánh xạ
@@ -324,7 +323,7 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
                     }
                 });
                 //tạo một dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(SearchTourActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Search.this);
                 builder.setView(view)
                         .setTitle("Register  Tour ")
                         .setMessage("Tour information")
@@ -344,9 +343,9 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
                                 if (res == true) {
                                     db.deleteTour(String.valueOf(Tid));
                                     showTourdata();
-                                    Toast.makeText(SearchTourActivity.this, "successfull", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Search.this, "successfull", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(SearchTourActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Search.this, "failed", Toast.LENGTH_SHORT).show();
                                 }
 
 
@@ -359,159 +358,11 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
                             }
                         });
                 builder.create().show();
-            }
-            else if(item.getTitle().equals("update"))
-            {
-                  //nếu trùng rồi thì điều hướng tới một layout add tour
-                LayoutInflater inflater = (LayoutInflater) SearchTourActivity.this.getSystemService(LAYOUT_INFLATER_SERVICE);
-                View view = inflater.inflate(R.layout.activity_add_tour, null);
-
-               //ánh xạ
-                et_title1 = view.findViewById(R.id.Name_tour_detail);
-                et_price1 = view.findViewById(R.id.Fee_Tour_detail);
-                et_star1 = view.findViewById(R.id.et_star_detail);
-                et_date1 = view.findViewById(R.id.d_detail);
-                img_Tour = view.findViewById(R.id.img_tour);
-
-                //lấy ra thông tin cũ
-                String oldtitle = dsTour.getTitle();
-                String oldprice = dsTour.getPrice();
-                String oldstar = dsTour.getStar();
-                String olddate = dsTour.getDate();
-                byte[] oldimage = dsTour.getImage();
-                //set dữ liệu
-                et_title1.setText(oldprice);
-                et_price1.setText(oldtitle);
-                et_star1.setText(oldstar);
-                et_date1.setText(olddate);
-                //chuyen byte ve bitmap
-                Bitmap bitmap = BitmapFactory.decodeByteArray(oldimage, 0, oldimage.length);
-                img_Tour.setImageBitmap(bitmap);
-
-                 // bắt sự kiện khi click vào ảnh (khong cần lắm)
-                img_Tour.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Intent.ACTION_PICK);
-                        intent.setType("image/*");
-                        startActivityForResult(intent, 200);
-                    }
-                });
-                //tạo một dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(SearchTourActivity.this);
-                builder.setView(view)
-                        .setTitle("Update  Tour ")
-                        .setMessage("Tour information")
-                        .setIcon(R.drawable.baseline_update_24)
-                        //sự kiện khi nhấn vào register
-                        .setPositiveButton("Update Tour ", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //lấy giá trị ra
-                                String title = et_title1.getText().toString();
-                                String price = et_price1.getText().toString();
-                                String star = et_star1.getText().toString();
-                                String date = et_date1.getText().toString();
-                                //biến res là kq khi thêm vào đăng kí tour
-                                boolean res = db.updateTour(String.valueOf(Tid),title, price, star, date, ImageTobyte(img_Tour));
-                                //Khi đã thêm thành công
-                                if (res == true) {
-                                    showTourdata();
-                                    Toast.makeText(SearchTourActivity.this, "successfull", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(SearchTourActivity.this, "failed", Toast.LENGTH_SHORT).show();
-                                }
-
-
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        });
-                builder.create().show();
-            }
-            else {
-                 //nếu trùng rồi thì điều hướng tới một layout add tour
-                LayoutInflater inflater = (LayoutInflater) SearchTourActivity.this.getSystemService(LAYOUT_INFLATER_SERVICE);
-                View view = inflater.inflate(R.layout.register_detail, null);
-
-               //ánh xạ
-                et_title = view.findViewById(R.id.Title_register_detail);
-                et_price = view.findViewById(R.id.Fee_register_detail);
-                et_star = view.findViewById(R.id.star_register_detail);
-                et_date = view.findViewById(R.id.d_register_detail);
-                img_Tour = view.findViewById(R.id.img_tour_register);
-
-                //lấy ra thông tin cũ
-                String oldtitle = dsTour.getTitle();
-                String oldprice = dsTour.getPrice();
-                String oldstar = dsTour.getStar();
-                String olddate = dsTour.getDate();
-                byte[] oldimage = dsTour.getImage();
-                //set dữ liệu
-                et_title.setText(oldprice);
-                et_price.setText(oldtitle);
-                et_star.setText(oldstar);
-                et_date.setText(olddate);
-                //chuyen byte ve bitmap
-                Bitmap bitmap = BitmapFactory.decodeByteArray(oldimage, 0, oldimage.length);
-                img_Tour.setImageBitmap(bitmap);
-
-                 // bắt sự kiện khi click vào ảnh (khong cần lắm)
-                img_Tour.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Intent.ACTION_PICK);
-                        intent.setType("image/*");
-                        startActivityForResult(intent, 200);
-                    }
-                });
-                //tạo một dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(SearchTourActivity.this);
-                builder.setView(view)
-                        .setTitle("Delete  Tour ")
-                        .setMessage("Tour information")
-                        .setIcon(R.drawable.baseline_playlist_add_24)
-                        //sự kiện khi nhấn vào register
-                        .setPositiveButton("Delete Tour ", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //lấy giá trị ra
-                                String title = et_title.getText().toString();
-                                String price = et_price.getText().toString();
-                                String star = et_star.getText().toString();
-                                String date = et_date.getText().toString();
-                                //biến res là kq khi thêm vào đăng kí tour
-                               int  res = db.deleteTour(String.valueOf(Tid));
-                                //Khi đã thêm thành công
-                                if (res> 0) {
-                                   // db.deleteTour(String.valueOf(Tid));
-                                    showTourdata();
-                                    Toast.makeText(SearchTourActivity.this, "successfull", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(SearchTourActivity.this, "failed", Toast.LENGTH_SHORT).show();
-                                }
-
-
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        });
-                builder.create().show();
-
             }
             return true;
+        }
 
-       }
+
 
 
         @Override
@@ -545,7 +396,6 @@ public class SearchTourActivity extends AppCompatActivity  implements SearchView
         adapter.searchFilter(searchList);
         return true;
     }
-
     //sắp xếp theo ngày tháng từ gần tới xa của Tour
       private void SortDes ()
         {

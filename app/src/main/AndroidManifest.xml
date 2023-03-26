@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permissions nnhiep - 21.03.2023 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- Thông báo - nnhiep 24.03.2023 -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -20,15 +21,26 @@
         android:theme="@style/Theme.TravelManager"
         tools:targetApi="31">
 
-        <activity android:name=".views.ListViewTeamProduct"
+        <activity
+            android:name=".views.RegisterTour"
             android:exported="false" />
-        <activity android:name=".views.UserActivity"
+        <activity
+            android:name=".views.register_detail"
             android:exported="false" />
-        <activity android:name=".views.RulesSet"
+        <activity
+            android:name=".views.ListViewTeamProduct"
             android:exported="false" />
-        <activity android:name=".views.InstructSet"
+        <activity
+            android:name=".views.UserActivity"
             android:exported="false" />
-        <activity android:name=".views.FQASet"
+        <activity
+            android:name=".views.RulesSet"
+            android:exported="false" />
+        <activity
+            android:name=".views.InstructSet"
+            android:exported="false" />
+        <activity
+            android:name=".views.FQASet"
             android:exported="false" />
         <activity
             android:name=".views.AddEmployeeActivity"
@@ -61,6 +73,9 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".views.SearchTourActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.MainActivity"
             android:exported="false">
             <meta-data
@@ -69,6 +84,13 @@
         </activity>
         <activity
             android:name=".views.ManageNoteActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".fragments.TourFragment"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -95,6 +117,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
     </application>
 
 </manifest>

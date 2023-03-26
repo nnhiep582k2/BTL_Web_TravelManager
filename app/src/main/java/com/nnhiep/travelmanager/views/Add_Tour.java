@@ -1,9 +1,9 @@
 package com.nnhiep.travelmanager.views;
 
 
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,37 +17,42 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.nnhiep.travelmanager.R;
+import com.nnhiep.travelmanager.database.Tour_database;
 import com.nnhiep.travelmanager.fragments.TourFragment;
+import com.nnhiep.travelmanager.models.DSTour;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class AddTourActivity extends AppCompatActivity {
-    Button btnAdd_tour, btnCancel_tour, btnEdit_tour;
-    EditText IdTour, NameTour, FeeTour;
-    ImageButton ImgCamera, ImgFolder;
+public class Add_Tour extends AppCompatActivity {
+    Button btnAdd_tour,btnEdit_tour;
+    EditText IdTour,NameTour,FeeTour;
+    ImageButton ImgCamera,ImgFolder;
     ImageView img_Tour;
-    int request_code_camera = 200;
-    int request_code_folder = 300;
+    int request_code_camera=200;
+    int request_code_folder=300;
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         //khi chụp ảnh
-        if (requestCode == request_code_camera && resultCode == RESULT_OK && data != null) {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+        if(requestCode==request_code_camera && resultCode == RESULT_OK && data !=null)
+        {
+            Bitmap bitmap=(Bitmap)data.getExtras().get("data");
             img_Tour.setImageBitmap(bitmap);
         }
         //khi mở folder
-        if (resultCode == request_code_folder && resultCode == RESULT_OK && data != null) {
-            Uri uri = data.getData();
+        if(resultCode== request_code_folder && resultCode ==RESULT_OK && data !=null)
+        {
+            Uri uri=data.getData();
             try {
                 //mở chỗ đọc và lấy đường dẫn ảnh
-                InputStream inputStream = getContentResolver().openInputStream(uri);
+                InputStream inputStream=getContentResolver().openInputStream(uri);
                 //chuyển về bitmap
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
                 img_Tour.setImageBitmap(bitmap);
 
             } catch (FileNotFoundException e) {
@@ -79,6 +84,7 @@ public class AddTourActivity extends AppCompatActivity {
 
         }
 
+
         //bắt sự kiện khi click vào camera  -ltphuong 18/03/2023
         ImgCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +93,9 @@ public class AddTourActivity extends AppCompatActivity {
                 startActivityForResult(intent, request_code_camera);
             }
             //đổ dữ liệu ra imageview
+
         });
+
 
         //bắt sự kiện khi click vào folder -ltphuong 18/03/2023
         ImgFolder.setOnClickListener(new View.OnClickListener() {
@@ -96,33 +104,10 @@ public class AddTourActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, request_code_folder);
-            }
-        });
 
-        //bắt sự kiện khi nhấn nút Add
-        btnAdd_tour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //chuyển data của imageview sang byte[]
-                BitmapDrawable bitmapDrawble = (BitmapDrawable) img_Tour.getDrawable();
-                //chuyển BitmapDrwable chuyển về bitmap
-                Bitmap bitmap = bitmapDrawble.getBitmap();
-                //chuyển về mảng byte
-                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-                //định lại dữ liệu
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
-                //chuyển về mảng Byte
-                byte[] hinhAnh = byteArray.toByteArray();
-                //Thêm Tour
-//                db.insertATour(IdTour.getText().toString().trim(),NameTour.getText().toString().trim(),
-//                               FeeTour.getText().toString().trim(),null,
-//                        null,null,null,null,hinhAnh);
-                Toast.makeText(AddTourActivity.this, "Thêm Tour Thành Công ", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(AddTourActivity.this, TourFragment.class));
             }
         });
-    }
-}
+    }}
 
 //        btnEdit_tour.setOnClickListener(new View.OnClickListener() {
 //                                            @Override
@@ -149,7 +134,8 @@ public class AddTourActivity extends AppCompatActivity {
 //                                        });
 
 
-//bắt sự kiện khi nhấn nút Add
+                //bắt sự kiện khi nhấn nút Add
+
 //        btnAdd_tour.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

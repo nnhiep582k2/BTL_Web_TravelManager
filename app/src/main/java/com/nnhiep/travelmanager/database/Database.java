@@ -16,14 +16,14 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+// chay di
 /**
  * Cơ sở dữ liệu của chương trình
  * @author nnhiep 18.03.2023
  */
 public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "TravelManager.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private Context context;
     UserTable user;
     EmployeeTable employee;

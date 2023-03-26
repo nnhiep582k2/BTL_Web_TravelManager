@@ -1,5 +1,4 @@
 package com.nnhiep.travelmanager.views;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,11 +29,11 @@ public class RegisterActivity extends AppCompatActivity {
         // Xử lý sự kiện click đăng ký - nnhiep 18.03.2023
         btnSignup.setOnClickListener(v -> {
             if(validate()) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 String account = eTxtAccount.getText().toString();
                 String password = eTxtPassword.getText().toString();
                 db.deleteAllUser();
                 db.insertAnUser(account, 0, 0, account, password, "", null);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 setResult(150, intent);
                 finish();
             }

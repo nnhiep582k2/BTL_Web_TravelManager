@@ -17,7 +17,7 @@ import android.widget.ListView;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.adapters.SlideAdapter;
 import com.nnhiep.travelmanager.models.SlideItem;
-import com.nnhiep.travelmanager.views.AddTourActivity;
+import com.nnhiep.travelmanager.views.SearchTourActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +25,12 @@ import java.util.List;
  * Trang quản lý Tour - Phương
  */
 public class TourFragment extends Fragment {
-    // private ArrayList<Tour> TourList;
-    // TourAdapter tourAdapter;
     private ListView listView;
-    // private Tour db;
     ViewPager2 viewpager2;
     Button btnSearch;
     Handler SlideHandler=new Handler();
+
+
     public TourFragment() {}
 
     @Override
@@ -39,14 +38,18 @@ public class TourFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+
+    //@SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // return inflater.inflate(R.layout.fragment_tour, container, false);
         View v = inflater.inflate(R.layout.fragment_tour, container, false);
         //anh xa
-        btnSearch=v.findViewById(R.id.btnSapXep);
-        viewpager2 = v.findViewById(R.id.viewpager);
+        viewpager2=v.findViewById(R.id.viewpager);
+        btnSearch=(Button) v.findViewById(R.id.btnSearch);
+
+
 
         //slider images
         List<SlideItem> sliderItem = new ArrayList<>();
@@ -57,13 +60,21 @@ public class TourFragment extends Fragment {
         sliderItem.add(new SlideItem(R.drawable.banner_mua_he));
         sliderItem.add(new SlideItem(R.drawable.banner_30_4));
         viewpager2.setAdapter(new SlideAdapter(sliderItem, viewpager2));
+        //chế độ xem cuộn
         viewpager2.setClipToPadding(false);
+
         viewpager2.setClipChildren(false);
+        //Đặt số trang sẽ được giữ lại ở hai bên của (các) trang hiện đang hiển thị.limit=5
         viewpager2.setOffscreenPageLimit(5);
+
         viewpager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+        //Thêm một biến trang vào danh sách.
+
+        //Transformers sẽ được thực hiện theo thứ tự mà chúng đã được thêm vào.
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
         compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
+            //Áp dụng phép biến đổi thuộc tính cho trang đã cho.
             @Override
             public void transformPage(@NonNull View page, float position) {
                 float r = 1 - Math.abs(position);
@@ -76,6 +87,7 @@ public class TourFragment extends Fragment {
             public void onPageSelected(int position) {
 
                 super.onPageSelected(position);
+                //Xóa mọi bài đăng đang chờ xử lý của Runnable r bằng mã thông báo Đối tượng trong hàng đợi tin nhắn.
                 SlideHandler.removeCallbacks(slideerRunnable);
                 SlideHandler.postDelayed(slideerRunnable, 2000);
             }
@@ -85,8 +97,8 @@ public class TourFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent intent= new Intent(getContext(), AddTourActivity.class);
-                startActivity(intent);
+                 Intent intent= new Intent(getContext(), SearchTourActivity.class);
+                 startActivity(intent);
             }
         });
         return v;
@@ -95,6 +107,7 @@ public class TourFragment extends Fragment {
     private Runnable slideerRunnable=new Runnable() {
         @Override
         public void run() {
+
             viewpager2.setCurrentItem(viewpager2.getCurrentItem()+1);
         }
     };
