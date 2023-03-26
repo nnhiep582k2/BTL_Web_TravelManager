@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.models.Employee;
 import com.nnhiep.travelmanager.models.Note;
-
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,6 +57,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS employee");
         db.execSQL("DROP TABLE IF EXISTS tour");
         db.execSQL("DROP TABLE IF EXISTS note");
+        db.execSQL("DROP TABLE IF EXISTS system");
         onCreate(db);
     }
 
@@ -319,8 +319,26 @@ public class Database extends SQLiteOpenHelper {
 
         if(result == -1) {
             Toast.makeText(context, context.getResources().getString(R.string.insert_employee_failed), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, context.getResources().getString(R.string.insert_employee_success), Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }
+
+    /**
+     * Thêm mới dữ liệu hệ thống
+     * @author nnhiep 19.03.2023
+     */
+    public void insertDataSystem(boolean isLogin) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("system_is_login", isLogin);
+
+        long result =  db.insert("system", null, cv);
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.insert_failed), Toast.LENGTH_SHORT).show();
         }
 
         db.close();
@@ -353,14 +371,12 @@ public class Database extends SQLiteOpenHelper {
      * Thêm mới một tour
      * @author nnhiep 18.03.2023
      */
-    public void insertATour(String id, String title, String price, String start_date, String end_date, boolean isFavor, boolean isChecked, String createdBy, byte[] image) {
+    public void insertATour(String title, double price, String start_date, String end_date, boolean isFavor, String createdBy, byte[] image) {
         Date now = new Date();
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put("tour_id",id);
 
-        cv.put("tour_id",id);
         cv.put("tour_title", title);
         cv.put("tour_image", image);
         cv.put("tour_price", price);
@@ -440,6 +456,25 @@ public class Database extends SQLiteOpenHelper {
             Toast.makeText(context, context.getResources().getString(R.string.update_employee_failed), Toast.LENGTH_SHORT).show();
         }
 
+        db.close();
+    }
+
+    /**
+     * Sửa thông tin hệ thống
+     * @author nnhiep 18.03.2023
+     */
+    public void updateDataSystem(String row_id, boolean isLogin) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("system_is_login", isLogin);
+
+        long result =  db.update("system", cv, "system_id=?", new String[]{row_id});
+
+        if(result == -1) {
+            Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
+        }
         db.close();
     }
 

@@ -1,7 +1,6 @@
 package com.nnhiep.travelmanager.views;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityLoginBinding;
-import com.nnhiep.travelmanager.models.Employee;
 import java.util.ArrayList;
 
 /**
@@ -40,11 +38,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         db = new Database(this);
 
+        checkUserExist();
+
         setup_ui();
 
         // Xử lý sự kiện click đăng nhập - nnhiep 18.03.2023
         btnSignin.setOnClickListener(v -> {
             if(validate()) {
+                db.updateDataSystem("1", true);
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -90,11 +91,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 200 && resultCode == 150) {
             getDataUser();
-            Employee employee = new Employee(user_account.get(0), user_password.get(0));
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Thông báo");
-            builder.setMessage("Account: " + employee.getAccount() + "\nPassword: " + employee.getPassword());
-            builder.show();
             Toast.makeText(this, this.getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
         }
     }
@@ -129,26 +125,48 @@ public class LoginActivity extends AppCompatActivity {
         try {
             Cursor cursor = db.getDataUser();
             if(cursor.getCount() == 0) {
-                Toast.makeText(this, "User has no data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, this.getResources().getString(R.string.user_no_data), Toast.LENGTH_SHORT).show();
             } else {
-                while (cursor.moveToNext()) {
-                    user_name.add(cursor.getString(1));
-                    user_age.add(cursor.getInt(2));
-                    user_gender.add(cursor.getInt(3));
-                    user_account.add(cursor.getString(4));
-                    user_password.add(cursor.getString(5));
-                    user_phone.add(cursor.getString(6));
-                    user_avatar.add(cursor.getBlob(7));
-                }
+                cursor.moveToFirst();
+                user_name.add(cursor.getString(1));
+                user_age.add(cursor.getInt(2));
+                user_gender.add(cursor.getInt(3));
+                user_account.add(cursor.getString(4));
+                user_password.add(cursor.getString(5));
+                user_phone.add(cursor.getString(6));
+                user_avatar.add(cursor.getBlob(7));
                 cursor.close();
             }
         } catch (Exception e) {
-            Toast.makeText(this, "An error occur!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getResources().getString(R.string.error_occur), Toast.LENGTH_SHORT).show();
             Log.d("Error DB", e.getMessage());
         }
     }
 
     // region validate
+    /**
+     * Hàm kiểm tra xem người dùng đã đăng nhập chưa
+     * @author nnhiep 19.03.2023
+     */
+    private void checkUserExist() {
+        try {
+            Cursor cursor = db.getDataSystem();
+            if(cursor.getCount() == 0) {
+                db.insertDataSystem(false);
+            } else {
+                cursor.moveToFirst();
+                int position = cursor.getColumnIndex("system_is_login");
+                if(position > -1 && cursor.getInt(position) != 0) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, this.getResources().getString(R.string.error_occur), Toast.LENGTH_SHORT).show();
+            Log.d("Error DB", e.getMessage());
+        }
+    }
+
     /**
      * Hàm kiểm tra dữ liệu đầu vào
      * @author nnhiep 18.03.2023
@@ -172,7 +190,12 @@ public class LoginActivity extends AppCompatActivity {
             txtErrorAccount.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(!eTxtAccount.getText().toString().trim().equals(user_account.get(0))) {
+        if(user_account.size() > 0) {
+            if(!eTxtAccount.getText().toString().trim().equals(user_account.get(0))) {
+                txtErrorAccount.setText(this.getResources().getString(R.string.account_invalid));
+                return false;
+            }
+        } else {
             txtErrorAccount.setText(this.getResources().getString(R.string.account_invalid));
             return false;
         }
@@ -189,8 +212,13 @@ public class LoginActivity extends AppCompatActivity {
             txtErrorPassword.setText(this.getResources().getString(R.string.required));
             return false;
         }
-        if(!eTxtPassword.getText().toString().trim().equals(user_password.get(0))) {
-            txtErrorPassword.setText(this.getResources().getString(R.string.confirm_password_invalid));
+        if(user_password.size() > 0) {
+            if(!eTxtPassword.getText().toString().trim().equals(user_password.get(0))) {
+                txtErrorPassword.setText(this.getResources().getString(R.string.confirm_password_invalid));
+                return false;
+            }
+        } else {
+            txtErrorPassword.setText(this.getResources().getString(R.string.password_invalid));
             return false;
         }
         txtErrorPassword.setText("");

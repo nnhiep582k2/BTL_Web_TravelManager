@@ -28,7 +28,6 @@ public class TourAdapter extends BaseAdapter {
     private ArrayList<DSTour> TourList;
 
 
-
     @Override
     public int getCount() {
         return TourList.size();
@@ -40,11 +39,10 @@ public class TourAdapter extends BaseAdapter {
     }
 
     public void searchFilter(ArrayList<DSTour> searchList) {
-        TourList=new ArrayList<>();
+        TourList = new ArrayList<>();
         TourList.addAll(searchList);
         notifyDataSetChanged();
     }
-
 
 
     @Override
@@ -55,20 +53,20 @@ public class TourAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view=inflater.inflate(R.layout.item_search,null);
-        ImageView img_tour=view.findViewById(R.id.imageView_flag);
-        TextView txtTitle=view.findViewById(R.id.Nametour);
-        TextView txtPrice=view.findViewById(R.id.fee);
-        TextView txtStar=view.findViewById(R.id.Star);
-        TextView txtdate=view.findViewById(R.id.txtdate);
-        DSTour dsTour=TourList.get(position);
-        String title=dsTour.getTitle();
-        String price=dsTour.getPrice();
-        String star= dsTour.getStar();
-        String date=dsTour.getDate();
-        byte[] image=dsTour.getImage();
-        Bitmap bitmap=BitmapFactory.decodeByteArray(image,0,image.length);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.item_search, null);
+        ImageView img_tour = view.findViewById(R.id.imageView_flag);
+        TextView txtTitle = view.findViewById(R.id.Nametour);
+        TextView txtPrice = view.findViewById(R.id.fee);
+        TextView txtStar = view.findViewById(R.id.Star);
+        TextView txtdate = view.findViewById(R.id.txtdate);
+        DSTour dsTour = TourList.get(position);
+        String title = dsTour.getTitle();
+        String price = dsTour.getPrice();
+        String star = dsTour.getStar();
+        String date = dsTour.getDate();
+        byte[] image = dsTour.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
         txtTitle.setText(title);
         txtPrice.setText(price);
         txtStar.setText(star);
@@ -77,9 +75,5 @@ public class TourAdapter extends BaseAdapter {
 
         return view;
     }
+}
 
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 443aaf1 (truoc khi nop)

@@ -29,25 +29,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/anh_tour1" />
 
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="52dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="80dp"
             android:text="Mô tả"
             android:textSize="24sp"
             android:textStyle="bold"
-<<<<<<< HEAD
-<<<<<<< HEAD
             app:layout_constraintEnd_toStartOf="@+id/Name_tour_detail"
-=======
-            app:layout_constraintEnd_toStartOf="@+id/Name_tour"
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            app:layout_constraintEnd_toStartOf="@+id/Name_tour_detail"
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
-            app:layout_constraintHorizontal_bias="0.84"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_tour" />
 
@@ -55,20 +48,12 @@
             android:id="@+id/textView3"
             android:layout_width="57dp"
             android:layout_height="26dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="85dp"
             android:text="Giá "
             android:textSize="24sp"
             android:textStyle="bold"
-<<<<<<< HEAD
-<<<<<<< HEAD
             app:layout_constraintEnd_toStartOf="@+id/Fee_Tour_detail"
-=======
-            app:layout_constraintEnd_toStartOf="@+id/Fee_Tour"
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            app:layout_constraintEnd_toStartOf="@+id/Fee_Tour_detail"
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -78,13 +63,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="22dp"
             android:ems="10"
             android:hint="Title"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/Fee_Tour_detail"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/img_tour"
             app:layout_constraintTop_toBottomOf="@+id/img_tour" />
 
         <EditText
@@ -97,53 +83,29 @@
             android:hint="Fee"
             android:inputType="textPersonName"
             android:minHeight="48dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-<<<<<<< HEAD
-<<<<<<< HEAD
             app:layout_constraintStart_toStartOf="@+id/Name_tour_detail"
             app:layout_constraintTop_toBottomOf="@+id/Name_tour_detail" />
-=======
-            app:layout_constraintStart_toStartOf="@+id/Name_tour"
-            app:layout_constraintTop_toBottomOf="@+id/Name_tour" />
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            app:layout_constraintStart_toStartOf="@+id/Name_tour_detail"
-            app:layout_constraintTop_toBottomOf="@+id/Name_tour_detail" />
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
+
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="37dp"
-            android:layout_marginTop="43dp"
-            android:layout_marginEnd="59dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="56dp"
             android:text="Số sao "
+
             android:textSize="24sp"
             android:textStyle="bold"
-<<<<<<< HEAD
-<<<<<<< HEAD
             app:layout_constraintEnd_toStartOf="@+id/et_star_detail"
-=======
-            app:layout_constraintEnd_toStartOf="@+id/et_star"
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            app:layout_constraintEnd_toStartOf="@+id/et_star_detail"
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <EditText
-<<<<<<< HEAD
-<<<<<<< HEAD
             android:id="@+id/et_star_detail"
-=======
-            android:id="@+id/et_star"
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            android:id="@+id/et_star_detail"
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
@@ -151,72 +113,42 @@
             android:ems="10"
             android:hint="Star"
             android:inputType="textPersonName"
+            android:textStyle="bold"
+
             app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
-<<<<<<< HEAD
             app:layout_constraintStart_toStartOf="@+id/Fee_Tour_detail"
             app:layout_constraintTop_toBottomOf="@+id/Fee_Tour_detail" />
-=======
-            app:layout_constraintStart_toStartOf="@+id/Fee_Tour"
-            app:layout_constraintTop_toBottomOf="@+id/Fee_Tour" />
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            app:layout_constraintStart_toStartOf="@+id/Fee_Tour_detail"
-            app:layout_constraintTop_toBottomOf="@+id/Fee_Tour_detail" />
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
+
 
         <TextView
             android:id="@+id/et_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="36dp"
             android:text="Từ  Ngày "
             android:textSize="24sp"
+
             android:textStyle="bold"
-<<<<<<< HEAD
-<<<<<<< HEAD
             app:layout_constraintEnd_toStartOf="@+id/d_detail"
-=======
-            app:layout_constraintEnd_toStartOf="@+id/d"
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            app:layout_constraintEnd_toStartOf="@+id/d_detail"
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <EditText
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             android:id="@+id/d_detail"
-=======
-            android:id="@+id/d"
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            android:id="@+id/d_detail"
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="17dp"
             android:ems="10"
             android:hint="Date"
             android:inputType="textPersonName"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
-<<<<<<< HEAD
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/et_star_detail"
             app:layout_constraintTop_toBottomOf="@+id/et_star_detail" />
-=======
-            app:layout_constraintStart_toStartOf="@+id/et_star"
-            app:layout_constraintTop_toBottomOf="@+id/et_star" />
->>>>>>> 23e446c (them sua xoa tour)
-=======
-            app:layout_constraintStart_toStartOf="@+id/et_star_detail"
-            app:layout_constraintTop_toBottomOf="@+id/et_star_detail" />
->>>>>>> 0ab1072 (them du lieu,them xoa tour khi dang ki thanh cong,xem thong tin chi tiet tour truoc khi dang ki)
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

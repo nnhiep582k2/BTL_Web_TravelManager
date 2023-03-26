@@ -8,6 +8,13 @@
     <!-- Thông báo - nnhiep 24.03.2023 -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.CAMERA"/>
+<<<<<<< HEAD
+=======
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+>>>>>>> 84f2ddd (da fix xong ,cho merge)
 
     <application
         android:allowBackup="true"
@@ -19,20 +26,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelManager"
         tools:targetApi="31">
-<<<<<<< HEAD
-<!--        <activity-->
-<!--            android:name=".RegisterTour"-->
-<!--            android:exported="false" />-->
-=======
+
         <activity
             android:name=".views.RegisterTour"
             android:exported="false" />
->>>>>>> 443aaf1 (truoc khi nop)
         <activity
-            android:name=".register_detail"
-            android:exported="false" />
-        <activity
-            android:name=".views.RegisterTour"
+            android:name=".views.register_detail"
             android:exported="false" />
         <activity
             android:name=".views.ListViewTeamProduct"
@@ -79,12 +78,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-<<<<<<< HEAD
         <activity
             android:name=".views.SearchTourActivity"
             android:exported="false" />
-=======
->>>>>>> 443aaf1 (truoc khi nop)
         <activity
             android:name=".views.MainActivity"
             android:exported="false">
@@ -131,6 +127,7 @@
 =======
 <!--        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"-->
 <!--                  android:theme="@style/Base.Theme.AppCompat"/>-->
+<<<<<<< HEAD
 =======
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
@@ -139,6 +136,9 @@
 =======
 >>>>>>> 443aaf1 (truoc khi nop)
 >>>>>>> c544882 (truoc khi nop)
+=======
+
+>>>>>>> 84f2ddd (da fix xong ,cho merge)
     </application>
 
 </manifest>

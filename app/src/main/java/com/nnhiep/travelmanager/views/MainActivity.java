@@ -1,5 +1,6 @@
 package com.nnhiep.travelmanager.views;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 import android.widget.Button;
 import com.nnhiep.travelmanager.R;
+import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityMainBinding;
 import com.nnhiep.travelmanager.fragments.HomeFragment;
 import com.nnhiep.travelmanager.fragments.EmployeeFragment;
@@ -70,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         // Xác nhận thay đổi và áp dụng vào activity
         fragmentTransaction.commit();
     }
-<<<<<<< HEAD
 
     @Override
     public void onBackPressed() {
@@ -86,6 +87,4 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.show();
     }
-=======
->>>>>>> 443aaf1 (truoc khi nop)
 }
