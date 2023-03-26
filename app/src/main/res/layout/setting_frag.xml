@@ -6,19 +6,12 @@
     android:background="@color/brset"
     android:orientation="vertical"
     tools:context=".fragments.SettingsFragment"
+    android:paddingBottom="20dp"
     >
     <RelativeLayout
+        android:layout_marginTop="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <ImageView
-
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:padding="14dp"
-
-            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,15 +59,12 @@
                  />
 
              <LinearLayout
+                 android:layout_gravity="center"
+                 android:gravity="center"
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
                  android:orientation="horizontal"
-                 android:layout_marginStart="20dp"
-                 android:layout_marginEnd="20dp"
-                 android:layout_marginTop="15dp"
-
-                 >
-
+                 android:layout_marginTop="15dp">
 
                  <androidx.appcompat.widget.AppCompatButton
                      android:layout_width="wrap_content"
@@ -82,9 +72,8 @@
                      android:layout_gravity="center"
                      android:layout_marginTop="0dp"
                      android:background="@drawable/bg_set_profile"
-                     android:paddingStart="30dp"
-                     android:paddingEnd="20dp"
-                     android:layout_marginLeft="30dp"
+                     android:paddingStart="14dp"
+                     android:paddingEnd="14dp"
                      android:text="@string/edit_profile"
                      android:textAllCaps="false"
                      android:textColor="@color/white" />
@@ -96,8 +85,8 @@
                      android:layout_gravity="center"
                      android:layout_marginTop="0dp"
                      android:background="@drawable/bg_set_profile"
-                     android:paddingStart="30dp"
-                     android:paddingEnd="20dp"
+                     android:paddingStart="10dp"
+                     android:paddingEnd="10dp"
                      android:layout_marginLeft="30dp"
                      android:text="@string/change_language"
                      android:textAllCaps="false"
@@ -111,7 +100,7 @@
                  android:layout_height="wrap_content"
                  android:layout_marginStart="20dp"
                  android:layout_marginEnd="20dp"
-                 android:layout_marginTop="40dp"
+                 android:layout_marginTop="26dp"
                  android:orientation="vertical"
                  android:padding="15dp" >
 
@@ -221,12 +210,12 @@
 <!--             round 2-->
 
              <LinearLayout
+                 android:layout_marginTop="26dp"
                  android:background="@drawable/round_back_while"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:layout_marginStart="20dp"
                  android:layout_marginEnd="20dp"
-                 android:layout_marginTop="40dp"
                  android:orientation="vertical"
                  android:padding="15dp" >
 

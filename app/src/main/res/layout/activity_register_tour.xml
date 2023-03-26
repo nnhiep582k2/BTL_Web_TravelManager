@@ -8,16 +8,14 @@
     tools:context=".views.RegisterTour">
 
     <TextView
-        android:layout_width="409dp"
-        android:layout_height="80dp"
-        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingTop="14dp"
         android:text="Danh sách Tour đã đăng kí "
         android:textAlignment="center"
         android:textColor="#B61E1E"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
-
-
 
     <ListView
         android:id="@+id/listview_register_tour"

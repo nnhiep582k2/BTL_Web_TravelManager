@@ -9,6 +9,6 @@ public class FAQSet extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fqa_main);
+        setContentView(R.layout.faq_main);
     }
 }

@@ -12,17 +12,10 @@
         android:id="@+id/imgavatar"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="#00FDCC" />
+        android:src="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/textView13"
@@ -270,7 +263,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="59dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="52dp"
         android:text="Sửa thông tin"
         app:layout_constraintEnd_toEndOf="parent"
