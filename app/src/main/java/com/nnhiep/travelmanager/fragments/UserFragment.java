@@ -1,7 +1,10 @@
 package com.nnhiep.travelmanager.fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,17 +57,23 @@ public class UserFragment extends Fragment {
         });
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                // Tạo intent chuyển đến màn hình đăng nhập
-                Intent intent = new Intent(getContext(), LoginActivity.class);
-
-                // Xóa tất cả các activity khác và đưa về màn hình đăng nhập
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-                // Khởi chạy intent và kết thúc activity hiện tại
-                startActivity(intent);
-
+            public void onClick(View v) {
+                // Hiển thị hộp thoại xác nhận
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Đăng xuất")
+                        .setMessage("Bạn có muốn đăng xuất không?")
+                        .setPositiveButton("Đăng xuất", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Thoát ứng dụng về màn hình đăng nhập
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                getActivity().finish();
+                            }
+                        })
+                        .setNegativeButton("Không", null)
+                        .show();
             }
         });
         return v;
