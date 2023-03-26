@@ -30,7 +30,6 @@ public class TourFragment extends Fragment {
     Button btnSearch;
     Handler SlideHandler=new Handler();
 
-
     public TourFragment() {}
 
     @Override
@@ -38,19 +37,13 @@ public class TourFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-
-    //@SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // return inflater.inflate(R.layout.fragment_tour, container, false);
         View v = inflater.inflate(R.layout.fragment_tour, container, false);
         //anh xa
         viewpager2=v.findViewById(R.id.viewpager);
         btnSearch=(Button) v.findViewById(R.id.btnSearch);
-
-
-
         //slider images
         List<SlideItem> sliderItem = new ArrayList<>();
         sliderItem.add(new SlideItem(R.drawable.banner_bien));
@@ -62,14 +55,11 @@ public class TourFragment extends Fragment {
         viewpager2.setAdapter(new SlideAdapter(sliderItem, viewpager2));
         //chế độ xem cuộn
         viewpager2.setClipToPadding(false);
-
         viewpager2.setClipChildren(false);
         //Đặt số trang sẽ được giữ lại ở hai bên của (các) trang hiện đang hiển thị.limit=5
         viewpager2.setOffscreenPageLimit(5);
-
         viewpager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
         //Thêm một biến trang vào danh sách.
-
         //Transformers sẽ được thực hiện theo thứ tự mà chúng đã được thêm vào.
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
@@ -85,7 +75,6 @@ public class TourFragment extends Fragment {
         viewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-
                 super.onPageSelected(position);
                 //Xóa mọi bài đăng đang chờ xử lý của Runnable r bằng mã thông báo Đối tượng trong hàng đợi tin nhắn.
                 SlideHandler.removeCallbacks(slideerRunnable);
@@ -107,7 +96,6 @@ public class TourFragment extends Fragment {
     private Runnable slideerRunnable=new Runnable() {
         @Override
         public void run() {
-
             viewpager2.setCurrentItem(viewpager2.getCurrentItem()+1);
         }
     };

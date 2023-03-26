@@ -33,10 +33,6 @@ public class ManageNoteActivity extends AppCompatActivity {
         lvListNote = findViewById(R.id.lvlistNote);
 
         db = new Database(this);
-//        db.deleteAllNote();
-//        db.insertANote("Tour Hà Nội","Được chị Thanh tip 1 củ");
-//        db.insertANote("Tour Quảng Ninh","Nhớ đón khách");
-//        db.insertANote("Tour Bắc Lãm","Khách đăng kí đi chơi thêm");
         listNote = db.getDataNote();
         adapter = new NoteAdapter(listNote, this);
         lvListNote.setAdapter(adapter);

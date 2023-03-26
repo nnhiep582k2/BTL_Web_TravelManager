@@ -16,7 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-// chay di
+
 /**
  * Cơ sở dữ liệu của chương trình
  * @author nnhiep 18.03.2023
@@ -61,11 +61,11 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
     public Cursor SelectData(String query) {
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(query, null);
     }
+
     /**
      * Hàm truy vấn tự định nghĩa
      * @author nnhiep 18.03.2023

@@ -1,8 +1,12 @@
-package com.nnhiep.travelmanager.views;
+package com.nnhiep.travelmanager.models;
 
 public class UserListTeam {
-    String name,lastMessage,lastMsgTime,phone,country;
-    int immgeeId;
+    public String name;
+    public String lastMessage;
+    public String lastMsgTime;
+    String phone;
+    String country;
+    public int immgeeId;
 
     public UserListTeam(String name, String lastMessage, String lastMsgTime, String phone, String country, int immgeeId) {
         this.name = name;
@@ -12,6 +16,4 @@ public class UserListTeam {
         this.country = country;
         this.immgeeId = immgeeId;
     }
-
-
 }

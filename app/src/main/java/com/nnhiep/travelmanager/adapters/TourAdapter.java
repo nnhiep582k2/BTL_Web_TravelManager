@@ -1,4 +1,5 @@
 package com.nnhiep.travelmanager.adapters;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,25 +9,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.nnhiep.travelmanager.R;
-
 import com.nnhiep.travelmanager.models.DSTour;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class TourAdapter extends BaseAdapter {
-
+    private Context context;
+    private ArrayList<DSTour> TourList;
 
     public TourAdapter(Context context, ArrayList<DSTour> tourList) {
         this.context = context;
         TourList = tourList;
     }
-
-    private Context context;
-    private ArrayList<DSTour> TourList;
-
 
     @Override
     public int getCount() {
@@ -44,12 +38,10 @@ public class TourAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-
     @Override
     public long getItemId(int position) {
         return 0;
     }
-
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
