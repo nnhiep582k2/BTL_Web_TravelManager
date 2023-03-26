@@ -108,7 +108,7 @@
     <string name="article_subheading" translatable="false"> Nội dung</string>
     <string name="paragraph" translatable="false">
 
-        <b>1. Sử dụng trang web</b>
+        <b>1. Sử dụng trang web</b>l
 
 
 \n\n
@@ -192,9 +192,11 @@ Trang web này và nội dung của nó nhằm tuân thủ luật pháp và quy 
 
     </string>
 
-    <string name="heading_instruct" translatable="false">Chức năng</string>
+    <string name="heading_instruct">Chức năng</string>
 
-    <string name="subheading_in" translatable="false">nội dung</string>
+    <string name="subheading_in">nội dung</string>
+
+
     <string name="graph_instruct" translatable="false">
 
         <b>
@@ -266,6 +268,7 @@ Trang web này và nội dung của nó nhằm tuân thủ luật pháp và quy 
     </string>
     <string name="heading_fqa" translatable="false">Hỏi đáp FAQ</string>
     <string name="sub_fqa" translatable="false">Nội dung</string>
+
     <string name="paragrap_fqa" translatable="false">
 
         <b>
@@ -310,4 +313,15 @@ Trang web này và nội dung của nó nhằm tuân thủ luật pháp và quy 
          \n
         *các nội dung cần thiết khác theo yêu cầu của Ban quản lý CBT
     </string>
+
+    <string name="rules">Chính sách và bảo mật</string>
+    <string name="contact">Liên lạc</string>
+    <string name="version">Phiên Bản</string>
+    <string name="instruct">Hướng dẫn</string>
+    <string name="team_product">Đội ngũ phát triển </string>
+
+    <string name="settings_set">Cài đặt</string>
+    <string name="edit_profile">Chỉnh sửa cá nhân</string>
+    <string name="change_language">Thay đổi ngôn ngữ</string>
+
 </resources>
