@@ -8,13 +8,17 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -26,9 +30,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
+import com.nnhiep.travelmanager.databinding.ActivityAddEmployeeBinding;
 import com.nnhiep.travelmanager.databinding.UserLviewBinding;
 import com.nnhiep.travelmanager.databinding.UserThongtinBinding;
+import com.nnhiep.travelmanager.fragments.EmployeeFragment;
 import com.nnhiep.travelmanager.models.Employee;
+import com.nnhiep.travelmanager.models.User;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -44,9 +51,11 @@ public class User_TTin_Edit extends AppCompatActivity {
     private UserThongtinBinding binding;
     private ArrayList<Number> user_age, user_gender;
     private ArrayList<byte[]> user_avatar;
+    Spinner spinnerGender;
     private static Database db;
     private Bitmap bitmap;
-    private Employee employee;
+    private User user;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,12 +65,13 @@ public class User_TTin_Edit extends AppCompatActivity {
         edtId = findViewById(R.id.edtId);
         edtName = findViewById(R.id.edtName);
         edtAge = findViewById(R.id.edtAge);
-        edtGender = findViewById(R.id.edtGender);
+        spinnerGender = findViewById(R.id.spinnerGender);
         edtAccount = findViewById(R.id.edtAcount);
         edtPass = findViewById(R.id.edtPass);
         edtPhone = findViewById(R.id.edtPhone);
         btnBack = findViewById(R.id.btnBack);
         btnOK = findViewById(R.id.btnOK);
+        setupSpinner();
         db = new Database(User_TTin_Edit.this);
         String query = "SELECT user_id,user_name, user_age, user_gender," +
                 "user_account,user_password,user_phone,user_avatar FROM user";
@@ -79,7 +89,12 @@ public class User_TTin_Edit extends AppCompatActivity {
         edtId.setText(id);
         edtName.setText(name);
         edtAge.setText(String.valueOf(age));
-        edtGender.setText(String.valueOf(gender));
+        if(gender==0){
+            spinnerGender.setSelection(0);
+        }
+        else {
+            spinnerGender.setSelection(gender);
+        }
         edtAccount.setText(account);
         edtPass.setText(pass);
         edtPhone.setText(phone);
@@ -99,7 +114,6 @@ public class User_TTin_Edit extends AppCompatActivity {
                                 InputStream inputStream = getContentResolver().openInputStream(uri);
                                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                                 imgavatar.setImageBitmap(bitmap);
-
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
@@ -129,7 +143,9 @@ public class User_TTin_Edit extends AppCompatActivity {
                 String id = edtId.getText().toString().trim();
                 String name = edtName.getText().toString().trim();
                 int age = Integer.parseInt(edtAge.getText().toString().trim());
-                int gender = Integer.parseInt(edtGender.getText().toString().trim());
+                String genderStr = spinnerGender.getSelectedItem().toString().trim();
+                int gender = genderStr.equals("Male") ? 0 : 1;
+
                 String account = edtAccount.getText().toString().trim();
                 String pass = edtPass.getText().toString().trim();
                 String phone = edtPhone.getText().toString().trim();
@@ -153,6 +169,7 @@ public class User_TTin_Edit extends AppCompatActivity {
                 finish();
             }
         });
+
         edtName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -210,6 +227,39 @@ public class User_TTin_Edit extends AppCompatActivity {
             }
         });
 
+        
     }
+    private void setupSpinner() {
+        ArrayList<String> arrayGender = new ArrayList<>();
+        arrayGender.add(this.getResources().getString(R.string.male));
+        arrayGender.add(this.getResources().getString(R.string.female));
+
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arrayGender);
+        spinnerGender.setAdapter(adapter);
+        final int[] gender = {0}; // 0 là male, 1 là female
+
+        // Xử lý sự kiện khi chọn giới tính từ Spinner
+        spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String selectedGender = adapterView.getItemAtPosition(position).toString();
+
+                if (selectedGender.equals("Male")) {
+                    gender[0] = 0;
+                } else if (selectedGender.equals("Female")) {
+                    gender[0] = 1;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
+
+    
 }
 

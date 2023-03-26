@@ -99,7 +99,14 @@ public class User_TTin extends AppCompatActivity {
         txtid.setText(user.getId());
         txtName.setText(user.getName());
         txtAge.setText(String.valueOf(user.getAge()));
-        txtGender.setText(String.valueOf(user.getGender()));
+        String genderText = "";
+        if (user.getGender() == 0) {
+            genderText = "Male";
+        } else if (user.getGender() == 1) {
+            genderText = "Female";
+        }
+        txtGender.setText(genderText);
+
         txtAccount.setText(user.getAccount());
         txtPass.setText(user.getPassword());
         txtSDT.setText(user.getPhone());
@@ -144,7 +151,6 @@ public class User_TTin extends AppCompatActivity {
                 Toast.makeText(this, "User has no data", Toast.LENGTH_SHORT).show();
             } else {
                 while (cursor.moveToNext()) {
-                    cursor.moveToFirst();
                     user_id.add(cursor.getString(0));
                     user_name.add(cursor.getString(1));
                     user_age.add(cursor.getInt(2));
@@ -153,7 +159,6 @@ public class User_TTin extends AppCompatActivity {
                     user_password.add(cursor.getString(5));
                     user_phone.add(cursor.getString(6));
                     user_avatar.add(cursor.getBlob(7));
-                    cursor.close();
                 }
                 cursor.close();
             }
