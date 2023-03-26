@@ -29,38 +29,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/anh_tour1" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="95dp"
-            android:text="Mô tả"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/Title_register_detail"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_tour_register" />
-
-        <TextView
-
-            android:id="@+id/textView3"
-            android:layout_width="57dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="52dp"
-            android:text="Giá "
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
 
         <TextView
             android:id="@+id/Fee_register_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="39dp"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="47dp"
             android:ems="10"
             android:hint="Fee"
@@ -69,25 +43,15 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/Title_register_detail"
             app:layout_constraintTop_toBottomOf="@+id/Title_register_detail" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Số sao "
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
             android:id="@+id/star_register_detail"
             android:layout_width="166dp"
             android:layout_height="44dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="116dp"
             android:ems="10"
             android:hint="Star"
@@ -95,7 +59,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/Fee_register_detail"
             app:layout_constraintTop_toBottomOf="@+id/Fee_register_detail" />
 
@@ -103,7 +67,7 @@
             android:id="@+id/d_register_detail"
             android:layout_width="168dp"
             android:layout_height="39dp"
-            android:layout_marginTop="29dp"
+            android:layout_marginTop="48dp"
             android:layout_marginEnd="112dp"
             android:ems="10"
             android:hint="Date"
@@ -111,6 +75,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/star_register_detail"
             app:layout_constraintTop_toBottomOf="@+id/star_register_detail" />
 
@@ -118,8 +83,9 @@
             android:id="@+id/Title_register_detail"
             android:layout_width="251dp"
             android:layout_height="55dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="80dp"
             android:ems="10"
             android:hint="Title"
             android:inputType="textPersonName"
@@ -127,18 +93,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_tour_register" />
-
-        <TextView
-            android:id="@+id/et_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:text="Từ  Ngày "
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/d_register_detail"
-            tools:layout_editor_absoluteY="395dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
