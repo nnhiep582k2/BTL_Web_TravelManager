@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.UserLviewBinding;
 import com.nnhiep.travelmanager.models.User;
@@ -64,9 +66,9 @@ public class User_TTin extends AppCompatActivity {
         txtAge.setText(String.valueOf(user.getAge()));
         String genderText = "";
         if (user.getGender() == 0) {
-            genderText = "Male";
+            genderText = getResources().getString(R.string.male);
         } else if (user.getGender() == 1) {
-            genderText = "Female";
+            genderText = getResources().getString(R.string.female);
         }
         txtGender.setText(genderText);
         txtAccount.setText(user.getAccount());
@@ -107,7 +109,7 @@ public class User_TTin extends AppCompatActivity {
         try {
             Cursor cursor = db.getDataUser();
             if (cursor.getCount() == 0) {
-                Toast.makeText(this, "User has no data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.user_no_data), Toast.LENGTH_SHORT).show();
             } else {
                 while (cursor.moveToNext()) {
                     user_id.add(cursor.getString(0));
@@ -122,7 +124,7 @@ public class User_TTin extends AppCompatActivity {
                 cursor.close();
             }
         } catch (Exception e) {
-            Toast.makeText(this, "An error occur!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.error_occur), Toast.LENGTH_SHORT).show();
             Log.d("Error DB", e.getMessage());
         }
     }

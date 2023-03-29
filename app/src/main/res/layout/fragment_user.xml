@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
-                    android:text="Thông tin người dùng"
+                    android:text="@string/user_information"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold"
@@ -97,11 +97,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="14dp"
+                android:id="@+id/lovedTour"
                 android:background="@drawable/ic_user_background">
 
                 <ImageView
                     android:id="@+id/imguserlove"
-                    android:layout_width="42dp"
+                    android:layout_width="54dp"
                     android:layout_height="46dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginBottom="5dp"
@@ -117,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
-                    android:text="Tour Yêu Thích"
+                    android:text="@string/loved_tour"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold"
@@ -134,8 +135,8 @@
 
                 <ImageView
                     android:id="@+id/imgusertbao"
-                    android:layout_width="40dp"
-                    android:layout_height="34dp"
+                    android:layout_width="54dp"
+                    android:layout_height="46dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginBottom="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -150,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
-                    android:text="Thông báo"
+                    android:text="@string/notification"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold"
@@ -163,6 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="14dp"
+                android:id="@+id/privacy"
                 android:background="@drawable/ic_user_background">
 
                 <ImageView
@@ -183,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
-                    android:text="Điều khoản hợp tác"
+                    android:text="@string/privacy"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold"
@@ -198,7 +200,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/background_logout"
                 android:radius="18dp"
-                android:text="Đăng xuất" />
+                android:text="@string/logout" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -106,10 +106,10 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
 
             AlertDialog.Builder builder = new AlertDialog.Builder(SearchTourActivity.this);
             builder.setView(view)
-                    .setTitle("Adding new Tour")
-                    .setMessage("Enter Tour information")
+                    .setTitle(getResources().getString(R.string.add_new_tour))
+                    .setMessage(getResources().getString(R.string.enter_tour))
                     .setIcon(R.drawable.person_add)
-                    .setPositiveButton("Add new Tour ", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getResources().getString(R.string.add), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             String title = et_title.getText().toString();
@@ -119,13 +119,13 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
                             boolean res = db.insertTour(title, price, star, date, ImageTobyte(img_Tour));
                             if (res == true) {
                                 showTourdata();
-                                Toast.makeText(SearchTourActivity.this, "New Tour added", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.insert_success), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(SearchTourActivity.this, "New Tour not added", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.insert_failed), Toast.LENGTH_SHORT).show();
                             }
                         }
                     })
-                    .setNegativeButton("Cancel", (dialog, which) -> {
+                    .setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> {
                     });
             builder.create().show();
         }
@@ -146,10 +146,10 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
 
         AlertDialog.Builder builder = new AlertDialog.Builder(SearchTourActivity.this);
         builder.setView(view)
-                .setTitle("Adding new Tour")
-                .setMessage("Enter Tour information")
+                .setTitle(getResources().getString(R.string.add_new_tour))
+                .setMessage(getResources().getString(R.string.enter_tour))
                 .setIcon(R.drawable.person_add)
-                .setPositiveButton("Add new Tour ", (dialog, which) -> {
+                .setPositiveButton(getResources().getString(R.string.add), (dialog, which) -> {
                     String title = et_title.getText().toString();
                     String price = et_price.getText().toString();
                     String star = et_star.getText().toString();
@@ -157,12 +157,12 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
                     boolean res = db.insertTour(title, price, star, date, ImageTobyte(img_Tour));
                     if (res == true) {
                         showTourdata();
-                        Toast.makeText(SearchTourActivity.this, "New Tour added", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.insert_success), Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(SearchTourActivity.this, "New Tour not added", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.insert_failed), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton("Cancel", (dialog, which) -> {
+                .setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> {
                 });
         builder.create().show();
 
@@ -256,11 +256,11 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
                 //tạo một dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(SearchTourActivity.this);
                 builder.setView(view)
-                        .setTitle("Register  Tour ")
-                        .setMessage("Tour information")
+                        .setTitle(getResources().getString(R.string.register_tour))
+                        .setMessage(getResources().getString(R.string.information_tour))
                         .setIcon(R.drawable.baseline_playlist_add_24)
                         //sự kiện khi nhấn vào register
-                        .setPositiveButton("Register Tour ", (dialog, which) -> {
+                        .setPositiveButton(getResources().getString(R.string.register_btn), (dialog, which) -> {
                             //lấy giá trị ra
                             String title = et_title.getText().toString();
                             String price = et_price.getText().toString();
@@ -272,12 +272,12 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
                             if (res == true) {
                                 db.deleteTour(String.valueOf(Tid));
                                 showTourdata();
-                                Toast.makeText(SearchTourActivity.this, "successfull", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.insert_success), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(SearchTourActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.insert_failed), Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNegativeButton("Cancel", (dialog, which) -> {
+                        .setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> {
                         });
                 builder.create().show();
             } else if (item.getTitle().equals("update")) {
@@ -313,11 +313,11 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
                 //tạo một dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(SearchTourActivity.this);
                 builder.setView(view)
-                        .setTitle("Update  Tour ")
-                        .setMessage("Tour information")
+                        .setTitle(getResources().getString(R.string.update_tour))
+                        .setMessage(getResources().getString(R.string.information_tour))
                         .setIcon(R.drawable.baseline_update_24)
                         //sự kiện khi nhấn vào register
-                        .setPositiveButton("Update Tour ", (dialog, which) -> {
+                        .setPositiveButton(getResources().getString(R.string.update_btn), (dialog, which) -> {
                             //lấy giá trị ra
                             String title = et_title1.getText().toString();
                             String price = et_price1.getText().toString();
@@ -328,12 +328,12 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
                             //Khi đã thêm thành công
                             if (res == true) {
                                 showTourdata();
-                                Toast.makeText(SearchTourActivity.this, "successfull", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.update_success), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(SearchTourActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNegativeButton("Cancel", (dialog, which) -> {
+                        .setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> {
                         });
                 builder.create().show();
             } else {
@@ -369,11 +369,11 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
                 //tạo một dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(SearchTourActivity.this);
                 builder.setView(view)
-                        .setTitle("Delete  Tour ")
-                        .setMessage("Tour information")
+                        .setTitle(getResources().getString(R.string.delete_tour))
+                        .setMessage(getResources().getString(R.string.information_tour))
                         .setIcon(R.drawable.baseline_playlist_add_24)
                         //sự kiện khi nhấn vào register
-                        .setPositiveButton("Delete Tour ", (dialog, which) -> {
+                        .setPositiveButton(getResources().getString(R.string.delete_btn), (dialog, which) -> {
                             //lấy giá trị ra
                             String title = et_title.getText().toString();
                             String price = et_price.getText().toString();
@@ -385,15 +385,12 @@ public class SearchTourActivity extends AppCompatActivity implements SearchView.
                             if (res > 0) {
                                 // db.deleteTour(String.valueOf(Tid));
                                 showTourdata();
-                                Toast.makeText(SearchTourActivity.this, "successfull", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(SearchTourActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchTourActivity.this, getResources().getString(R.string.delete_failed), Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
+                        .setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> {
                         });
                 builder.create().show();
             }

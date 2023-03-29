@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.Toast;
-import android.widget.Button;
 import com.nnhiep.travelmanager.R;
 import com.nnhiep.travelmanager.database.Database;
 import com.nnhiep.travelmanager.databinding.ActivityMainBinding;
@@ -20,7 +19,6 @@ import com.nnhiep.travelmanager.fragments.UserFragment;
 public class MainActivity extends AppCompatActivity {
     // Khởi tạo đối tượng ánh xạ các thành phần UI - nnhiep 17.03.2023
     private ActivityMainBinding binding;
-    Button btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
