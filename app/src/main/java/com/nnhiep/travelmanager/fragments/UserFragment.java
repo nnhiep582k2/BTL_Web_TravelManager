@@ -55,6 +55,8 @@ public class UserFragment extends Fragment {
                     .setMessage("Bạn có muốn đăng xuất không?")
                     .setPositiveButton("Đăng xuất", (dialog, which) -> {
                         // Thoát ứng dụng về màn hình đăng nhập
+                        Database db = new Database(this.getContext());
+                        db.updateDataSystem("1", false);
                         Intent intent = new Intent(getActivity(), LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
