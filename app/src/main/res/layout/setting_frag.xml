@@ -36,7 +36,7 @@
                  android:layout_height="100dp"
                  android:layout_gravity="center"
                  android:layout_marginTop="10dp"
-                 android:src="@drawable/profile"/>
+                 android:src="@drawable/employee_male"/>
              <TextView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
@@ -74,6 +74,7 @@
                      android:background="@drawable/bg_set_profile"
                      android:paddingStart="14dp"
                      android:paddingEnd="14dp"
+                     android:id="@+id/btnEditInfo"
                      android:text="@string/edit_profile"
                      android:textAllCaps="false"
                      android:textColor="@color/white" />
@@ -304,7 +305,7 @@
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:layout_centerVertical="true"
-                         android:text="FQA"
+                         android:text="FAQ"
                          android:textColor="@color/white"
                          android:textStyle="bold"
                          />

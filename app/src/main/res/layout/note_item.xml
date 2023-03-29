@@ -40,7 +40,7 @@
                 android:enabled="false"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="Title"
+                android:text="@string/title"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="false"
-                    android:hint="Type your note "
+                    android:hint="@string/type_note"
                     android:textSize="20sp"
                     android:textStyle="normal" />
             </com.google.android.material.textfield.TextInputLayout>

@@ -108,7 +108,7 @@ public class User_TTin_Edit extends AppCompatActivity {
             String name1 = edtName.getText().toString().trim();
             int age1 = Integer.parseInt(edtAge.getText().toString().trim());
             String genderStr = spinnerGender.getSelectedItem().toString().trim();
-            int gender1 = genderStr.equals("Male") ? 0 : 1;
+            int gender1 = genderStr.equals(getResources().getString(R.string.male)) ? 0 : 1;
             String account1 = edtAccount.getText().toString().trim();
             String pass1 = edtPass.getText().toString().trim();
             String phone1 = edtPhone.getText().toString().trim();
@@ -130,7 +130,7 @@ public class User_TTin_Edit extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String name = s.toString().trim();
                 if (name.isEmpty()) {
-                    edtName.setError("Họ và tên không được để trống!");
+                    edtName.setError(getResources().getString(R.string.name_empty));
                 } else {
                     edtName.setError(null);
                 }
@@ -147,7 +147,7 @@ public class User_TTin_Edit extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String name = s.toString().trim();
                 if (name.isEmpty()) {
-                    edtAge.setError("Tuổi không được để trống!");
+                    edtAge.setError(getResources().getString(R.string.age_empty));
                 } else {
                     edtAge.setError(null);
                 }
@@ -165,9 +165,9 @@ public class User_TTin_Edit extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String phoneNumber = s.toString().trim();
                 if (phoneNumber.isEmpty()) {
-                    edtPhone.setError("Số điện thoại không được để trống!");
+                    edtPhone.setError(getResources().getString(R.string.phone_empty));
                 } else if (phoneNumber.length() != 10) {
-                    edtPhone.setError("Số điện thoại phải đủ 10 số!");
+                    edtPhone.setError(getResources().getString(R.string.phone_invalid));
                 } else {
                     edtPhone.setError(null);
                 }
@@ -192,9 +192,9 @@ public class User_TTin_Edit extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 String selectedGender = adapterView.getItemAtPosition(position).toString();
-                if (selectedGender.equals("Male")) {
+                if (selectedGender.equals(getResources().getString(R.string.male))) {
                     gender[0] = 0;
-                } else if (selectedGender.equals("Female")) {
+                } else if (selectedGender.equals(getResources().getString(R.string.female))) {
                     gender[0] = 1;
                 }
             }

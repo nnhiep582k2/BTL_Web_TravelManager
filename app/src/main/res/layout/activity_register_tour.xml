@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:paddingTop="14dp"
-        android:text="Danh sách Tour đã đăng kí "
+        android:text="@string/list_register"
         android:textAlignment="center"
         android:textColor="#B61E1E"
         android:textSize="24sp"

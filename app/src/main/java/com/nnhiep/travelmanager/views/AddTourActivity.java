@@ -105,7 +105,7 @@ public class AddTourActivity extends AppCompatActivity {
                 //chuyển về mảng Byte
                 byte[] hinhAnh = byteArray.toByteArray();
                 //Thêm Tour
-                Toast.makeText(AddTourActivity.this, "Thêm Tour Thành Công ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddTourActivity.this, getResources().getString(R.string.insert_success), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(AddTourActivity.this, TourFragment.class));
             }
         });

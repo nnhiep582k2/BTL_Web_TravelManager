@@ -30,20 +30,13 @@ public class TourFragment extends Fragment {
     Button btnSearch;
     Handler SlideHandler=new Handler();
 
-    public TourFragment() {}
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tour, container, false);
         //anh xa
         viewpager2=v.findViewById(R.id.viewpager);
-        btnSearch=(Button) v.findViewById(R.id.btnSearch);
+        btnSearch=  v.findViewById(R.id.btnSearch);
         //slider images
         List<SlideItem> sliderItem = new ArrayList<>();
         sliderItem.add(new SlideItem(R.drawable.banner_bien));

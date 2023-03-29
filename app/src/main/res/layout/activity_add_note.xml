@@ -42,7 +42,7 @@
                 android:enabled="true"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="Title"
+                android:text="@string/title"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
-                    android:hint="Type your note "
+                    android:hint="@string/type_note"
                     android:textSize="20sp"
                     android:textStyle="normal" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="Add" />
+            android:text="@string/add" />
 
         <Button
             android:id="@+id/btnCancleNote"
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="@string/cancel" />
 
     </LinearLayout>
 

@@ -19,6 +19,8 @@ import com.nnhiep.travelmanager.views.FAQSet;
 import com.nnhiep.travelmanager.views.InstructSet;
 import com.nnhiep.travelmanager.views.ListViewTeamProduct;
 import com.nnhiep.travelmanager.views.RulesSet;
+import com.nnhiep.travelmanager.views.User_TTin_Edit;
+
 import java.util.Locale;
 
 /**
@@ -26,15 +28,7 @@ import java.util.Locale;
  */
 public class SettingsFragment extends Fragment {
     private RelativeLayout relaRules, relaContact, relaVersion, relaInstruct, relaTeam, relaFqa;
-    private Button changeLa;
-
-    public SettingsFragment() {
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    private Button changeLa, btnEditInfo;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -49,8 +43,15 @@ public class SettingsFragment extends Fragment {
         relaTeam = view.findViewById(R.id.RelaTeam);
         relaFqa = view.findViewById(R.id.RelaFqa);
         changeLa = view.findViewById(R.id.changeLang);
+        btnEditInfo = view.findViewById(R.id.btnEditInfo);
 
         changeLa.setOnClickListener(v -> showchangelanguageDialog());
+
+        // Bấm sửa thông tin
+        btnEditInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), User_TTin_Edit.class);
+            startActivity(intent);
+        });
 
         relaFqa.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), FAQSet.class);
@@ -81,26 +82,26 @@ public class SettingsFragment extends Fragment {
 
     public void openDialogcontact() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Contact us")
-                .setPositiveButton("OK", (dialog, which) -> Toast.makeText(getContext(),
-                        "You clicked on OK", Toast.LENGTH_SHORT).show())
+        builder.setTitle(this.getContext().getResources().getString(R.string.contact_us))
+                .setPositiveButton(this.getContext().getResources().getString(R.string.ok), (dialog, which) -> Toast.makeText(getContext(),
+                        getContext().getResources().getString(R.string.click_ok), Toast.LENGTH_SHORT).show())
                 .setMessage("group1_android@gmail.com");
         builder.show();
     }
 
     public void openDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Information")
-                .setPositiveButton("OK", (dialog, which) -> Toast.makeText(getContext(),
-                        "You clicked on OK", Toast.LENGTH_SHORT).show())
+        builder.setTitle(this.getContext().getResources().getString(R.string.information))
+                .setPositiveButton(this.getContext().getResources().getString(R.string.ok), (dialog, which) -> Toast.makeText(getContext(),
+                        getContext().getResources().getString(R.string.click_ok), Toast.LENGTH_SHORT).show())
                 .setMessage("Version 1.0");
         builder.show();
     }
 
     private void showchangelanguageDialog() {
-        final String listitiem[] = {"Vietnam", "English"};
+        final String listitiem[] = {getContext().getResources().getString(R.string.vietnamese), getContext().getResources().getString(R.string.english)};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Choose Language...");
+        builder.setTitle(getContext().getResources().getString(R.string.choose_language));
         builder.setSingleChoiceItems(listitiem, -1, (dialog, i) -> {
             // tieng viet
             if (i == 0) {

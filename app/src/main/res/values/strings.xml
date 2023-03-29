@@ -103,7 +103,59 @@
     <string name="grid_view">Lưới</string>
     <string name="list_view">Danh sách</string>
     <string name="add">Thêm</string>
+    <!-- Note  -->
+    <string name="change_image">Đổi ảnh</string>
+    <string name="welcome">Xin chào</string>
+    <string name="support">Hỗ trợ</string>
+    <string name="notification">Thông báo</string>
+    <string name="help_you">Chúng tôi giúp bạn</string>
+    <string name="manage_work">quản lý công việc</string>
+    <string name="map">Bản đồ</string>
+    <string name="note">Ghi chú</string>
+    <string name="report">Báo cáo</string>
+    <string name="share">Chia sẻ</string>
+    <string name="title">Tiêu đề</string>
+    <string name="weather">Thời tiết</string>
+    <string name="type_note">Nhập ghi chú của bạn</string>
+    <string name="manage_note">Quản lý ghi chú của bạn</string>
+    <!--  User  -->
+    <string name="user_code">Mã nhân viên</string>
+    <string name="back">Quay lại</string>
+    <string name="user_information">Thông tin người dùng</string>
+    <string name="loved_tour">Tour yêu thích</string>
+    <string name="privacy">Điều khoản hợp tác</string>
+    <string name="name_empty">Họ tên không được để trống!</string>
+    <string name="age_empty">Tuổi không được để trống!</string>
+    <string name="phone_empty">Số điện thoại không được để trống!</string>
+    <!-- Tour -->
+    <string name="price_input">Giá:</string>
+    <string name="with_input">Với:</string>
+    <string name="name_input">Tên của bạn:</string>
+    <string name="fromdate_input">Từ ngày:</string>
+    <string name="search_tour">Bạn muốn tìm tour? Nhấn vào đây</string>
+    <string name="list_register">Danh sách tour đã đăng ký</string>
+    <string name="love">Yêu thích</string>
+    <string name="description">Mô tả</string>
+    <string name="price">Giá</string>
+    <string name="star">Số sao</string>
+    <string name="from_date">Từ ngày</string>
+    <string name="add_new_tour">Thêm tour mới</string>
+    <string name="update_tour">Sửa tour</string>
+    <string name="update_btn">Sửa</string>
+    <string name="delete_btn">Xóa</string>
+    <string name="delete_tour">Xóa tour</string>
+    <string name="enter_tour">Nhập thông tin tour</string>
+    <string name="register_tour">Đăng ký tour</string>
+    <string name="information_tour">Thông tin tour</string>
+    <string name="register_btn">Đăng ký</string>
     <!-- Settings -->
+    <string name="information">Thông tin</string>
+    <string name="vietnamese">Tiếng Việt</string>
+    <string name="english">Tiếng Anh</string>
+    <string name="choose_language">Chọn ngôn ngữ...</string>
+    <string name="ok">OK</string>
+    <string name="click_ok">Bạn đã nhấn OK</string>
+    <string name="contact_us">Liên hệ với chúng tôi</string>
     <string name="article_string" translatable="false">Điều khoản và chính sách</string>
     <string name="article_subheading" translatable="false"> Nội dung</string>
     <string name="paragraph" translatable="false">
